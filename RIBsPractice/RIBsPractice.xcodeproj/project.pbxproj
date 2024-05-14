@@ -10,6 +10,20 @@
 		785711262BF2F49C00008AFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711252BF2F49C00008AFD /* AppDelegate.swift */; };
 		7857112F2BF2F49D00008AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7857112E2BF2F49D00008AFD /* Assets.xcassets */; };
 		785711322BF2F49D00008AFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785711302BF2F49D00008AFD /* LaunchScreen.storyboard */; };
+		785711412BF2F84100008AFD /* RIBs in Frameworks */ = {isa = PBXBuildFile; productRef = 785711402BF2F84100008AFD /* RIBs */; };
+		785711432BF2F85400008AFD /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711422BF2F85400008AFD /* AppComponent.swift */; };
+		785711482BF2FAAA00008AFD /* AppRootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711442BF2FAAA00008AFD /* AppRootRouter.swift */; };
+		785711492BF2FAAA00008AFD /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711452BF2FAAA00008AFD /* RootTabBarController.swift */; };
+		7857114A2BF2FAAA00008AFD /* AppRootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711462BF2FAAA00008AFD /* AppRootBuilder.swift */; };
+		7857114B2BF2FAAA00008AFD /* AppRootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711472BF2FAAA00008AFD /* AppRootInteractor.swift */; };
+		785711502BF2FAB800008AFD /* AppsHomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7857114C2BF2FAB800008AFD /* AppsHomeRouter.swift */; };
+		785711512BF2FAB800008AFD /* AppsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7857114D2BF2FAB800008AFD /* AppsHomeViewController.swift */; };
+		785711522BF2FAB800008AFD /* AppsHomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7857114E2BF2FAB800008AFD /* AppsHomeBuilder.swift */; };
+		785711532BF2FAB800008AFD /* AppsHomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7857114F2BF2FAB800008AFD /* AppsHomeInteractor.swift */; };
+		785711582BF2FAC200008AFD /* SearchHomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711542BF2FAC200008AFD /* SearchHomeRouter.swift */; };
+		785711592BF2FAC200008AFD /* SearchHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711552BF2FAC200008AFD /* SearchHomeViewController.swift */; };
+		7857115A2BF2FAC200008AFD /* SearchHomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711562BF2FAC200008AFD /* SearchHomeBuilder.swift */; };
+		7857115B2BF2FAC200008AFD /* SearchHomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711572BF2FAC200008AFD /* SearchHomeInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +32,19 @@
 		7857112E2BF2F49D00008AFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		785711312BF2F49D00008AFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		785711332BF2F49D00008AFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		785711422BF2F85400008AFD /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
+		785711442BF2FAAA00008AFD /* AppRootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootRouter.swift; sourceTree = "<group>"; };
+		785711452BF2FAAA00008AFD /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
+		785711462BF2FAAA00008AFD /* AppRootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootBuilder.swift; sourceTree = "<group>"; };
+		785711472BF2FAAA00008AFD /* AppRootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootInteractor.swift; sourceTree = "<group>"; };
+		7857114C2BF2FAB800008AFD /* AppsHomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHomeRouter.swift; sourceTree = "<group>"; };
+		7857114D2BF2FAB800008AFD /* AppsHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHomeViewController.swift; sourceTree = "<group>"; };
+		7857114E2BF2FAB800008AFD /* AppsHomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHomeBuilder.swift; sourceTree = "<group>"; };
+		7857114F2BF2FAB800008AFD /* AppsHomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHomeInteractor.swift; sourceTree = "<group>"; };
+		785711542BF2FAC200008AFD /* SearchHomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHomeRouter.swift; sourceTree = "<group>"; };
+		785711552BF2FAC200008AFD /* SearchHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHomeViewController.swift; sourceTree = "<group>"; };
+		785711562BF2FAC200008AFD /* SearchHomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHomeBuilder.swift; sourceTree = "<group>"; };
+		785711572BF2FAC200008AFD /* SearchHomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHomeInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -25,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				785711412BF2F84100008AFD /* RIBs in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				785711252BF2F49C00008AFD /* AppDelegate.swift */,
+				785711422BF2F85400008AFD /* AppComponent.swift */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -72,6 +101,10 @@
 		7857113C2BF2F6C800008AFD /* AppsHome */ = {
 			isa = PBXGroup;
 			children = (
+				7857114C2BF2FAB800008AFD /* AppsHomeRouter.swift */,
+				7857114D2BF2FAB800008AFD /* AppsHomeViewController.swift */,
+				7857114E2BF2FAB800008AFD /* AppsHomeBuilder.swift */,
+				7857114F2BF2FAB800008AFD /* AppsHomeInteractor.swift */,
 			);
 			path = AppsHome;
 			sourceTree = "<group>";
@@ -79,6 +112,10 @@
 		7857113D2BF2F6CE00008AFD /* AppRoot */ = {
 			isa = PBXGroup;
 			children = (
+				785711442BF2FAAA00008AFD /* AppRootRouter.swift */,
+				785711462BF2FAAA00008AFD /* AppRootBuilder.swift */,
+				785711472BF2FAAA00008AFD /* AppRootInteractor.swift */,
+				785711452BF2FAAA00008AFD /* RootTabBarController.swift */,
 			);
 			path = AppRoot;
 			sourceTree = "<group>";
@@ -86,6 +123,10 @@
 		7857113E2BF2F6D300008AFD /* SearchHome */ = {
 			isa = PBXGroup;
 			children = (
+				785711542BF2FAC200008AFD /* SearchHomeRouter.swift */,
+				785711552BF2FAC200008AFD /* SearchHomeViewController.swift */,
+				785711562BF2FAC200008AFD /* SearchHomeBuilder.swift */,
+				785711572BF2FAC200008AFD /* SearchHomeInteractor.swift */,
 			);
 			path = SearchHome;
 			sourceTree = "<group>";
@@ -106,6 +147,9 @@
 			dependencies = (
 			);
 			name = RIBsPractice;
+			packageProductDependencies = (
+				785711402BF2F84100008AFD /* RIBs */,
+			);
 			productName = RIBsPractice;
 			productReference = 785711222BF2F49C00008AFD /* RIBsPractice.app */;
 			productType = "com.apple.product-type.application";
@@ -134,6 +178,9 @@
 				Base,
 			);
 			mainGroup = 785711192BF2F49C00008AFD;
+			packageReferences = (
+				7857113F2BF2F84100008AFD /* XCRemoteSwiftPackageReference "RIBs" */,
+			);
 			productRefGroup = 785711232BF2F49C00008AFD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -160,7 +207,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7857114A2BF2FAAA00008AFD /* AppRootBuilder.swift in Sources */,
 				785711262BF2F49C00008AFD /* AppDelegate.swift in Sources */,
+				7857114B2BF2FAAA00008AFD /* AppRootInteractor.swift in Sources */,
+				785711582BF2FAC200008AFD /* SearchHomeRouter.swift in Sources */,
+				785711512BF2FAB800008AFD /* AppsHomeViewController.swift in Sources */,
+				7857115B2BF2FAC200008AFD /* SearchHomeInteractor.swift in Sources */,
+				785711522BF2FAB800008AFD /* AppsHomeBuilder.swift in Sources */,
+				785711432BF2F85400008AFD /* AppComponent.swift in Sources */,
+				785711492BF2FAAA00008AFD /* RootTabBarController.swift in Sources */,
+				785711532BF2FAB800008AFD /* AppsHomeInteractor.swift in Sources */,
+				7857115A2BF2FAC200008AFD /* SearchHomeBuilder.swift in Sources */,
+				785711502BF2FAB800008AFD /* AppsHomeRouter.swift in Sources */,
+				785711482BF2FAAA00008AFD /* AppRootRouter.swift in Sources */,
+				785711592BF2FAC200008AFD /* SearchHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +441,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7857113F2BF2F84100008AFD /* XCRemoteSwiftPackageReference "RIBs" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/uber/RIBs.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		785711402BF2F84100008AFD /* RIBs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7857113F2BF2F84100008AFD /* XCRemoteSwiftPackageReference "RIBs" */;
+			productName = RIBs;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7857111A2BF2F49C00008AFD /* Project object */;
 }
