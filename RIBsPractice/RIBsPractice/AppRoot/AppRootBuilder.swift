@@ -12,7 +12,7 @@ protocol AppRootDependency: Dependency {
     // created by this RIB.
 }
 
-final class AppRootComponent: Component<AppRootDependency> {
+final class AppRootComponent: Component<AppRootDependency>, AppsHomeDependency, SearchHomeDependency {
 
     // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
 }
@@ -30,11 +30,19 @@ final class AppRootBuilder: Builder<AppRootDependency>, AppRootBuildable {
     }
 
     func build() -> LaunchRouting {
-        _ = AppRootComponent(dependency: dependency)
+        let component = AppRootComponent(dependency: dependency)
         let tabBar = RootTabBarController()
         let interactor = AppRootInteractor(presenter: tabBar)
         
-        let router = AppRootRouter(interactor: interactor, viewController: tabBar)
+        let appsHome = AppsHomeBuilder(dependency: component)
+        let searchHome = SearchHomeBuilder(dependency: component)
+        
+        let router = AppRootRouter(
+            interactor: interactor,
+            viewController: tabBar,
+            appsHome: appsHome,
+            searchHome: searchHome
+        )
         
         return router
     }
