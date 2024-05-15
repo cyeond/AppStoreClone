@@ -25,6 +25,9 @@
 		7857115A2BF2FAC200008AFD /* SearchHomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711562BF2FAC200008AFD /* SearchHomeBuilder.swift */; };
 		7857115B2BF2FAC200008AFD /* SearchHomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711572BF2FAC200008AFD /* SearchHomeInteractor.swift */; };
 		7857115E2BF2FF8E00008AFD /* RIBs+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7857115D2BF2FF8E00008AFD /* RIBs+Utils.swift */; };
+		785711632BF33C9800008AFD /* AppPreviewBasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711622BF33C9800008AFD /* AppPreviewBasicInfoView.swift */; };
+		785711652BF33DA500008AFD /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711642BF33DA500008AFD /* UIView+Utils.swift */; };
+		785711672BF33E3B00008AFD /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711662BF33E3B00008AFD /* UIImage+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +50,9 @@
 		785711562BF2FAC200008AFD /* SearchHomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHomeBuilder.swift; sourceTree = "<group>"; };
 		785711572BF2FAC200008AFD /* SearchHomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHomeInteractor.swift; sourceTree = "<group>"; };
 		7857115D2BF2FF8E00008AFD /* RIBs+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RIBs+Utils.swift"; sourceTree = "<group>"; };
+		785711622BF33C9800008AFD /* AppPreviewBasicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreviewBasicInfoView.swift; sourceTree = "<group>"; };
+		785711642BF33DA500008AFD /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
+		785711662BF33E3B00008AFD /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +90,7 @@
 				7857113D2BF2F6CE00008AFD /* AppRoot */,
 				7857113C2BF2F6C800008AFD /* AppsHome */,
 				7857113E2BF2F6D300008AFD /* SearchHome */,
+				7857115F2BF3394300008AFD /* ReuseableViews */,
 				7857115C2BF2FF8100008AFD /* Utils */,
 				785711302BF2F49D00008AFD /* LaunchScreen.storyboard */,
 				785711332BF2F49D00008AFD /* Info.plist */,
@@ -138,8 +145,34 @@
 			isa = PBXGroup;
 			children = (
 				7857115D2BF2FF8E00008AFD /* RIBs+Utils.swift */,
+				785711642BF33DA500008AFD /* UIView+Utils.swift */,
+				785711662BF33E3B00008AFD /* UIImage+Utils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		7857115F2BF3394300008AFD /* ReuseableViews */ = {
+			isa = PBXGroup;
+			children = (
+				785711602BF33C0900008AFD /* AppPreview */,
+				785711612BF33C4100008AFD /* AppDetail */,
+			);
+			path = ReuseableViews;
+			sourceTree = "<group>";
+		};
+		785711602BF33C0900008AFD /* AppPreview */ = {
+			isa = PBXGroup;
+			children = (
+				785711622BF33C9800008AFD /* AppPreviewBasicInfoView.swift */,
+			);
+			path = AppPreview;
+			sourceTree = "<group>";
+		};
+		785711612BF33C4100008AFD /* AppDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AppDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,14 +255,17 @@
 				7857114A2BF2FAAA00008AFD /* AppRootBuilder.swift in Sources */,
 				785711262BF2F49C00008AFD /* AppDelegate.swift in Sources */,
 				7857114B2BF2FAAA00008AFD /* AppRootInteractor.swift in Sources */,
+				785711632BF33C9800008AFD /* AppPreviewBasicInfoView.swift in Sources */,
 				785711582BF2FAC200008AFD /* SearchHomeRouter.swift in Sources */,
 				785711512BF2FAB800008AFD /* AppsHomeViewController.swift in Sources */,
 				7857115B2BF2FAC200008AFD /* SearchHomeInteractor.swift in Sources */,
 				785711522BF2FAB800008AFD /* AppsHomeBuilder.swift in Sources */,
 				785711432BF2F85400008AFD /* AppComponent.swift in Sources */,
 				785711492BF2FAAA00008AFD /* RootTabBarController.swift in Sources */,
+				785711672BF33E3B00008AFD /* UIImage+Utils.swift in Sources */,
 				785711532BF2FAB800008AFD /* AppsHomeInteractor.swift in Sources */,
 				7857115A2BF2FAC200008AFD /* SearchHomeBuilder.swift in Sources */,
+				785711652BF33DA500008AFD /* UIView+Utils.swift in Sources */,
 				785711502BF2FAB800008AFD /* AppsHomeRouter.swift in Sources */,
 				785711482BF2FAAA00008AFD /* AppRootRouter.swift in Sources */,
 				785711592BF2FAC200008AFD /* SearchHomeViewController.swift in Sources */,
