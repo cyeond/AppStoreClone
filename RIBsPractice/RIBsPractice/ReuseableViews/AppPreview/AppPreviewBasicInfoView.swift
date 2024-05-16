@@ -81,7 +81,7 @@ final class AppPreviewBasicInfoView: UIView {
         titleStackView.addArrangedSubview(subtitleLabel)
         
         NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10.0),
+            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10.0),
             imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10.0),
             imageView.heightAnchor.constraint(equalToConstant: 60.0),
@@ -94,7 +94,7 @@ final class AppPreviewBasicInfoView: UIView {
 
             titleStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             titleStackView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 10.0),
-            titleStackView.trailingAnchor.constraint(equalTo: actionButton.leadingAnchor, constant: -20.0),
+            titleStackView.trailingAnchor.constraint(equalTo: actionButton.leadingAnchor),
             titleStackView.heightAnchor.constraint(lessThanOrEqualToConstant: 60.0),
         ])
     }

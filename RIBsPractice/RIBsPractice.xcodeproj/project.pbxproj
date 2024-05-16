@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		782BA9662BF5A01B008F7EE2 /* AppPreviewBasicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA9652BF5A01B008F7EE2 /* AppPreviewBasicCollectionView.swift */; };
+		782BA9682BF5A244008F7EE2 /* AppPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA9672BF5A244008F7EE2 /* AppPreviewCollectionViewCell.swift */; };
+		782BA96A2BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA9692BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift */; };
 		785711262BF2F49C00008AFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711252BF2F49C00008AFD /* AppDelegate.swift */; };
 		7857112F2BF2F49D00008AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7857112E2BF2F49D00008AFD /* Assets.xcassets */; };
 		785711322BF2F49D00008AFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785711302BF2F49D00008AFD /* LaunchScreen.storyboard */; };
@@ -31,6 +34,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		782BA9652BF5A01B008F7EE2 /* AppPreviewBasicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreviewBasicCollectionView.swift; sourceTree = "<group>"; };
+		782BA9672BF5A244008F7EE2 /* AppPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		782BA9692BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreviewBasicHeaderView.swift; sourceTree = "<group>"; };
 		785711222BF2F49C00008AFD /* RIBsPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RIBsPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		785711252BF2F49C00008AFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7857112E2BF2F49D00008AFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -164,6 +170,9 @@
 			isa = PBXGroup;
 			children = (
 				785711622BF33C9800008AFD /* AppPreviewBasicInfoView.swift */,
+				782BA9672BF5A244008F7EE2 /* AppPreviewCollectionViewCell.swift */,
+				782BA9692BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift */,
+				782BA9652BF5A01B008F7EE2 /* AppPreviewBasicCollectionView.swift */,
 			);
 			path = AppPreview;
 			sourceTree = "<group>";
@@ -258,7 +267,10 @@
 				785711632BF33C9800008AFD /* AppPreviewBasicInfoView.swift in Sources */,
 				785711582BF2FAC200008AFD /* SearchHomeRouter.swift in Sources */,
 				785711512BF2FAB800008AFD /* AppsHomeViewController.swift in Sources */,
+				782BA9682BF5A244008F7EE2 /* AppPreviewCollectionViewCell.swift in Sources */,
+				782BA9662BF5A01B008F7EE2 /* AppPreviewBasicCollectionView.swift in Sources */,
 				7857115B2BF2FAC200008AFD /* SearchHomeInteractor.swift in Sources */,
+				782BA96A2BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift in Sources */,
 				785711522BF2FAB800008AFD /* AppsHomeBuilder.swift in Sources */,
 				785711432BF2F85400008AFD /* AppComponent.swift in Sources */,
 				785711492BF2FAAA00008AFD /* RootTabBarController.swift in Sources */,
