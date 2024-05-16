@@ -1,5 +1,5 @@
 //
-//  AppPreviewCollectionViewCell.swift
+//  AppPreviewBasicCollectionViewCell.swift
 //  RIBsPractice
 //
 //  Created by YD on 5/16/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AppPreviewCollectionViewCell: UICollectionViewCell {
+final class AppPreviewBasicCollectionViewCell: UICollectionViewCell {
     static let identifier = "AppPreviewCollectionViewCell"
     
     private let previewView: AppPreviewBasicInfoView = {

@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		782BA9662BF5A01B008F7EE2 /* AppPreviewBasicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA9652BF5A01B008F7EE2 /* AppPreviewBasicCollectionView.swift */; };
-		782BA9682BF5A244008F7EE2 /* AppPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA9672BF5A244008F7EE2 /* AppPreviewCollectionViewCell.swift */; };
+		782BA9682BF5A244008F7EE2 /* AppPreviewBasicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA9672BF5A244008F7EE2 /* AppPreviewBasicCollectionViewCell.swift */; };
 		782BA96A2BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA9692BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift */; };
+		782BA96C2BF5D88B008F7EE2 /* AppsHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA96B2BF5D88B008F7EE2 /* AppsHomeCollectionViewCell.swift */; };
 		785711262BF2F49C00008AFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711252BF2F49C00008AFD /* AppDelegate.swift */; };
 		7857112F2BF2F49D00008AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7857112E2BF2F49D00008AFD /* Assets.xcassets */; };
 		785711322BF2F49D00008AFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785711302BF2F49D00008AFD /* LaunchScreen.storyboard */; };
@@ -35,8 +36,9 @@
 
 /* Begin PBXFileReference section */
 		782BA9652BF5A01B008F7EE2 /* AppPreviewBasicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreviewBasicCollectionView.swift; sourceTree = "<group>"; };
-		782BA9672BF5A244008F7EE2 /* AppPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		782BA9672BF5A244008F7EE2 /* AppPreviewBasicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreviewBasicCollectionViewCell.swift; sourceTree = "<group>"; };
 		782BA9692BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreviewBasicHeaderView.swift; sourceTree = "<group>"; };
+		782BA96B2BF5D88B008F7EE2 /* AppsHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		785711222BF2F49C00008AFD /* RIBsPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RIBsPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		785711252BF2F49C00008AFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7857112E2BF2F49D00008AFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				7857114D2BF2FAB800008AFD /* AppsHomeViewController.swift */,
 				7857114E2BF2FAB800008AFD /* AppsHomeBuilder.swift */,
 				7857114F2BF2FAB800008AFD /* AppsHomeInteractor.swift */,
+				782BA96B2BF5D88B008F7EE2 /* AppsHomeCollectionViewCell.swift */,
 			);
 			path = AppsHome;
 			sourceTree = "<group>";
@@ -170,8 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				785711622BF33C9800008AFD /* AppPreviewBasicInfoView.swift */,
-				782BA9672BF5A244008F7EE2 /* AppPreviewCollectionViewCell.swift */,
 				782BA9692BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift */,
+				782BA9672BF5A244008F7EE2 /* AppPreviewBasicCollectionViewCell.swift */,
 				782BA9652BF5A01B008F7EE2 /* AppPreviewBasicCollectionView.swift */,
 			);
 			path = AppPreview;
@@ -267,7 +270,7 @@
 				785711632BF33C9800008AFD /* AppPreviewBasicInfoView.swift in Sources */,
 				785711582BF2FAC200008AFD /* SearchHomeRouter.swift in Sources */,
 				785711512BF2FAB800008AFD /* AppsHomeViewController.swift in Sources */,
-				782BA9682BF5A244008F7EE2 /* AppPreviewCollectionViewCell.swift in Sources */,
+				782BA9682BF5A244008F7EE2 /* AppPreviewBasicCollectionViewCell.swift in Sources */,
 				782BA9662BF5A01B008F7EE2 /* AppPreviewBasicCollectionView.swift in Sources */,
 				7857115B2BF2FAC200008AFD /* SearchHomeInteractor.swift in Sources */,
 				782BA96A2BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift in Sources */,
@@ -280,6 +283,7 @@
 				785711652BF33DA500008AFD /* UIView+Utils.swift in Sources */,
 				785711502BF2FAB800008AFD /* AppsHomeRouter.swift in Sources */,
 				785711482BF2FAAA00008AFD /* AppRootRouter.swift in Sources */,
+				782BA96C2BF5D88B008F7EE2 /* AppsHomeCollectionViewCell.swift in Sources */,
 				785711592BF2FAC200008AFD /* SearchHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -31,7 +31,7 @@ final class AppPreviewBasicCollectionView: UICollectionView {
     private func setupCollectionView() {
         backgroundColor = .white
         showsHorizontalScrollIndicator = false
-        register(AppPreviewCollectionViewCell.self, forCellWithReuseIdentifier: AppPreviewCollectionViewCell.identifier)
+        register(AppPreviewBasicCollectionViewCell.self, forCellWithReuseIdentifier: AppPreviewBasicCollectionViewCell.identifier)
         register(AppPreviewBasicHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: AppPreviewBasicHeaderView.identifier)
         setCollectionViewLayout(createCollectionViewLayout(), animated: true)
     }
@@ -68,7 +68,7 @@ extension AppPreviewBasicCollectionView {
 extension AppPreviewBasicCollectionView {
     private func setupDataSource() {
         basicDataSource = UICollectionViewDiffableDataSource(collectionView: self, cellProvider: { collectionView, indexPath, book in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppPreviewCollectionViewCell.identifier, for: indexPath) as? AppPreviewCollectionViewCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppPreviewBasicCollectionViewCell.identifier, for: indexPath) as? AppPreviewBasicCollectionViewCell else { return UICollectionViewCell() }
             return cell
         })
         
