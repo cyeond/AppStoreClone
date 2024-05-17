@@ -40,6 +40,10 @@
 		78CF31E42BF7260C0046753D /* ShowAllAppsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF31E02BF7260C0046753D /* ShowAllAppsBuilder.swift */; };
 		78CF31E52BF7260C0046753D /* ShowAllAppsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF31E12BF7260C0046753D /* ShowAllAppsInteractor.swift */; };
 		78CF31E72BF736AA0046753D /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF31E62BF736AA0046753D /* UIViewController+Utils.swift */; };
+		78CF31ED2BF747B30046753D /* AppDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF31E92BF747B30046753D /* AppDetailsRouter.swift */; };
+		78CF31EE2BF747B30046753D /* AppDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF31EA2BF747B30046753D /* AppDetailsViewController.swift */; };
+		78CF31EF2BF747B30046753D /* AppDetailsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF31EB2BF747B30046753D /* AppDetailsBuilder.swift */; };
+		78CF31F02BF747B30046753D /* AppDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF31EC2BF747B30046753D /* AppDetailsInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +81,10 @@
 		78CF31E02BF7260C0046753D /* ShowAllAppsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllAppsBuilder.swift; sourceTree = "<group>"; };
 		78CF31E12BF7260C0046753D /* ShowAllAppsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllAppsInteractor.swift; sourceTree = "<group>"; };
 		78CF31E62BF736AA0046753D /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
+		78CF31E92BF747B30046753D /* AppDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailsRouter.swift; sourceTree = "<group>"; };
+		78CF31EA2BF747B30046753D /* AppDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailsViewController.swift; sourceTree = "<group>"; };
+		78CF31EB2BF747B30046753D /* AppDetailsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailsBuilder.swift; sourceTree = "<group>"; };
+		78CF31EC2BF747B30046753D /* AppDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailsInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +122,7 @@
 				7857113D2BF2F6CE00008AFD /* AppRoot */,
 				7857113C2BF2F6C800008AFD /* AppsHome */,
 				7857113E2BF2F6D300008AFD /* SearchHome */,
+				78CF31E82BF7474D0046753D /* AppDetails */,
 				78CF31D32BF71A590046753D /* Models */,
 				7857115F2BF3394300008AFD /* ReuseableViews */,
 				7857115C2BF2FF8100008AFD /* Utils */,
@@ -243,6 +252,17 @@
 			path = ShowAllApps;
 			sourceTree = "<group>";
 		};
+		78CF31E82BF7474D0046753D /* AppDetails */ = {
+			isa = PBXGroup;
+			children = (
+				78CF31E92BF747B30046753D /* AppDetailsRouter.swift */,
+				78CF31EA2BF747B30046753D /* AppDetailsViewController.swift */,
+				78CF31EB2BF747B30046753D /* AppDetailsBuilder.swift */,
+				78CF31EC2BF747B30046753D /* AppDetailsInteractor.swift */,
+			);
+			path = AppDetails;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -324,10 +344,12 @@
 				7857115E2BF2FF8E00008AFD /* RIBs+Utils.swift in Sources */,
 				7857114A2BF2FAAA00008AFD /* AppRootBuilder.swift in Sources */,
 				78CF31E42BF7260C0046753D /* ShowAllAppsBuilder.swift in Sources */,
+				78CF31F02BF747B30046753D /* AppDetailsInteractor.swift in Sources */,
 				785711262BF2F49C00008AFD /* AppDelegate.swift in Sources */,
 				7857114B2BF2FAAA00008AFD /* AppRootInteractor.swift in Sources */,
 				785711632BF33C9800008AFD /* AppPreviewBasicView.swift in Sources */,
 				785711582BF2FAC200008AFD /* SearchHomeRouter.swift in Sources */,
+				78CF31ED2BF747B30046753D /* AppDetailsRouter.swift in Sources */,
 				785711512BF2FAB800008AFD /* AppsHomeViewController.swift in Sources */,
 				782BA9682BF5A244008F7EE2 /* AppPreviewBasicCell.swift in Sources */,
 				78CF31D22BF6F6F40046753D /* Array+Utils.swift in Sources */,
@@ -342,6 +364,7 @@
 				78CF31D52BF7210B0046753D /* CollectionViewSectionModel.swift in Sources */,
 				78CF31D82BF721610046753D /* CollectionViewSection.swift in Sources */,
 				7857115A2BF2FAC200008AFD /* SearchHomeBuilder.swift in Sources */,
+				78CF31EF2BF747B30046753D /* AppDetailsBuilder.swift in Sources */,
 				785711652BF33DA500008AFD /* UIView+Utils.swift in Sources */,
 				78CF31E52BF7260C0046753D /* ShowAllAppsInteractor.swift in Sources */,
 				78CF31E32BF7260C0046753D /* ShowAllAppsViewController.swift in Sources */,
@@ -349,6 +372,7 @@
 				785711482BF2FAAA00008AFD /* AppRootRouter.swift in Sources */,
 				78CF31DA2BF7218D0046753D /* CollectionViewItem.swift in Sources */,
 				785711592BF2FAC200008AFD /* SearchHomeViewController.swift in Sources */,
+				78CF31EE2BF747B30046753D /* AppDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
