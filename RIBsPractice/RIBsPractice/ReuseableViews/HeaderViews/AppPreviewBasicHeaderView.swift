@@ -7,8 +7,17 @@
 
 import UIKit
 
+struct AppPreviewBasicHeaderViewModel {
+    let title: String
+    let subtitle: String
+    let tapHandler: (() -> Void)
+}
+
 final class AppPreviewBasicHeaderView: UICollectionReusableView {
     static let identifier = "AppPreviewBasicHeaderView"
+    static let height: CGFloat = 50.0
+    
+    private var tapHandler: (() -> Void)?
     
     private let titleStackView: UIStackView = {
         let stackView = UIStackView()
@@ -22,7 +31,6 @@ final class AppPreviewBasicHeaderView: UICollectionReusableView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "iPhone 필수 앱"
         label.textAlignment = .left
         label.numberOfLines = 1
         label.textColor = .black
@@ -33,7 +41,6 @@ final class AppPreviewBasicHeaderView: UICollectionReusableView {
     private let subtitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "에디터가 직접 고른 추천 앱으로 시작하세요"
         label.textAlignment = .left
         label.numberOfLines = 1
         label.textColor = .systemGray
@@ -78,12 +85,18 @@ final class AppPreviewBasicHeaderView: UICollectionReusableView {
             seeAllButton.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             seeAllButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             seeAllButton.widthAnchor.constraint(equalToConstant: 70.0),
-            seeAllButton.heightAnchor.constraint(equalToConstant: 50.0)
+            seeAllButton.heightAnchor.constraint(equalToConstant: AppPreviewBasicHeaderView.height)
         ])
     }
     
     @objc
     private func seeAllButtonTapped() {
-        
+        tapHandler?()
+    }
+    
+    func update(with viewModel: AppPreviewBasicHeaderViewModel) {
+        titleLabel.text = viewModel.title
+        subtitleLabel.text = viewModel.subtitle
+        tapHandler = viewModel.tapHandler
     }
 }

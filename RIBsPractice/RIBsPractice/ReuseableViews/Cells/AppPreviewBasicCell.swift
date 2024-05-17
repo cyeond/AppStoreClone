@@ -7,11 +7,11 @@
 
 import UIKit
 
-final class AppPreviewBasicCollectionViewCell: UICollectionViewCell {
-    static let identifier = "AppPreviewCollectionViewCell"
+final class AppPreviewBasicCell: UICollectionViewCell {
+    static let identifier = "AppPreviewBasicCell"
     
-    private let previewView: AppPreviewBasicInfoView = {
-        let view = AppPreviewBasicInfoView()
+    private let previewView: AppPreviewBasicView = {
+        let view = AppPreviewBasicView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -37,5 +37,9 @@ final class AppPreviewBasicCollectionViewCell: UICollectionViewCell {
             previewView.topAnchor.constraint(equalTo: self.topAnchor),
             previewView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         ])
+    }
+    
+    func update(with info: AppPreviewInfo) {
+        previewView.update(with: info)
     }
 }

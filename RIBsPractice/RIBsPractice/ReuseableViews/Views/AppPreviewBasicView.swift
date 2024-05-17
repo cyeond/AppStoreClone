@@ -7,9 +7,15 @@
 
 import UIKit
 
-final class AppPreviewBasicInfoView: UIView {
+final class AppPreviewBasicView: UIView {
+    static let height: CGFloat = 80.0
+    
     private let imageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(color: .systemOrange))
+        let randomRed:CGFloat = CGFloat(drand48())
+        let randomGreen:CGFloat = CGFloat(drand48())
+        let randomBlue:CGFloat = CGFloat(drand48())
+        let color = UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
+        let imageView = UIImageView(image: UIImage(color: color))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -84,23 +90,28 @@ final class AppPreviewBasicInfoView: UIView {
             imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10.0),
             imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10.0),
-            imageView.heightAnchor.constraint(equalToConstant: 60.0),
-            imageView.widthAnchor.constraint(equalToConstant: 60.0),
+            imageView.heightAnchor.constraint(equalToConstant: AppPreviewBasicView.height-20.0),
+            imageView.widthAnchor.constraint(equalToConstant: AppPreviewBasicView.height-20.0),
             
             actionButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            actionButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10.0),
+            actionButton.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             actionButton.widthAnchor.constraint(equalToConstant: 70.0),
             actionButton.heightAnchor.constraint(equalToConstant: 30.0),
 
             titleStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             titleStackView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 10.0),
             titleStackView.trailingAnchor.constraint(equalTo: actionButton.leadingAnchor),
-            titleStackView.heightAnchor.constraint(lessThanOrEqualToConstant: 60.0),
+            titleStackView.heightAnchor.constraint(lessThanOrEqualToConstant: AppPreviewBasicView.height-20.0),
         ])
     }
     
     @objc
     private func actionButtonDidTap() {
         
+    }
+    
+    func update(with info: AppPreviewInfo) {
+        titleLabel.text = info.title
+        subtitleLabel.text = info.subtitle
     }
 }

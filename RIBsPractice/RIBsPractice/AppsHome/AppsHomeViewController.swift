@@ -13,11 +13,14 @@ protocol AppsHomePresentableListener: AnyObject {
     // TODO: Declare properties and methods that the view controller can invoke to perform
     // business logic, such as signIn(). This protocol is implemented by the corresponding
     // interactor class.
+    func seeAllButtonDidTap()
 }
 
 final class AppsHomeViewController: UIViewController, AppsHomePresentable, AppsHomeViewControllable {
     weak var listener: AppsHomePresentableListener?
-    var collectionViewDataSource: UICollectionViewDiffableDataSource<String, String>?
+    
+    private var collectionViewDataSource: UICollectionViewDiffableDataSource<CollectionViewSection, CollectionViewItem>?
+    private var viewModel: [CollectionViewSectionModel] = []
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
@@ -25,7 +28,8 @@ final class AppsHomeViewController: UIViewController, AppsHomePresentable, AppsH
         collectionView.backgroundColor = .white
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.register(AppsHomeCollectionViewCell.self, forCellWithReuseIdentifier: AppsHomeCollectionViewCell.identifier)
+        collectionView.register(AppPreviewBasicCell.self, forCellWithReuseIdentifier: AppPreviewBasicCell.identifier)
+        collectionView.register(AppPreviewBasicHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: AppPreviewBasicHeaderView.identifier)
         collectionView.setCollectionViewLayout(createCollectionViewLayout(), animated: true)
         return collectionView
     }()
@@ -71,36 +75,49 @@ final class AppsHomeViewController: UIViewController, AppsHomePresentable, AppsH
 extension AppsHomeViewController {
     private func createCollectionViewLayout() -> UICollectionViewCompositionalLayout {
         let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = 20.0
         
         return UICollectionViewCompositionalLayout(sectionProvider: { [weak self] sectionIndex, environment in
-            return self?.createLayoutSection()
+            return self?.viewModel[safe: sectionIndex]?.layoutSection()
         }, configuration: config)
-    }
-    
-    private func createLayoutSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(310.0))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-        group.contentInsets = .init(top: 10.0, leading: 0, bottom: 10.0, trailing: 0)
-        
-        let section = NSCollectionLayoutSection(group: group)
-        return section
     }
 }
 
 //MARK: - CollectionView DataSource
 extension AppsHomeViewController {
     private func setupCollectionViewDataSource() {
-        collectionViewDataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, book in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppsHomeCollectionViewCell.identifier, for: indexPath) as? AppsHomeCollectionViewCell else { return UICollectionViewCell() }
-            return cell
+        collectionViewDataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
+            switch item.type {
+            case .appPreviewBasic(let info):
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppPreviewBasicCell.identifier, for: indexPath) as? AppPreviewBasicCell else { return UICollectionViewCell() }
+                cell.update(with: info)
+                return cell
+            }
         })
         
-        var snapshot = NSDiffableDataSourceSnapshot<String, String>()
-        snapshot.appendSections(["1"])
-        snapshot.appendItems(["1", "2", "3", "4"], toSection: "1")
+        collectionViewDataSource?.supplementaryViewProvider = { [weak self] collectionView, kind, indexPath -> UICollectionReusableView? in
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AppPreviewBasicHeaderView.identifier, for: indexPath) as? AppPreviewBasicHeaderView
+            if let type = self?.viewModel[safe: indexPath.section]?.section.type {
+                switch type {
+                case .groupThree(title: let title, subtitle: let subtitle):
+                    header?.update(with: AppPreviewBasicHeaderViewModel(title: title, subtitle: subtitle, tapHandler: {
+                    }))
+                }
+            }
+            return header
+        }
+    }
+    
+    func update(with viewModel: [CollectionViewSectionModel]) {
+        self.viewModel = viewModel
+        
+        var snapshot = NSDiffableDataSourceSnapshot<CollectionViewSection, CollectionViewItem>()
+        
+        viewModel.forEach { model in
+            snapshot.appendSections([model.section])
+            snapshot.appendItems(model.items, toSection: model.section)
+        }
+        
         collectionViewDataSource?.apply(snapshot)
     }
 }
