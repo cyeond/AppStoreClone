@@ -47,8 +47,14 @@ final class AppsHomeInteractor: PresentableInteractor<AppsHomePresentable>, Apps
         // TODO: Pause any business logic.
     }
     
+    // MARK: - AppsHomeViewController
     func seeAllButtonDidTap(with sectionModel: CollectionViewSectionModel) {
         router?.attachShowAllApps(with: sectionModel)
+    }
+    
+    // MARK: - ShowAllApps
+    func showAllAppsDidTapClose() {
+        router?.detachShowAllApps()
     }
 }
 

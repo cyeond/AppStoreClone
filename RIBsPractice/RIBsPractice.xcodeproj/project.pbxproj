@@ -39,6 +39,7 @@
 		78CF31E32BF7260C0046753D /* ShowAllAppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF31DF2BF7260C0046753D /* ShowAllAppsViewController.swift */; };
 		78CF31E42BF7260C0046753D /* ShowAllAppsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF31E02BF7260C0046753D /* ShowAllAppsBuilder.swift */; };
 		78CF31E52BF7260C0046753D /* ShowAllAppsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF31E12BF7260C0046753D /* ShowAllAppsInteractor.swift */; };
+		78CF31E72BF736AA0046753D /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF31E62BF736AA0046753D /* UIViewController+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		78CF31DF2BF7260C0046753D /* ShowAllAppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllAppsViewController.swift; sourceTree = "<group>"; };
 		78CF31E02BF7260C0046753D /* ShowAllAppsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllAppsBuilder.swift; sourceTree = "<group>"; };
 		78CF31E12BF7260C0046753D /* ShowAllAppsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllAppsInteractor.swift; sourceTree = "<group>"; };
+		78CF31E62BF736AA0046753D /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				785711642BF33DA500008AFD /* UIView+Utils.swift */,
 				785711662BF33E3B00008AFD /* UIImage+Utils.swift */,
 				78CF31D12BF6F6F40046753D /* Array+Utils.swift */,
+				78CF31E62BF736AA0046753D /* UIViewController+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				78CF31D22BF6F6F40046753D /* Array+Utils.swift in Sources */,
 				7857115B2BF2FAC200008AFD /* SearchHomeInteractor.swift in Sources */,
 				782BA96A2BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift in Sources */,
+				78CF31E72BF736AA0046753D /* UIViewController+Utils.swift in Sources */,
 				785711522BF2FAB800008AFD /* AppsHomeBuilder.swift in Sources */,
 				785711432BF2F85400008AFD /* AppComponent.swift in Sources */,
 				785711492BF2FAAA00008AFD /* RootTabBarController.swift in Sources */,

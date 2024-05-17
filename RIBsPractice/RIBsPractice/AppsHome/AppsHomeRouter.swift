@@ -36,7 +36,7 @@ final class AppsHomeRouter: ViewableRouter<AppsHomeInteractable, AppsHomeViewCon
         guard showAllAppsRouting == nil else { return }
         
         let router = showAllAppsBuildable.build(withListener: interactor, sectionModel: sectionModel)
-        viewControllable.pushViewController(router.viewControllable, animated: true)
+        viewControllable.pushViewController(router.viewControllable, animated: false)
         
         attachChild(router)
         showAllAppsRouting = router
@@ -45,8 +45,9 @@ final class AppsHomeRouter: ViewableRouter<AppsHomeInteractable, AppsHomeViewCon
     func detachShowAllApps() {
         guard let router = showAllAppsRouting else { return }
         
+        viewControllable.popViewController(animated: false)
+        
         detachChild(router)
         showAllAppsRouting = nil
-        
     }
 }

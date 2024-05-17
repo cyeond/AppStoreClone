@@ -105,6 +105,8 @@ extension AppsHomeViewController {
                             self?.listener?.seeAllButtonDidTap(with: sectionModel)
                         }
                     }))
+                case .verticalOne:
+                    return nil
                 }
             }
             return header

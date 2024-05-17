@@ -9,6 +9,7 @@ import Foundation
 
 enum CollectionViewSectionType: Hashable {
     case groupThree(title: String, subtitle: String)
+    case verticalOne
 }
 
 struct CollectionViewSection: Hashable {

@@ -19,7 +19,7 @@ protocol ShowAllAppsPresentable: Presentable {
 }
 
 protocol ShowAllAppsListener: AnyObject {
-    // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
+    func showAllAppsDidTapClose()
 }
 
 final class ShowAllAppsInteractor: PresentableInteractor<ShowAllAppsPresentable>, ShowAllAppsInteractable, ShowAllAppsPresentableListener {
@@ -45,5 +45,9 @@ final class ShowAllAppsInteractor: PresentableInteractor<ShowAllAppsPresentable>
     override func willResignActive() {
         super.willResignActive()
         // TODO: Pause any business logic.
+    }
+    
+    func didTapBack() {
+        listener?.showAllAppsDidTapClose()
     }
 }
