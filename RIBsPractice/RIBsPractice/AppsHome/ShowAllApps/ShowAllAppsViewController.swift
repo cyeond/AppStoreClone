@@ -17,6 +17,7 @@ final class ShowAllAppsViewController: UIViewController, ShowAllAppsPresentable,
     weak var listener: ShowAllAppsPresentableListener?
     
     private var sectionModel: CollectionViewSectionModel?
+    private var collectionViewDataSource: UICollectionViewDiffableDataSource<CollectionViewSection, CollectionViewItem>?
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
@@ -33,12 +34,14 @@ final class ShowAllAppsViewController: UIViewController, ShowAllAppsPresentable,
         super.init(nibName: nil, bundle: nil)
         
         setupViews()
+        setupCollectionViewDataSource()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
         setupViews()
+        setupCollectionViewDataSource()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,17 +64,6 @@ final class ShowAllAppsViewController: UIViewController, ShowAllAppsPresentable,
         ])
     }
     
-    func update(with sectionModel: CollectionViewSectionModel) {
-        self.sectionModel = sectionModel
-
-        switch sectionModel.section.type {
-        case .groupThree(title: let title, subtitle: _):
-            self.title = title
-        default:
-            return
-        }
-    }
-    
     @objc
     private func didTapBack() {
         listener?.didTapBack()
@@ -86,5 +78,36 @@ extension ShowAllAppsViewController {
         return UICollectionViewCompositionalLayout(sectionProvider: { [weak self] sectionIndex, envrionment in
             return self?.sectionModel?.layoutSection()
         }, configuration: config)
+    }
+}
+
+// MARK: - CollectionView DataSource
+extension ShowAllAppsViewController {
+    private func setupCollectionViewDataSource() {
+        collectionViewDataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
+            switch item.type {
+            case .appPreviewBasic(let info):
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppPreviewBasicCell.identifier, for: indexPath) as? AppPreviewBasicCell else { return UICollectionViewCell() }
+                cell.update(with: info)
+                return cell
+            }
+        })
+    }
+    
+    func update(with sectionModel: CollectionViewSectionModel) {
+        switch sectionModel.section.type {
+        case .groupThree(title: let title, subtitle: _):
+            self.title = title
+        default:
+            return
+        }
+        
+        let newSection = CollectionViewSection(type: .verticalOne)
+        self.sectionModel = CollectionViewSectionModel(section: newSection, items: sectionModel.items)
+        
+        var snapshot = NSDiffableDataSourceSnapshot<CollectionViewSection, CollectionViewItem>()
+        snapshot.appendSections([newSection])
+        snapshot.appendItems(sectionModel.items, toSection: newSection)
+        collectionViewDataSource?.apply(snapshot)
     }
 }

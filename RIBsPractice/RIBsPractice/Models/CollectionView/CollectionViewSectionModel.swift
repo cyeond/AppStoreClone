@@ -45,6 +45,7 @@ struct CollectionViewSectionModel {
             
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(self.itemHeight))
             let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+            group.contentInsets = .init(top: 0, leading: 10.0, bottom: 0, trailing: 10.0)
             
             let section = NSCollectionLayoutSection(group: group)
             return section
