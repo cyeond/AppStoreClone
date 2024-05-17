@@ -10,12 +10,38 @@ import RxSwift
 import UIKit
 
 protocol AppDetailsPresentableListener: AnyObject {
-    // TODO: Declare properties and methods that the view controller can invoke to perform
-    // business logic, such as signIn(). This protocol is implemented by the corresponding
-    // interactor class.
+    func didTapBack()
 }
 
 final class AppDetailsViewController: UIViewController, AppDetailsPresentable, AppDetailsViewControllable {
-
     weak var listener: AppDetailsPresentableListener?
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        
+        setupViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        setupViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    private func setupViews() {
+        view.backgroundColor = .white
+        
+        setupNavigationItem(with: .back, target: self, action: #selector(didTapBack))
+    }
+    
+    @objc
+    private func didTapBack() {
+        listener?.didTapBack()
+    }
 }

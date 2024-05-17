@@ -11,6 +11,9 @@ import RxSwift
 protocol AppsHomeRouting: ViewableRouting {
     func attachShowAllApps(with sectionModel: CollectionViewSectionModel)
     func detachShowAllApps()
+    
+    func attachAppDetails(with info: AppPreviewInfo)
+    func detachAppDetails()
 }
 
 protocol AppsHomePresentable: Presentable {
@@ -47,7 +50,7 @@ final class AppsHomeInteractor: PresentableInteractor<AppsHomePresentable>, Apps
         // TODO: Pause any business logic.
     }
     
-    // MARK: - AppsHomeViewController
+    // MARK: - From AppsHomeViewController
     func seeAllButtonDidTap(with sectionModel: CollectionViewSectionModel) {
         router?.attachShowAllApps(with: sectionModel)
     }
@@ -57,10 +60,10 @@ final class AppsHomeInteractor: PresentableInteractor<AppsHomePresentable>, Apps
     }
     
     func appPreviewCellDidTap(with info: AppPreviewInfo) {
-        
+        router?.attachAppDetails(with: info)
     }
     
-    // MARK: - ShowAllApps
+    // MARK: - From ShowAllApps Riblet
     func showAllAppsDidTapClose() {
         router?.detachShowAllApps()
     }
@@ -70,7 +73,12 @@ final class AppsHomeInteractor: PresentableInteractor<AppsHomePresentable>, Apps
     }
     
     func showAllAppsDidTapAppPreviewCell(with info: AppPreviewInfo) {
-        
+        router?.attachAppDetails(with: info)
+    }
+    
+    // MARK: - From AppDetails
+    func appDetailsDidTapClose() {
+        router?.detachAppDetails()
     }
     
 }

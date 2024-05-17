@@ -12,7 +12,7 @@ protocol AppsHomeDependency: Dependency {
     // created by this RIB.
 }
 
-final class AppsHomeComponent: Component<AppsHomeDependency>, ShowAllAppsDependency {
+final class AppsHomeComponent: Component<AppsHomeDependency>, ShowAllAppsDependency, AppDetailsDependency {
 
     // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
 }
@@ -36,6 +36,13 @@ final class AppsHomeBuilder: Builder<AppsHomeDependency>, AppsHomeBuildable {
         interactor.listener = listener
         
         let showAllAppsBuilder = ShowAllAppsBuilder(dependency: component)
-        return AppsHomeRouter(interactor: interactor, viewController: viewController, showAllAppsBuildable: showAllAppsBuilder)
+        let appDetailsBuilder = AppDetailsBuilder(dependency: component)
+        
+        return AppsHomeRouter(
+            interactor: interactor,
+            viewController: viewController,
+            showAllAppsBuildable: showAllAppsBuilder,
+            appDetailsBuildable: appDetailsBuilder
+        )
     }
 }

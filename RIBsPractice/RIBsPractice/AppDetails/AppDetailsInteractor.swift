@@ -18,7 +18,7 @@ protocol AppDetailsPresentable: Presentable {
 }
 
 protocol AppDetailsListener: AnyObject {
-    // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
+    func appDetailsDidTapClose()
 }
 
 final class AppDetailsInteractor: PresentableInteractor<AppDetailsPresentable>, AppDetailsInteractable, AppDetailsPresentableListener {
@@ -41,5 +41,9 @@ final class AppDetailsInteractor: PresentableInteractor<AppDetailsPresentable>, 
     override func willResignActive() {
         super.willResignActive()
         // TODO: Pause any business logic.
+    }
+    
+    func didTapBack() {
+        listener?.appDetailsDidTapClose()
     }
 }
