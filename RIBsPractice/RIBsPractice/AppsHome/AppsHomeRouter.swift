@@ -7,7 +7,7 @@
 
 import RIBs
 
-protocol AppsHomeInteractable: Interactable {
+protocol AppsHomeInteractable: Interactable, ShowAllAppsListener {
     var router: AppsHomeRouting? { get set }
     var listener: AppsHomeListener? { get set }
 }
@@ -17,10 +17,36 @@ protocol AppsHomeViewControllable: ViewControllable {
 }
 
 final class AppsHomeRouter: ViewableRouter<AppsHomeInteractable, AppsHomeViewControllable>, AppsHomeRouting {
-
+    private let showAllAppsBuildable: ShowAllAppsBuildable
+    private var showAllAppsRouting: Routing?
+    
     // TODO: Constructor inject child builder protocols to allow building children.
-    override init(interactor: AppsHomeInteractable, viewController: AppsHomeViewControllable) {
+    init(
+        interactor: AppsHomeInteractable,
+        viewController: AppsHomeViewControllable,
+        showAllAppsBuildable: ShowAllAppsBuildable
+    ) {
+        self.showAllAppsBuildable = showAllAppsBuildable
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
+    }
+    
+    // MARK: - ShowAllApps
+    func attachShowAllApps(with sectionModel: CollectionViewSectionModel) {
+        guard showAllAppsRouting == nil else { return }
+        
+        let router = showAllAppsBuildable.build(withListener: interactor, sectionModel: sectionModel)
+        viewControllable.pushViewController(router.viewControllable, animated: true)
+        
+        attachChild(router)
+        showAllAppsRouting = router
+    }
+    
+    func detachShowAllApps() {
+        guard let router = showAllAppsRouting else { return }
+        
+        detachChild(router)
+        showAllAppsRouting = nil
+        
     }
 }

@@ -9,7 +9,8 @@ import RIBs
 import RxSwift
 
 protocol AppsHomeRouting: ViewableRouting {
-    // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
+    func attachShowAllApps(with sectionModel: CollectionViewSectionModel)
+    func detachShowAllApps()
 }
 
 protocol AppsHomePresentable: Presentable {
@@ -23,7 +24,6 @@ protocol AppsHomeListener: AnyObject {
 }
 
 final class AppsHomeInteractor: PresentableInteractor<AppsHomePresentable>, AppsHomeInteractable, AppsHomePresentableListener {
-
     weak var router: AppsHomeRouting?
     weak var listener: AppsHomeListener?
 
@@ -47,8 +47,8 @@ final class AppsHomeInteractor: PresentableInteractor<AppsHomePresentable>, Apps
         // TODO: Pause any business logic.
     }
     
-    func seeAllButtonDidTap() {
-        
+    func seeAllButtonDidTap(with sectionModel: CollectionViewSectionModel) {
+        router?.attachShowAllApps(with: sectionModel)
     }
 }
 

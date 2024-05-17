@@ -12,7 +12,7 @@ protocol AppsHomeDependency: Dependency {
     // created by this RIB.
 }
 
-final class AppsHomeComponent: Component<AppsHomeDependency> {
+final class AppsHomeComponent: Component<AppsHomeDependency>, ShowAllAppsDependency {
 
     // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
 }
@@ -30,10 +30,12 @@ final class AppsHomeBuilder: Builder<AppsHomeDependency>, AppsHomeBuildable {
     }
 
     func build(withListener listener: AppsHomeListener) -> AppsHomeRouting {
-        _ = AppsHomeComponent(dependency: dependency)
+        let component = AppsHomeComponent(dependency: dependency)
         let viewController = AppsHomeViewController()
         let interactor = AppsHomeInteractor(presenter: viewController)
         interactor.listener = listener
-        return AppsHomeRouter(interactor: interactor, viewController: viewController)
+        
+        let showAllAppsBuilder = ShowAllAppsBuilder(dependency: component)
+        return AppsHomeRouter(interactor: interactor, viewController: viewController, showAllAppsBuildable: showAllAppsBuilder)
     }
 }

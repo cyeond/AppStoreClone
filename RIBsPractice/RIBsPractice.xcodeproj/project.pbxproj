@@ -35,6 +35,10 @@
 		78CF31D82BF721610046753D /* CollectionViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF31D72BF721610046753D /* CollectionViewSection.swift */; };
 		78CF31DA2BF7218D0046753D /* CollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF31D92BF7218D0046753D /* CollectionViewItem.swift */; };
 		78CF31DC2BF721D20046753D /* AppPreviewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF31DB2BF721D20046753D /* AppPreviewInfo.swift */; };
+		78CF31E22BF7260C0046753D /* ShowAllAppsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF31DE2BF7260C0046753D /* ShowAllAppsRouter.swift */; };
+		78CF31E32BF7260C0046753D /* ShowAllAppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF31DF2BF7260C0046753D /* ShowAllAppsViewController.swift */; };
+		78CF31E42BF7260C0046753D /* ShowAllAppsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF31E02BF7260C0046753D /* ShowAllAppsBuilder.swift */; };
+		78CF31E52BF7260C0046753D /* ShowAllAppsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CF31E12BF7260C0046753D /* ShowAllAppsInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +71,10 @@
 		78CF31D72BF721610046753D /* CollectionViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewSection.swift; sourceTree = "<group>"; };
 		78CF31D92BF7218D0046753D /* CollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewItem.swift; sourceTree = "<group>"; };
 		78CF31DB2BF721D20046753D /* AppPreviewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreviewInfo.swift; sourceTree = "<group>"; };
+		78CF31DE2BF7260C0046753D /* ShowAllAppsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllAppsRouter.swift; sourceTree = "<group>"; };
+		78CF31DF2BF7260C0046753D /* ShowAllAppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllAppsViewController.swift; sourceTree = "<group>"; };
+		78CF31E02BF7260C0046753D /* ShowAllAppsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllAppsBuilder.swift; sourceTree = "<group>"; };
+		78CF31E12BF7260C0046753D /* ShowAllAppsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllAppsInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +134,7 @@
 		7857113C2BF2F6C800008AFD /* AppsHome */ = {
 			isa = PBXGroup;
 			children = (
+				78CF31DD2BF725DF0046753D /* ShowAllApps */,
 				7857114C2BF2FAB800008AFD /* AppsHomeRouter.swift */,
 				7857114D2BF2FAB800008AFD /* AppsHomeViewController.swift */,
 				7857114E2BF2FAB800008AFD /* AppsHomeBuilder.swift */,
@@ -220,6 +229,17 @@
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
+		78CF31DD2BF725DF0046753D /* ShowAllApps */ = {
+			isa = PBXGroup;
+			children = (
+				78CF31DE2BF7260C0046753D /* ShowAllAppsRouter.swift */,
+				78CF31DF2BF7260C0046753D /* ShowAllAppsViewController.swift */,
+				78CF31E02BF7260C0046753D /* ShowAllAppsBuilder.swift */,
+				78CF31E12BF7260C0046753D /* ShowAllAppsInteractor.swift */,
+			);
+			path = ShowAllApps;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -297,8 +317,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				78CF31DC2BF721D20046753D /* AppPreviewInfo.swift in Sources */,
+				78CF31E22BF7260C0046753D /* ShowAllAppsRouter.swift in Sources */,
 				7857115E2BF2FF8E00008AFD /* RIBs+Utils.swift in Sources */,
 				7857114A2BF2FAAA00008AFD /* AppRootBuilder.swift in Sources */,
+				78CF31E42BF7260C0046753D /* ShowAllAppsBuilder.swift in Sources */,
 				785711262BF2F49C00008AFD /* AppDelegate.swift in Sources */,
 				7857114B2BF2FAAA00008AFD /* AppRootInteractor.swift in Sources */,
 				785711632BF33C9800008AFD /* AppPreviewBasicView.swift in Sources */,
@@ -317,6 +339,8 @@
 				78CF31D82BF721610046753D /* CollectionViewSection.swift in Sources */,
 				7857115A2BF2FAC200008AFD /* SearchHomeBuilder.swift in Sources */,
 				785711652BF33DA500008AFD /* UIView+Utils.swift in Sources */,
+				78CF31E52BF7260C0046753D /* ShowAllAppsInteractor.swift in Sources */,
+				78CF31E32BF7260C0046753D /* ShowAllAppsViewController.swift in Sources */,
 				785711502BF2FAB800008AFD /* AppsHomeRouter.swift in Sources */,
 				785711482BF2FAAA00008AFD /* AppRootRouter.swift in Sources */,
 				78CF31DA2BF7218D0046753D /* CollectionViewItem.swift in Sources */,

@@ -13,7 +13,7 @@ protocol AppsHomePresentableListener: AnyObject {
     // TODO: Declare properties and methods that the view controller can invoke to perform
     // business logic, such as signIn(). This protocol is implemented by the corresponding
     // interactor class.
-    func seeAllButtonDidTap()
+    func seeAllButtonDidTap(with sectionModel: CollectionViewSectionModel)
 }
 
 final class AppsHomeViewController: UIViewController, AppsHomePresentable, AppsHomeViewControllable {
@@ -101,6 +101,9 @@ extension AppsHomeViewController {
                 switch type {
                 case .groupThree(title: let title, subtitle: let subtitle):
                     header?.update(with: AppPreviewBasicHeaderViewModel(title: title, subtitle: subtitle, tapHandler: {
+                        if let sectionModel = self?.viewModel[safe: indexPath.section] {
+                            self?.listener?.seeAllButtonDidTap(with: sectionModel)
+                        }
                     }))
                 }
             }
