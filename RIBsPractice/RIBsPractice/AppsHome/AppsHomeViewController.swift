@@ -14,6 +14,8 @@ protocol AppsHomePresentableListener: AnyObject {
     // business logic, such as signIn(). This protocol is implemented by the corresponding
     // interactor class.
     func seeAllButtonDidTap(with sectionModel: CollectionViewSectionModel)
+    func appPreviewActionButtonDidTap(with info: AppPreviewInfo)
+    func appPreviewCellDidTap(with info: AppPreviewInfo)
 }
 
 final class AppsHomeViewController: UIViewController, AppsHomePresentable, AppsHomeViewControllable {
@@ -25,6 +27,7 @@ final class AppsHomeViewController: UIViewController, AppsHomePresentable, AppsH
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.delegate = self
         collectionView.backgroundColor = .white
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
@@ -86,11 +89,13 @@ extension AppsHomeViewController {
 //MARK: - CollectionView DataSource
 extension AppsHomeViewController {
     private func setupCollectionViewDataSource() {
-        collectionViewDataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
+        collectionViewDataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { [weak self] collectionView, indexPath, item in
             switch item.type {
             case .appPreviewBasic(let info):
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppPreviewBasicCell.identifier, for: indexPath) as? AppPreviewBasicCell else { return UICollectionViewCell() }
-                cell.update(with: info)
+                cell.update(with: AppPreviewBasicViewModel(title: info.title, subtitle: info.subtitle, tapHandler: {
+                    self?.listener?.appPreviewActionButtonDidTap(with: AppPreviewInfo(title: info.title, subtitle: info.subtitle))
+                }))
                 return cell
             }
         })
@@ -124,5 +129,17 @@ extension AppsHomeViewController {
         }
         
         collectionViewDataSource?.apply(snapshot)
+    }
+}
+
+// MARK: - CollectionView Delegate
+extension AppsHomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let info = viewModel[safe: indexPath.section]?.items[safe: indexPath.row] {
+            switch info.type {
+            case .appPreviewBasic(let info):
+                listener?.appPreviewCellDidTap(with: info)
+            }
+        }
     }
 }

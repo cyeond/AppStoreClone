@@ -39,7 +39,7 @@ final class AppPreviewBasicCell: UICollectionViewCell {
         ])
     }
     
-    func update(with info: AppPreviewInfo) {
-        previewView.update(with: info)
+    func update(with viewModel: AppPreviewBasicViewModel) {
+        previewView.update(with: viewModel)
     }
 }

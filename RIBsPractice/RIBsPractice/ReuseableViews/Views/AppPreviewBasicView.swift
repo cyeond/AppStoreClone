@@ -7,8 +7,16 @@
 
 import UIKit
 
+struct AppPreviewBasicViewModel {
+    let title: String
+    let subtitle: String
+    let tapHandler: (() -> Void)
+}
+
 final class AppPreviewBasicView: UIView {
     static let height: CGFloat = 80.0
+    
+    private var tapHandler: (() -> Void)?
     
     private let imageView: UIImageView = {
         let randomRed:CGFloat = CGFloat(drand48())
@@ -35,7 +43,6 @@ final class AppPreviewBasicView: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "RIBs Practice"
         label.font = .systemFont(ofSize: 18.0)
         label.textColor = .black
         label.textAlignment = .left
@@ -46,7 +53,6 @@ final class AppPreviewBasicView: UIView {
     private let subtitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "RIBs 아키텍처 프레임워크를 연습하기 위한 테스트 프로젝트입니다."
         label.font = .systemFont(ofSize: 13.0)
         label.textColor = .systemGray
         label.textAlignment = .left
@@ -107,11 +113,12 @@ final class AppPreviewBasicView: UIView {
     
     @objc
     private func actionButtonDidTap() {
-        
+        tapHandler?()
     }
     
-    func update(with info: AppPreviewInfo) {
-        titleLabel.text = info.title
-        subtitleLabel.text = info.subtitle
+    func update(with viewModel: AppPreviewBasicViewModel) {
+        titleLabel.text = viewModel.title
+        subtitleLabel.text = viewModel.subtitle
+        self.tapHandler = viewModel.tapHandler
     }
 }

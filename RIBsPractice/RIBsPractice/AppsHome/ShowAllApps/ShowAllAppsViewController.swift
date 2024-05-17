@@ -11,6 +11,8 @@ import UIKit
 
 protocol ShowAllAppsPresentableListener: AnyObject {
     func didTapBack()
+    func appPreviewActionButtonDidTap(with info: AppPreviewInfo)
+    func appPreviewCellDidTap(with info: AppPreviewInfo)
 }
 
 final class ShowAllAppsViewController: UIViewController, ShowAllAppsPresentable, ShowAllAppsViewControllable {
@@ -22,6 +24,7 @@ final class ShowAllAppsViewController: UIViewController, ShowAllAppsPresentable,
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.delegate = self
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
         collectionView.backgroundColor = .white
@@ -84,11 +87,13 @@ extension ShowAllAppsViewController {
 // MARK: - CollectionView DataSource
 extension ShowAllAppsViewController {
     private func setupCollectionViewDataSource() {
-        collectionViewDataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
+        collectionViewDataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { [weak self] collectionView, indexPath, item in
             switch item.type {
             case .appPreviewBasic(let info):
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppPreviewBasicCell.identifier, for: indexPath) as? AppPreviewBasicCell else { return UICollectionViewCell() }
-                cell.update(with: info)
+                cell.update(with: AppPreviewBasicViewModel(title: info.title, subtitle: info.subtitle, tapHandler: {
+                    self?.listener?.appPreviewActionButtonDidTap(with: AppPreviewInfo(title: info.title, subtitle: info.subtitle))
+                }))
                 return cell
             }
         })
@@ -109,5 +114,17 @@ extension ShowAllAppsViewController {
         snapshot.appendSections([newSection])
         snapshot.appendItems(sectionModel.items, toSection: newSection)
         collectionViewDataSource?.apply(snapshot)
+    }
+}
+
+// MARK: - CollectionView Delegate
+extension ShowAllAppsViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let info = sectionModel?.items[safe: indexPath.row] {
+            switch info.type {
+            case .appPreviewBasic(let info):
+                listener?.appPreviewCellDidTap(with: info)
+            }
+        }
     }
 }

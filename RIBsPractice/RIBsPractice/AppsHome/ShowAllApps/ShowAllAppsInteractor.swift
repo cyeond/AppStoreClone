@@ -20,6 +20,8 @@ protocol ShowAllAppsPresentable: Presentable {
 
 protocol ShowAllAppsListener: AnyObject {
     func showAllAppsDidTapClose()
+    func showAllAppsDidTapAppPreviewActionButton(with info: AppPreviewInfo)
+    func showAllAppsDidTapAppPreviewCell(with info: AppPreviewInfo)
 }
 
 final class ShowAllAppsInteractor: PresentableInteractor<ShowAllAppsPresentable>, ShowAllAppsInteractable, ShowAllAppsPresentableListener {
@@ -49,5 +51,13 @@ final class ShowAllAppsInteractor: PresentableInteractor<ShowAllAppsPresentable>
     
     func didTapBack() {
         listener?.showAllAppsDidTapClose()
+    }
+    
+    func appPreviewActionButtonDidTap(with info: AppPreviewInfo) {
+        listener?.showAllAppsDidTapAppPreviewActionButton(with: info)
+    }
+    
+    func appPreviewCellDidTap(with info: AppPreviewInfo) {
+        listener?.showAllAppsDidTapAppPreviewCell(with: info)
     }
 }

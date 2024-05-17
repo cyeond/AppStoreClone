@@ -52,10 +52,27 @@ final class AppsHomeInteractor: PresentableInteractor<AppsHomePresentable>, Apps
         router?.attachShowAllApps(with: sectionModel)
     }
     
+    func appPreviewActionButtonDidTap(with info: AppPreviewInfo) {
+        
+    }
+    
+    func appPreviewCellDidTap(with info: AppPreviewInfo) {
+        
+    }
+    
     // MARK: - ShowAllApps
     func showAllAppsDidTapClose() {
         router?.detachShowAllApps()
     }
+    
+    func showAllAppsDidTapAppPreviewActionButton(with info: AppPreviewInfo) {
+        
+    }
+    
+    func showAllAppsDidTapAppPreviewCell(with info: AppPreviewInfo) {
+        
+    }
+    
 }
 
 extension AppsHomeInteractor {
