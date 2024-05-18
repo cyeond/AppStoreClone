@@ -13,19 +13,34 @@ struct CollectionViewSectionModel {
     
     var itemHeight: CGFloat {
         var height: CGFloat = 0
+        
         if let itemType = self.items[safe: 0]?.type {
             switch itemType {
             case .appPreviewBasic(_):
                 height = AppPreviewBasicView.height
             }
         }
+        
+        return height
+    }
+    
+    var headerHeight: CGFloat {
+        var height: CGFloat = 0
+        
+        switch self.section.type {
+        case .groupThree(title: _, subtitle: _):
+            height = AppPreviewBasicHeaderView.height
+        default:
+            break
+        }
+        
         return height
     }
     
     func layoutSection() -> NSCollectionLayoutSection {
         switch self.section.type {
         case .groupThree(title: _, subtitle: _):
-            let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .absolute(self.itemHeight))
+            let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .absolute(self.headerHeight))
             let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
             
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
