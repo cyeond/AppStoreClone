@@ -16,6 +16,21 @@ protocol AppDetailsPresentableListener: AnyObject {
 final class AppDetailsViewController: UIViewController, AppDetailsPresentable, AppDetailsViewControllable {
     weak var listener: AppDetailsPresentableListener?
     
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        return stackView
+    }()
+
     init() {
         super.init(nibName: nil, bundle: nil)
         
@@ -35,9 +50,25 @@ final class AppDetailsViewController: UIViewController, AppDetailsPresentable, A
     }
     
     private func setupViews() {
-        view.backgroundColor = .white
-        
         setupNavigationItem(with: .back, target: self, action: #selector(didTapBack))
+        
+        view.backgroundColor = .white
+        view.addSubview(scrollView)
+        
+        scrollView.addSubview(stackView)
+        
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+        ])
     }
     
     @objc
