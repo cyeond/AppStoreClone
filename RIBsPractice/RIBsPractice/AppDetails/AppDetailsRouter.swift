@@ -7,20 +7,37 @@
 
 import RIBs
 
-protocol AppDetailsInteractable: Interactable {
+protocol AppDetailsInteractable: Interactable, TopInfoDashboardListener {
     var router: AppDetailsRouting? { get set }
     var listener: AppDetailsListener? { get set }
 }
 
 protocol AppDetailsViewControllable: ViewControllable {
-    // TODO: Declare methods the router invokes to manipulate the view hierarchy.
+    func addDashboard(_ view: ViewControllable)
 }
 
 final class AppDetailsRouter: ViewableRouter<AppDetailsInteractable, AppDetailsViewControllable>, AppDetailsRouting {
+    private let topInfoDashboardBuildable: TopInfoDashboardBuildable
+    private var topInfoDashboardRouting: Routing?
 
     // TODO: Constructor inject child builder protocols to allow building children.
-    override init(interactor: AppDetailsInteractable, viewController: AppDetailsViewControllable) {
+    init(interactor: AppDetailsInteractable, 
+                  viewController: AppDetailsViewControllable,
+                  topInfoDashboardBuilable: TopInfoDashboardBuildable
+    ) {
+        self.topInfoDashboardBuildable = topInfoDashboardBuilable
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
+    }
+    
+    func attachTopInfoDashboard() {
+        guard topInfoDashboardRouting == nil else { return }
+        
+        let router = topInfoDashboardBuildable.build(withListener: interactor)
+        
+        viewController.addDashboard(router.viewControllable)
+        attachChild(router)
+        
+        self.topInfoDashboardRouting = router
     }
 }

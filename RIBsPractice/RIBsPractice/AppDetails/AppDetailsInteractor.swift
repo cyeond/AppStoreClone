@@ -9,7 +9,7 @@ import RIBs
 import RxSwift
 
 protocol AppDetailsRouting: ViewableRouting {
-    // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
+    func attachTopInfoDashboard()
 }
 
 protocol AppDetailsPresentable: Presentable {
@@ -35,7 +35,8 @@ final class AppDetailsInteractor: PresentableInteractor<AppDetailsPresentable>, 
 
     override func didBecomeActive() {
         super.didBecomeActive()
-        // TODO: Implement business logic here.
+        
+        router?.attachTopInfoDashboard()
     }
 
     override func willResignActive() {

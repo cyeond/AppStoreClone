@@ -60,7 +60,7 @@ final class AppsHomeRouter: ViewableRouter<AppsHomeInteractable, AppsHomeViewCon
     func attachAppDetails(with info: AppPreviewInfo) {
         guard appDetailsRouting == nil else { return }
         
-        let router = appDetailsBuildable.build(withListener: interactor)
+        let router = appDetailsBuildable.build(withListener: interactor, info: info)
         viewControllable.pushViewController(router.viewControllable, animated: false)
         
         attachChild(router)

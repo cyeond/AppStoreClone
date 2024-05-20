@@ -12,28 +12,38 @@ protocol AppDetailsDependency: Dependency {
     // created by this RIB.
 }
 
-final class AppDetailsComponent: Component<AppDetailsDependency> {
-
-    // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+final class AppDetailsComponent: Component<AppDetailsDependency>, TopInfoDashboardDependency {
+    let appPreviewInfo: AppPreviewInfo
+    
+    init(dependency: AppDetailsDependency, appPreviewInfo: AppPreviewInfo) {
+        self.appPreviewInfo = appPreviewInfo
+        super.init(dependency: dependency)
+    }
 }
 
 // MARK: - Builder
 
 protocol AppDetailsBuildable: Buildable {
-    func build(withListener listener: AppDetailsListener) -> AppDetailsRouting
+    func build(withListener listener: AppDetailsListener, info: AppPreviewInfo) -> AppDetailsRouting
 }
 
 final class AppDetailsBuilder: Builder<AppDetailsDependency>, AppDetailsBuildable {
-
     override init(dependency: AppDetailsDependency) {
         super.init(dependency: dependency)
     }
 
-    func build(withListener listener: AppDetailsListener) -> AppDetailsRouting {
-        let component = AppDetailsComponent(dependency: dependency)
+    func build(withListener listener: AppDetailsListener, info: AppPreviewInfo) -> AppDetailsRouting {
+        let component = AppDetailsComponent(dependency: dependency, appPreviewInfo: info)
         let viewController = AppDetailsViewController()
         let interactor = AppDetailsInteractor(presenter: viewController)
         interactor.listener = listener
-        return AppDetailsRouter(interactor: interactor, viewController: viewController)
+        
+        let topInfoDashboardBuilder = TopInfoDashboardBuilder(dependency: component)
+        
+        return AppDetailsRouter(
+            interactor: interactor,
+            viewController: viewController,
+            topInfoDashboardBuilable: topInfoDashboardBuilder
+        )
     }
 }

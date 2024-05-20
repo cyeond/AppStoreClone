@@ -75,4 +75,12 @@ final class AppDetailsViewController: UIViewController, AppDetailsPresentable, A
     private func didTapBack() {
         listener?.didTapBack()
     }
+    
+    func addDashboard(_ view: ViewControllable) {
+        let vc = view.uiviewController
+        
+        addChild(vc)
+        stackView.addArrangedSubview(vc.view)
+        vc.didMove(toParent: self)
+    }
 }

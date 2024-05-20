@@ -14,28 +14,36 @@ protocol TopInfoDashboardRouting: ViewableRouting {
 
 protocol TopInfoDashboardPresentable: Presentable {
     var listener: TopInfoDashboardPresentableListener? { get set }
-    // TODO: Declare methods the interactor can invoke the presenter to present data.
+    
+    func update(with info: AppPreviewInfo)
 }
 
 protocol TopInfoDashboardListener: AnyObject {
     // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
 }
 
-final class TopInfoDashboardInteractor: PresentableInteractor<TopInfoDashboardPresentable>, TopInfoDashboardInteractable, TopInfoDashboardPresentableListener {
+protocol TopInfoDashboardInteractorDependency {
+    var appPreviewInfo: AppPreviewInfo { get }
+}
 
+final class TopInfoDashboardInteractor: PresentableInteractor<TopInfoDashboardPresentable>, TopInfoDashboardInteractable, TopInfoDashboardPresentableListener {
     weak var router: TopInfoDashboardRouting?
     weak var listener: TopInfoDashboardListener?
+    
+    private let dependency: TopInfoDashboardInteractorDependency
 
     // TODO: Add additional dependencies to constructor. Do not perform any logic
     // in constructor.
-    override init(presenter: TopInfoDashboardPresentable) {
+    init(presenter: TopInfoDashboardPresentable, dependency: TopInfoDashboardInteractorDependency) {
+        self.dependency = dependency
         super.init(presenter: presenter)
         presenter.listener = self
     }
 
     override func didBecomeActive() {
         super.didBecomeActive()
-        // TODO: Implement business logic here.
+        
+        presenter.update(with: dependency.appPreviewInfo)
     }
 
     override func willResignActive() {
