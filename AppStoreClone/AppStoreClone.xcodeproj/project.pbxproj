@@ -53,7 +53,7 @@
 /* Begin PBXFileReference section */
 		782BA9672BF5A244008F7EE2 /* AppPreviewBasicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreviewBasicCell.swift; sourceTree = "<group>"; };
 		782BA9692BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreviewBasicHeaderView.swift; sourceTree = "<group>"; };
-		785711222BF2F49C00008AFD /* RIBsPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RIBsPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		785711222BF2F49C00008AFD /* AppStoreClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		785711252BF2F49C00008AFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7857112E2BF2F49D00008AFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		785711312BF2F49D00008AFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 		785711192BF2F49C00008AFD = {
 			isa = PBXGroup;
 			children = (
-				785711242BF2F49C00008AFD /* RIBsPractice */,
+				785711242BF2F49C00008AFD /* AppStoreClone */,
 				785711232BF2F49C00008AFD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -118,12 +118,12 @@
 		785711232BF2F49C00008AFD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				785711222BF2F49C00008AFD /* RIBsPractice.app */,
+				785711222BF2F49C00008AFD /* AppStoreClone.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		785711242BF2F49C00008AFD /* RIBsPractice */ = {
+		785711242BF2F49C00008AFD /* AppStoreClone */ = {
 			isa = PBXGroup;
 			children = (
 				785711392BF2F60E00008AFD /* AppDelegate */,
@@ -138,7 +138,7 @@
 				785711332BF2F49D00008AFD /* Info.plist */,
 				7857112E2BF2F49D00008AFD /* Assets.xcassets */,
 			);
-			path = RIBsPractice;
+			path = AppStoreClone;
 			sourceTree = "<group>";
 		};
 		785711392BF2F60E00008AFD /* AppDelegate */ = {
@@ -286,9 +286,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		785711212BF2F49C00008AFD /* RIBsPractice */ = {
+		785711212BF2F49C00008AFD /* AppStoreClone */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 785711362BF2F49D00008AFD /* Build configuration list for PBXNativeTarget "RIBsPractice" */;
+			buildConfigurationList = 785711362BF2F49D00008AFD /* Build configuration list for PBXNativeTarget "AppStoreClone" */;
 			buildPhases = (
 				7857111E2BF2F49C00008AFD /* Sources */,
 				7857111F2BF2F49C00008AFD /* Frameworks */,
@@ -298,12 +298,12 @@
 			);
 			dependencies = (
 			);
-			name = RIBsPractice;
+			name = AppStoreClone;
 			packageProductDependencies = (
 				785711402BF2F84100008AFD /* RIBs */,
 			);
 			productName = RIBsPractice;
-			productReference = 785711222BF2F49C00008AFD /* RIBsPractice.app */;
+			productReference = 785711222BF2F49C00008AFD /* AppStoreClone.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -321,7 +321,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7857111D2BF2F49C00008AFD /* Build configuration list for PBXProject "RIBsPractice" */;
+			buildConfigurationList = 7857111D2BF2F49C00008AFD /* Build configuration list for PBXProject "AppStoreClone" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -337,7 +337,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				785711212BF2F49C00008AFD /* RIBsPractice */,
+				785711212BF2F49C00008AFD /* AppStoreClone */,
 			);
 		};
 /* End PBXProject section */
@@ -542,7 +542,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5WNP4LSBY4;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RIBsPractice/Info.plist;
+				INFOPLIST_FILE = AppStoreClone/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -553,7 +553,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cyeond.RIBsPractice;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cyeond.AppStoreClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -573,7 +573,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5WNP4LSBY4;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RIBsPractice/Info.plist;
+				INFOPLIST_FILE = AppStoreClone/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -584,7 +584,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cyeond.RIBsPractice;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cyeond.AppStoreClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -598,7 +598,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7857111D2BF2F49C00008AFD /* Build configuration list for PBXProject "RIBsPractice" */ = {
+		7857111D2BF2F49C00008AFD /* Build configuration list for PBXProject "AppStoreClone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				785711342BF2F49D00008AFD /* Debug */,
@@ -607,7 +607,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		785711362BF2F49D00008AFD /* Build configuration list for PBXNativeTarget "RIBsPractice" */ = {
+		785711362BF2F49D00008AFD /* Build configuration list for PBXNativeTarget "AppStoreClone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				785711372BF2F49D00008AFD /* Debug */,

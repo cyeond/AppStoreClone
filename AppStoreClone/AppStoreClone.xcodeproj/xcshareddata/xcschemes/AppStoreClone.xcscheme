@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "785711212BF2F49C00008AFD"
-               BuildableName = "RIBsPractice.app"
-               BlueprintName = "RIBsPractice"
-               ReferencedContainer = "container:RIBsPractice.xcodeproj">
+               BuildableName = "AppStoreClone.app"
+               BlueprintName = "AppStoreClone"
+               ReferencedContainer = "container:AppStoreClone.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,9 +44,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "785711212BF2F49C00008AFD"
-            BuildableName = "RIBsPractice.app"
-            BlueprintName = "RIBsPractice"
-            ReferencedContainer = "container:RIBsPractice.xcodeproj">
+            BuildableName = "AppStoreClone.app"
+            BlueprintName = "AppStoreClone"
+            ReferencedContainer = "container:AppStoreClone.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -78,9 +78,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "785711212BF2F49C00008AFD"
-            BuildableName = "RIBsPractice.app"
-            BlueprintName = "RIBsPractice"
-            ReferencedContainer = "container:RIBsPractice.xcodeproj">
+            BuildableName = "AppStoreClone.app"
+            BlueprintName = "AppStoreClone"
+            ReferencedContainer = "container:AppStoreClone.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
