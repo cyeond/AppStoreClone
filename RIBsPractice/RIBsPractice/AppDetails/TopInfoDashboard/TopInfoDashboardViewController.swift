@@ -36,15 +36,6 @@ final class TopInfoDashboardViewController: UIViewController, TopInfoDashboardPr
         return imageView
     }()
     
-    private let centerStackView: UIStackView = {
-       let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.alignment = .fill
-        return stackView
-    }()
-    
     private let titleStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -61,7 +52,6 @@ final class TopInfoDashboardViewController: UIViewController, TopInfoDashboardPr
         label.textColor = .black
         label.textAlignment = .left
         label.numberOfLines = 2
-        label.text = "토스"
         return label
     }()
     
@@ -72,8 +62,16 @@ final class TopInfoDashboardViewController: UIViewController, TopInfoDashboardPr
         label.textColor = .systemGray
         label.textAlignment = .left
         label.numberOfLines = 2
-        label.text = "금융이 쉬워진다"
         return label
+    }()
+    
+    private let buttonsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .fill
+        return stackView
     }()
     
     private lazy var actionButton: UIButton = {
@@ -113,14 +111,14 @@ final class TopInfoDashboardViewController: UIViewController, TopInfoDashboardPr
     
     private func setupViews() {
         view.addSubview(imageView)
-        view.addSubview(centerStackView)
-        view.addSubview(shareButton)
-        
-        centerStackView.addSubview(titleStackView)
-        centerStackView.addSubview(actionButton)
+        view.addSubview(titleStackView)
+        view.addSubview(buttonsStackView)
         
         titleStackView.addArrangedSubview(titleLabel)
         titleStackView.addArrangedSubview(subtitleLabel)
+        
+        buttonsStackView.addArrangedSubview(actionButton)
+        buttonsStackView.addArrangedSubview(shareButton)
         
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20.0),
@@ -129,25 +127,22 @@ final class TopInfoDashboardViewController: UIViewController, TopInfoDashboardPr
             imageView.heightAnchor.constraint(equalToConstant: TopInfoDashboardViewController.height-20.0),
             imageView.widthAnchor.constraint(equalToConstant: TopInfoDashboardViewController.height-20.0),
             
-            shareButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20.0),
-            shareButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10.0),
-            shareButton.heightAnchor.constraint(equalToConstant: 30.0),
-            shareButton.widthAnchor.constraint(equalToConstant: 25.0),
-            
-            centerStackView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 15.0),
-            centerStackView.trailingAnchor.constraint(equalTo: shareButton.trailingAnchor),
-            centerStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10.0),
-            centerStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10.0),
-            
-            titleStackView.leadingAnchor.constraint(equalTo: centerStackView.leadingAnchor),
-            titleStackView.trailingAnchor.constraint(equalTo: centerStackView.trailingAnchor),
-            titleStackView.topAnchor.constraint(equalTo: centerStackView.topAnchor),
+            titleStackView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 15.0),
+            titleStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20.0),
+            titleStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10.0),
             titleStackView.heightAnchor.constraint(lessThanOrEqualToConstant: TopInfoDashboardViewController.height-50.0),
             
-            actionButton.leadingAnchor.constraint(equalTo: centerStackView.leadingAnchor),
-            actionButton.bottomAnchor.constraint(equalTo: centerStackView.bottomAnchor),
+            buttonsStackView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 15.0),
+            buttonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20.0),
+            buttonsStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10.0),
+            
+            actionButton.leadingAnchor.constraint(equalTo: buttonsStackView.leadingAnchor),
             actionButton.widthAnchor.constraint(equalToConstant: 70.0),
             actionButton.heightAnchor.constraint(equalToConstant: 30.0),
+            
+            shareButton.trailingAnchor.constraint(equalTo: buttonsStackView.trailingAnchor),
+            shareButton.heightAnchor.constraint(equalToConstant: 30.0),
+            shareButton.widthAnchor.constraint(equalToConstant: 25.0),
         ])
     }
     
