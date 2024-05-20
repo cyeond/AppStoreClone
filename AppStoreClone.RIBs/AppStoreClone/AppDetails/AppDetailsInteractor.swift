@@ -10,6 +10,7 @@ import RxSwift
 
 protocol AppDetailsRouting: ViewableRouting {
     func attachTopInfoDashboard()
+    func attachRatingInfoDashboard()
 }
 
 protocol AppDetailsPresentable: Presentable {
@@ -22,9 +23,10 @@ protocol AppDetailsListener: AnyObject {
 }
 
 final class AppDetailsInteractor: PresentableInteractor<AppDetailsPresentable>, AppDetailsInteractable, AppDetailsPresentableListener {
-
     weak var router: AppDetailsRouting?
     weak var listener: AppDetailsListener?
+    
+    private let disposeBag = DisposeBag()
 
     // TODO: Add additional dependencies to constructor. Do not perform any logic
     // in constructor.
@@ -37,6 +39,7 @@ final class AppDetailsInteractor: PresentableInteractor<AppDetailsPresentable>, 
         super.didBecomeActive()
         
         router?.attachTopInfoDashboard()
+        router?.attachRatingInfoDashboard()
     }
 
     override func willResignActive() {

@@ -7,7 +7,7 @@
 
 import RIBs
 
-protocol AppDetailsInteractable: Interactable, TopInfoDashboardListener {
+protocol AppDetailsInteractable: Interactable, TopInfoDashboardListener, RatingInfoDashboardListener {
     var router: AppDetailsRouting? { get set }
     var listener: AppDetailsListener? { get set }
 }
@@ -19,13 +19,18 @@ protocol AppDetailsViewControllable: ViewControllable {
 final class AppDetailsRouter: ViewableRouter<AppDetailsInteractable, AppDetailsViewControllable>, AppDetailsRouting {
     private let topInfoDashboardBuildable: TopInfoDashboardBuildable
     private var topInfoDashboardRouting: Routing?
+    
+    private let ratingInfoDashboardBuildable: RatingInfoDashboardBuildable
+    private var ratingInfoDashboardRouting: Routing?
 
     // TODO: Constructor inject child builder protocols to allow building children.
     init(interactor: AppDetailsInteractable, 
-                  viewController: AppDetailsViewControllable,
-                  topInfoDashboardBuilable: TopInfoDashboardBuildable
+         viewController: AppDetailsViewControllable,
+         topInfoDashboardBuilable: TopInfoDashboardBuildable,
+         ratingInfoDashboardBuilable: RatingInfoDashboardBuildable
     ) {
         self.topInfoDashboardBuildable = topInfoDashboardBuilable
+        self.ratingInfoDashboardBuildable = ratingInfoDashboardBuilable
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
@@ -39,5 +44,16 @@ final class AppDetailsRouter: ViewableRouter<AppDetailsInteractable, AppDetailsV
         attachChild(router)
         
         self.topInfoDashboardRouting = router
+    }
+    
+    func attachRatingInfoDashboard() {
+        guard ratingInfoDashboardRouting == nil else { return }
+        
+        let router = ratingInfoDashboardBuildable.build(withListener: interactor)
+        
+        viewController.addDashboard(router.viewControllable)
+        attachChild(router)
+        
+        self.ratingInfoDashboardRouting = router
     }
 }

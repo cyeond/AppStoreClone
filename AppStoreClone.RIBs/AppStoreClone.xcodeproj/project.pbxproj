@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		782BA9682BF5A244008F7EE2 /* AppPreviewBasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA9672BF5A244008F7EE2 /* AppPreviewBasicCell.swift */; };
 		782BA96A2BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA9692BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift */; };
+		7836117F2BFB26300045B6EC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7836117E2BFB26300045B6EC /* API.swift */; };
+		783611822BFB26770045B6EC /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783611812BFB26770045B6EC /* AppInfo.swift */; };
+		783611842BFB28510045B6EC /* APISearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783611832BFB28510045B6EC /* APISearchResult.swift */; };
+		783611862BFB28EF0045B6EC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783611852BFB28EF0045B6EC /* Constants.swift */; };
+		7836118C2BFB3B3F0045B6EC /* RatingInfoDashboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783611882BFB3B3F0045B6EC /* RatingInfoDashboardRouter.swift */; };
+		7836118D2BFB3B3F0045B6EC /* RatingInfoDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783611892BFB3B3F0045B6EC /* RatingInfoDashboardViewController.swift */; };
+		7836118E2BFB3B3F0045B6EC /* RatingInfoDashboardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7836118A2BFB3B3F0045B6EC /* RatingInfoDashboardBuilder.swift */; };
+		7836118F2BFB3B3F0045B6EC /* RatingInfoDashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7836118B2BFB3B3F0045B6EC /* RatingInfoDashboardInteractor.swift */; };
 		785711262BF2F49C00008AFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711252BF2F49C00008AFD /* AppDelegate.swift */; };
 		7857112F2BF2F49D00008AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7857112E2BF2F49D00008AFD /* Assets.xcassets */; };
 		785711322BF2F49D00008AFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785711302BF2F49D00008AFD /* LaunchScreen.storyboard */; };
@@ -53,6 +61,14 @@
 /* Begin PBXFileReference section */
 		782BA9672BF5A244008F7EE2 /* AppPreviewBasicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreviewBasicCell.swift; sourceTree = "<group>"; };
 		782BA9692BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreviewBasicHeaderView.swift; sourceTree = "<group>"; };
+		7836117E2BFB26300045B6EC /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		783611812BFB26770045B6EC /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
+		783611832BFB28510045B6EC /* APISearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISearchResult.swift; sourceTree = "<group>"; };
+		783611852BFB28EF0045B6EC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		783611882BFB3B3F0045B6EC /* RatingInfoDashboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingInfoDashboardRouter.swift; sourceTree = "<group>"; };
+		783611892BFB3B3F0045B6EC /* RatingInfoDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingInfoDashboardViewController.swift; sourceTree = "<group>"; };
+		7836118A2BFB3B3F0045B6EC /* RatingInfoDashboardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingInfoDashboardBuilder.swift; sourceTree = "<group>"; };
+		7836118B2BFB3B3F0045B6EC /* RatingInfoDashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingInfoDashboardInteractor.swift; sourceTree = "<group>"; };
 		785711222BF2F49C00008AFD /* AppStoreClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		785711252BF2F49C00008AFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7857112E2BF2F49D00008AFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +123,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7836117C2BFB24A90045B6EC /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				7836117E2BFB26300045B6EC /* API.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		783611872BFB3B280045B6EC /* RatingInfoDashboard */ = {
+			isa = PBXGroup;
+			children = (
+				783611882BFB3B3F0045B6EC /* RatingInfoDashboardRouter.swift */,
+				783611892BFB3B3F0045B6EC /* RatingInfoDashboardViewController.swift */,
+				7836118A2BFB3B3F0045B6EC /* RatingInfoDashboardBuilder.swift */,
+				7836118B2BFB3B3F0045B6EC /* RatingInfoDashboardInteractor.swift */,
+			);
+			path = RatingInfoDashboard;
+			sourceTree = "<group>";
+		};
 		785711192BF2F49C00008AFD = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +167,7 @@
 				7857113E2BF2F6D300008AFD /* SearchHome */,
 				78CF31E82BF7474D0046753D /* AppDetails */,
 				78CF31D32BF71A590046753D /* Models */,
+				7836117C2BFB24A90045B6EC /* Networking */,
 				7857115F2BF3394300008AFD /* ReuseableViews */,
 				7857115C2BF2FF8100008AFD /* Utils */,
 				785711302BF2F49D00008AFD /* LaunchScreen.storyboard */,
@@ -192,6 +228,7 @@
 				785711662BF33E3B00008AFD /* UIImage+Utils.swift */,
 				78CF31D12BF6F6F40046753D /* Array+Utils.swift */,
 				78CF31E62BF736AA0046753D /* UIViewController+Utils.swift */,
+				783611852BFB28EF0045B6EC /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -244,7 +281,9 @@
 		78CF31D32BF71A590046753D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				783611812BFB26770045B6EC /* AppInfo.swift */,
 				78CF31DB2BF721D20046753D /* AppPreviewInfo.swift */,
+				783611832BFB28510045B6EC /* APISearchResult.swift */,
 				78CF31D62BF721500046753D /* CollectionView */,
 			);
 			path = Models;
@@ -275,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				78A853042BF8552F001D64A7 /* TopInfoDashboard */,
+				783611872BFB3B280045B6EC /* RatingInfoDashboard */,
 				78CF31E92BF747B30046753D /* AppDetailsRouter.swift */,
 				78CF31EA2BF747B30046753D /* AppDetailsViewController.swift */,
 				78CF31EB2BF747B30046753D /* AppDetailsBuilder.swift */,
@@ -365,10 +405,12 @@
 				7857114A2BF2FAAA00008AFD /* AppRootBuilder.swift in Sources */,
 				78CF31E42BF7260C0046753D /* ShowAllAppsBuilder.swift in Sources */,
 				78CF31F02BF747B30046753D /* AppDetailsInteractor.swift in Sources */,
+				783611842BFB28510045B6EC /* APISearchResult.swift in Sources */,
 				785711262BF2F49C00008AFD /* AppDelegate.swift in Sources */,
 				7857114B2BF2FAAA00008AFD /* AppRootInteractor.swift in Sources */,
 				785711632BF33C9800008AFD /* AppPreviewBasicView.swift in Sources */,
 				785711582BF2FAC200008AFD /* SearchHomeRouter.swift in Sources */,
+				783611862BFB28EF0045B6EC /* Constants.swift in Sources */,
 				78CF31ED2BF747B30046753D /* AppDetailsRouter.swift in Sources */,
 				785711512BF2FAB800008AFD /* AppsHomeViewController.swift in Sources */,
 				782BA9682BF5A244008F7EE2 /* AppPreviewBasicCell.swift in Sources */,
@@ -379,7 +421,9 @@
 				78CF31E72BF736AA0046753D /* UIViewController+Utils.swift in Sources */,
 				785711522BF2FAB800008AFD /* AppsHomeBuilder.swift in Sources */,
 				785711432BF2F85400008AFD /* AppComponent.swift in Sources */,
+				7836118E2BFB3B3F0045B6EC /* RatingInfoDashboardBuilder.swift in Sources */,
 				785711492BF2FAAA00008AFD /* RootTabBarController.swift in Sources */,
+				783611822BFB26770045B6EC /* AppInfo.swift in Sources */,
 				78A8530B2BF855A4001D64A7 /* TopInfoDashboardBuilder.swift in Sources */,
 				785711672BF33E3B00008AFD /* UIImage+Utils.swift in Sources */,
 				78A853092BF855A4001D64A7 /* TopInfoDashboardRouter.swift in Sources */,
@@ -389,14 +433,18 @@
 				7857115A2BF2FAC200008AFD /* SearchHomeBuilder.swift in Sources */,
 				78A8530C2BF855A4001D64A7 /* TopInfoDashboardInteractor.swift in Sources */,
 				78CF31EF2BF747B30046753D /* AppDetailsBuilder.swift in Sources */,
+				7836118F2BFB3B3F0045B6EC /* RatingInfoDashboardInteractor.swift in Sources */,
 				785711652BF33DA500008AFD /* UIView+Utils.swift in Sources */,
 				78CF31E52BF7260C0046753D /* ShowAllAppsInteractor.swift in Sources */,
 				78CF31E32BF7260C0046753D /* ShowAllAppsViewController.swift in Sources */,
 				785711502BF2FAB800008AFD /* AppsHomeRouter.swift in Sources */,
+				7836117F2BFB26300045B6EC /* API.swift in Sources */,
 				785711482BF2FAAA00008AFD /* AppRootRouter.swift in Sources */,
 				78CF31DA2BF7218D0046753D /* CollectionViewItem.swift in Sources */,
 				785711592BF2FAC200008AFD /* SearchHomeViewController.swift in Sources */,
 				78CF31EE2BF747B30046753D /* AppDetailsViewController.swift in Sources */,
+				7836118D2BFB3B3F0045B6EC /* RatingInfoDashboardViewController.swift in Sources */,
+				7836118C2BFB3B3F0045B6EC /* RatingInfoDashboardRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
