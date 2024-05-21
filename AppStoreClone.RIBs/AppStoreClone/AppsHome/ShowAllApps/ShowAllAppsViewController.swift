@@ -95,6 +95,8 @@ extension ShowAllAppsViewController {
                     self?.listener?.appPreviewActionButtonDidTap(with: info)
                 }))
                 return cell
+            default:
+                return UICollectionViewCell()
             }
         })
     }
@@ -124,6 +126,8 @@ extension ShowAllAppsViewController: UICollectionViewDelegate {
             switch info.type {
             case .appPreviewBasic(let info):
                 listener?.appPreviewCellDidTap(with: info)
+            default:
+                break
             }
         }
     }

@@ -11,6 +11,21 @@ struct CollectionViewSectionModel {
     let section: CollectionViewSection
     let items: [CollectionViewItem]
     
+    var itemWidth: CGFloat {
+        var width: CGFloat = 0
+        
+        if let itemType = self.items[safe: 0]?.type {
+            switch itemType {
+            case .ratingInfo:
+                width = RatingInfoCell.width
+            default:
+                break
+            }
+        }
+        
+        return width
+    }
+    
     var itemHeight: CGFloat {
         var height: CGFloat = 0
         
@@ -18,6 +33,8 @@ struct CollectionViewSectionModel {
             switch itemType {
             case .appPreviewBasic(_):
                 height = AppPreviewBasicView.height
+            case .ratingInfo:
+                height = RatingInfoCell.height
             }
         }
         
@@ -63,6 +80,16 @@ struct CollectionViewSectionModel {
             group.contentInsets = .init(top: 0, leading: 10.0, bottom: 0, trailing: 10.0)
             
             let section = NSCollectionLayoutSection(group: group)
+            return section
+        case .horizontalOne:
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            
+            let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(self.itemWidth), heightDimension: .absolute(self.itemHeight))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+            
+            let section = NSCollectionLayoutSection(group: group)
+            section.interGroupSpacing = 10.0
             return section
         }
     }

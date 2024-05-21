@@ -97,6 +97,8 @@ extension AppsHomeViewController {
                     self?.listener?.appPreviewActionButtonDidTap(with: info)
                 }))
                 return cell
+            default:
+                return UICollectionViewCell()
             }
         })
         
@@ -110,7 +112,7 @@ extension AppsHomeViewController {
                             self?.listener?.seeAllButtonDidTap(with: sectionModel)
                         }
                     }))
-                case .verticalOne:
+                default:
                     return nil
                 }
             }
@@ -139,6 +141,8 @@ extension AppsHomeViewController: UICollectionViewDelegate {
             switch info.type {
             case .appPreviewBasic(let info):
                 listener?.appPreviewCellDidTap(with: info)
+            default:
+                return
             }
         }
     }

@@ -43,8 +43,8 @@ final class AppsHomeRouter: ViewableRouter<AppsHomeInteractable, AppsHomeViewCon
         let router = showAllAppsBuildable.build(withListener: interactor, sectionModel: sectionModel)
         viewControllable.pushViewController(router.viewControllable, animated: false)
         
+        self.showAllAppsRouting = router
         attachChild(router)
-        showAllAppsRouting = router
     }
     
     func detachShowAllApps() {
@@ -52,8 +52,8 @@ final class AppsHomeRouter: ViewableRouter<AppsHomeInteractable, AppsHomeViewCon
         
         viewControllable.popViewController(animated: false)
         
+        self.showAllAppsRouting = nil
         detachChild(router)
-        showAllAppsRouting = nil
     }
     
     // MARK: - AppDetails
@@ -63,8 +63,8 @@ final class AppsHomeRouter: ViewableRouter<AppsHomeInteractable, AppsHomeViewCon
         let router = appDetailsBuildable.build(withListener: interactor, info: info)
         viewControllable.pushViewController(router.viewControllable, animated: false)
         
+        self.appDetailsRouting = router
         attachChild(router)
-        appDetailsRouting = router
     }
     
     func detachAppDetails() {
@@ -72,7 +72,7 @@ final class AppsHomeRouter: ViewableRouter<AppsHomeInteractable, AppsHomeViewCon
         
         viewControllable.popViewController(animated: false)
         
+        self.appDetailsRouting = nil
         detachChild(router)
-        appDetailsRouting = nil
     }
 }

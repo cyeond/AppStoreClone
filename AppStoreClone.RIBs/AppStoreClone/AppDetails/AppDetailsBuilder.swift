@@ -6,6 +6,7 @@
 //
 
 import RIBs
+import RxSwift
 
 protocol AppDetailsDependency: Dependency {
     // TODO: Declare the set of dependencies required by this RIB, but cannot be
@@ -14,9 +15,11 @@ protocol AppDetailsDependency: Dependency {
 
 final class AppDetailsComponent: Component<AppDetailsDependency>, TopInfoDashboardDependency, RatingInfoDashboardDependency {
     let appPreviewInfo: AppPreviewInfo
+    let appInfoObservable: Observable<AppInfo>
     
     init(dependency: AppDetailsDependency, appPreviewInfo: AppPreviewInfo) {
         self.appPreviewInfo = appPreviewInfo
+        self.appInfoObservable = API.lookup(appPreviewInfo.id).subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).asObservable().share(replay: 1)
         super.init(dependency: dependency)
     }
 }

@@ -6,15 +6,14 @@
 //
 
 import RIBs
+import RxSwift
 
 protocol RatingInfoDashboardDependency: Dependency {
-    // TODO: Declare the set of dependencies required by this RIB, but cannot be
-    // created by this RIB.
+    var appInfoObservable: Observable<AppInfo> { get }
 }
 
-final class RatingInfoDashboardComponent: Component<RatingInfoDashboardDependency> {
-
-    // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+final class RatingInfoDashboardComponent: Component<RatingInfoDashboardDependency>, RatingInfoDashboardInteractorDependency {
+    var appInfoObservable: Observable<AppInfo> { dependency.appInfoObservable }
 }
 
 // MARK: - Builder
@@ -32,7 +31,7 @@ final class RatingInfoDashboardBuilder: Builder<RatingInfoDashboardDependency>, 
     func build(withListener listener: RatingInfoDashboardListener) -> RatingInfoDashboardRouting {
         let component = RatingInfoDashboardComponent(dependency: dependency)
         let viewController = RatingInfoDashboardViewController()
-        let interactor = RatingInfoDashboardInteractor(presenter: viewController)
+        let interactor = RatingInfoDashboardInteractor(presenter: viewController, dependency: component)
         interactor.listener = listener
         return RatingInfoDashboardRouter(interactor: interactor, viewController: viewController)
     }

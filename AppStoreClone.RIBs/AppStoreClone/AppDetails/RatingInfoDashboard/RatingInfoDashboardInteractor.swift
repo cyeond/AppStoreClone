@@ -14,28 +14,52 @@ protocol RatingInfoDashboardRouting: ViewableRouting {
 
 protocol RatingInfoDashboardPresentable: Presentable {
     var listener: RatingInfoDashboardPresentableListener? { get set }
-    // TODO: Declare methods the interactor can invoke the presenter to present data.
+    
+    func update(with sectionModel: CollectionViewSectionModel)
 }
 
 protocol RatingInfoDashboardListener: AnyObject {
     // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
 }
 
+protocol RatingInfoDashboardInteractorDependency {
+    var appInfoObservable: Observable<AppInfo> { get }
+}
+
 final class RatingInfoDashboardInteractor: PresentableInteractor<RatingInfoDashboardPresentable>, RatingInfoDashboardInteractable, RatingInfoDashboardPresentableListener {
 
     weak var router: RatingInfoDashboardRouting?
     weak var listener: RatingInfoDashboardListener?
+    
+    private let dependency: RatingInfoDashboardInteractorDependency
+    private let disposeBag = DisposeBag()
 
     // TODO: Add additional dependencies to constructor. Do not perform any logic
     // in constructor.
-    override init(presenter: RatingInfoDashboardPresentable) {
+    init(presenter: RatingInfoDashboardPresentable, dependency: RatingInfoDashboardInteractorDependency) {
+        self.dependency = dependency
         super.init(presenter: presenter)
         presenter.listener = self
     }
 
     override func didBecomeActive() {
         super.didBecomeActive()
-        // TODO: Implement business logic here.
+        
+        dependency.appInfoObservable
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] info in
+                let sectionModel = CollectionViewSectionModel(
+                    section: CollectionViewSection(type: CollectionViewSectionType.horizontalOne),
+                    items: [
+                        CollectionViewItem(type: .ratingInfo(.userRating(rating: info.averageUserRating, ratingCount: info.userRatingCount))),
+                        CollectionViewItem(type: .ratingInfo(.contentRating(info.trackContentRating))),
+                        CollectionViewItem(type: .ratingInfo(.developerName(info.developerName))),
+                        CollectionViewItem(type: .ratingInfo(.languages(info.languageCodes)))
+                    ])
+                
+                self?.presenter.update(with: sectionModel)
+            })
+            .disposed(by: disposeBag)
     }
 
     override func willResignActive() {

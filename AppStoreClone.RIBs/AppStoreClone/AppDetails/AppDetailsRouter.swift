@@ -41,19 +41,20 @@ final class AppDetailsRouter: ViewableRouter<AppDetailsInteractable, AppDetailsV
         let router = topInfoDashboardBuildable.build(withListener: interactor)
         
         viewController.addDashboard(router.viewControllable)
-        attachChild(router)
         
         self.topInfoDashboardRouting = router
+        attachChild(router)
     }
     
+    // MARK: - RatingInfoDashboard
     func attachRatingInfoDashboard() {
         guard ratingInfoDashboardRouting == nil else { return }
         
         let router = ratingInfoDashboardBuildable.build(withListener: interactor)
         
         viewController.addDashboard(router.viewControllable)
-        attachChild(router)
-        
+
         self.ratingInfoDashboardRouting = router
+        attachChild(router)
     }
 }
