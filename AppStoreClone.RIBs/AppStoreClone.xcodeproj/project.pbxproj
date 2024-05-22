@@ -70,6 +70,8 @@
 		78E631952BFDAA580053B38D /* ReleaseNoteDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E631912BFDAA580053B38D /* ReleaseNoteDashboardViewController.swift */; };
 		78E631962BFDAA580053B38D /* ReleaseNoteDashboardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E631922BFDAA580053B38D /* ReleaseNoteDashboardBuilder.swift */; };
 		78E631972BFDAA580053B38D /* ReleaseNoteDashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E631932BFDAA580053B38D /* ReleaseNoteDashboardInteractor.swift */; };
+		78E631992BFDAD5E0053B38D /* ReadMoreTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E631982BFDAD5E0053B38D /* ReadMoreTextLabel.swift */; };
+		78E6319B2BFDB5E20053B38D /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6319A2BFDB5E20053B38D /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +139,8 @@
 		78E631912BFDAA580053B38D /* ReleaseNoteDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNoteDashboardViewController.swift; sourceTree = "<group>"; };
 		78E631922BFDAA580053B38D /* ReleaseNoteDashboardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNoteDashboardBuilder.swift; sourceTree = "<group>"; };
 		78E631932BFDAA580053B38D /* ReleaseNoteDashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNoteDashboardInteractor.swift; sourceTree = "<group>"; };
+		78E631982BFDAD5E0053B38D /* ReadMoreTextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMoreTextLabel.swift; sourceTree = "<group>"; };
+		78E6319A2BFDB5E20053B38D /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				785711622BF33C9800008AFD /* AppPreviewBasicView.swift */,
+				78E631982BFDAD5E0053B38D /* ReadMoreTextLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -363,6 +368,7 @@
 				785711662BF33E3B00008AFD /* UIImage+Extension.swift */,
 				78CF31D12BF6F6F40046753D /* Array+Extension.swift */,
 				78CF31E62BF736AA0046753D /* UIViewController+Extension.swift */,
+				78E6319A2BFDB5E20053B38D /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -503,6 +509,7 @@
 				783611822BFB26770045B6EC /* AppInfo.swift in Sources */,
 				783611912BFB42070045B6EC /* RatingInfoCell.swift in Sources */,
 				78A8530B2BF855A4001D64A7 /* TopInfoDashboardBuilder.swift in Sources */,
+				78E6319B2BFDB5E20053B38D /* String+Extension.swift in Sources */,
 				785711672BF33E3B00008AFD /* UIImage+Extension.swift in Sources */,
 				78E6318A2BFD7FF00053B38D /* ScreenshotsDashboardInteractor.swift in Sources */,
 				78A853092BF855A4001D64A7 /* TopInfoDashboardRouter.swift in Sources */,
@@ -513,6 +520,7 @@
 				78A8530C2BF855A4001D64A7 /* TopInfoDashboardInteractor.swift in Sources */,
 				78CF31EF2BF747B30046753D /* AppDetailsBuilder.swift in Sources */,
 				7836118F2BFB3B3F0045B6EC /* RatingInfoDashboardInteractor.swift in Sources */,
+				78E631992BFDAD5E0053B38D /* ReadMoreTextLabel.swift in Sources */,
 				785711652BF33DA500008AFD /* UIView+Extension.swift in Sources */,
 				78CF31E52BF7260C0046753D /* ShowAllAppsInteractor.swift in Sources */,
 				78CF31E32BF7260C0046753D /* ShowAllAppsViewController.swift in Sources */,
