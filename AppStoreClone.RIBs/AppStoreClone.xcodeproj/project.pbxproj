@@ -66,6 +66,10 @@
 		78E6318A2BFD7FF00053B38D /* ScreenshotsDashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E631862BFD7FF00053B38D /* ScreenshotsDashboardInteractor.swift */; };
 		78E6318C2BFD86450053B38D /* ScreenshotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6318B2BFD86450053B38D /* ScreenshotCell.swift */; };
 		78E6318E2BFD8CC20053B38D /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6318D2BFD8CC20053B38D /* TitleHeaderView.swift */; };
+		78E631942BFDAA580053B38D /* ReleaseNoteDashboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E631902BFDAA580053B38D /* ReleaseNoteDashboardRouter.swift */; };
+		78E631952BFDAA580053B38D /* ReleaseNoteDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E631912BFDAA580053B38D /* ReleaseNoteDashboardViewController.swift */; };
+		78E631962BFDAA580053B38D /* ReleaseNoteDashboardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E631922BFDAA580053B38D /* ReleaseNoteDashboardBuilder.swift */; };
+		78E631972BFDAA580053B38D /* ReleaseNoteDashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E631932BFDAA580053B38D /* ReleaseNoteDashboardInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,6 +133,10 @@
 		78E631862BFD7FF00053B38D /* ScreenshotsDashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotsDashboardInteractor.swift; sourceTree = "<group>"; };
 		78E6318B2BFD86450053B38D /* ScreenshotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotCell.swift; sourceTree = "<group>"; };
 		78E6318D2BFD8CC20053B38D /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
+		78E631902BFDAA580053B38D /* ReleaseNoteDashboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNoteDashboardRouter.swift; sourceTree = "<group>"; };
+		78E631912BFDAA580053B38D /* ReleaseNoteDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNoteDashboardViewController.swift; sourceTree = "<group>"; };
+		78E631922BFDAA580053B38D /* ReleaseNoteDashboardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNoteDashboardBuilder.swift; sourceTree = "<group>"; };
+		78E631932BFDAA580053B38D /* ReleaseNoteDashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNoteDashboardInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -338,6 +346,7 @@
 				78A853042BF8552F001D64A7 /* TopInfoDashboard */,
 				783611872BFB3B280045B6EC /* RatingInfoDashboard */,
 				78E631822BFD7FD80053B38D /* ScreenshotsDashboard */,
+				78E6318F2BFDAA400053B38D /* ReleaseNoteDashboard */,
 				78CF31E92BF747B30046753D /* AppDetailsRouter.swift */,
 				78CF31EA2BF747B30046753D /* AppDetailsViewController.swift */,
 				78CF31EB2BF747B30046753D /* AppDetailsBuilder.swift */,
@@ -367,6 +376,17 @@
 				78E631862BFD7FF00053B38D /* ScreenshotsDashboardInteractor.swift */,
 			);
 			path = ScreenshotsDashboard;
+			sourceTree = "<group>";
+		};
+		78E6318F2BFDAA400053B38D /* ReleaseNoteDashboard */ = {
+			isa = PBXGroup;
+			children = (
+				78E631902BFDAA580053B38D /* ReleaseNoteDashboardRouter.swift */,
+				78E631912BFDAA580053B38D /* ReleaseNoteDashboardViewController.swift */,
+				78E631922BFDAA580053B38D /* ReleaseNoteDashboardBuilder.swift */,
+				78E631932BFDAA580053B38D /* ReleaseNoteDashboardInteractor.swift */,
+			);
+			path = ReleaseNoteDashboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,6 +468,7 @@
 				78CF31DC2BF721D20046753D /* AppPreviewInfo.swift in Sources */,
 				78E631892BFD7FF00053B38D /* ScreenshotsDashboardBuilder.swift in Sources */,
 				78CF31E22BF7260C0046753D /* ShowAllAppsRouter.swift in Sources */,
+				78E631962BFDAA580053B38D /* ReleaseNoteDashboardBuilder.swift in Sources */,
 				7857115E2BF2FF8E00008AFD /* RIBs+Extension.swift in Sources */,
 				7857114A2BF2FAAA00008AFD /* AppRootBuilder.swift in Sources */,
 				78CF31E42BF7260C0046753D /* ShowAllAppsBuilder.swift in Sources */,
@@ -469,12 +490,15 @@
 				7857115B2BF2FAC200008AFD /* SearchHomeInteractor.swift in Sources */,
 				782BA96A2BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift in Sources */,
 				78CF31E72BF736AA0046753D /* UIViewController+Extension.swift in Sources */,
+				78E631972BFDAA580053B38D /* ReleaseNoteDashboardInteractor.swift in Sources */,
 				78E631882BFD7FF00053B38D /* ScreenshotsDashboardViewController.swift in Sources */,
 				785711522BF2FAB800008AFD /* AppsHomeBuilder.swift in Sources */,
 				785711432BF2F85400008AFD /* AppComponent.swift in Sources */,
 				7836118E2BFB3B3F0045B6EC /* RatingInfoDashboardBuilder.swift in Sources */,
 				78E6318C2BFD86450053B38D /* ScreenshotCell.swift in Sources */,
+				78E631952BFDAA580053B38D /* ReleaseNoteDashboardViewController.swift in Sources */,
 				785711492BF2FAAA00008AFD /* RootTabBarController.swift in Sources */,
+				78E631942BFDAA580053B38D /* ReleaseNoteDashboardRouter.swift in Sources */,
 				78E6318E2BFD8CC20053B38D /* TitleHeaderView.swift in Sources */,
 				783611822BFB26770045B6EC /* AppInfo.swift in Sources */,
 				783611912BFB42070045B6EC /* RatingInfoCell.swift in Sources */,

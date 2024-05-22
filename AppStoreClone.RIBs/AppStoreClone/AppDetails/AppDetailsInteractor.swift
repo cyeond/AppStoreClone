@@ -11,6 +11,7 @@ import RxSwift
 protocol AppDetailsRouting: ViewableRouting {
     func attachTopInfoDashboard()
     func attachRatingInfoDashboard()
+    func attachReleaseNoteDashboard()
     func attachScreenshotsDashboard()
 }
 
@@ -41,6 +42,7 @@ final class AppDetailsInteractor: PresentableInteractor<AppDetailsPresentable>, 
         
         router?.attachTopInfoDashboard()
         router?.attachRatingInfoDashboard()
+        router?.attachReleaseNoteDashboard()
         router?.attachScreenshotsDashboard()
     }
 

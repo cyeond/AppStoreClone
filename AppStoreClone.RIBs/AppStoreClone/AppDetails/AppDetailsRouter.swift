@@ -7,7 +7,7 @@
 
 import RIBs
 
-protocol AppDetailsInteractable: Interactable, TopInfoDashboardListener, RatingInfoDashboardListener, ScreenshotsDashboardListener {
+protocol AppDetailsInteractable: Interactable, TopInfoDashboardListener, RatingInfoDashboardListener, ScreenshotsDashboardListener, ReleaseNoteDashboardListener {
     var router: AppDetailsRouting? { get set }
     var listener: AppDetailsListener? { get set }
 }
@@ -25,17 +25,22 @@ final class AppDetailsRouter: ViewableRouter<AppDetailsInteractable, AppDetailsV
     
     private let screenshotsDashboardBuildable: ScreenshotsDashboardBuildable
     private var screenshotsDashboardRouting: Routing?
+    
+    private let releaseNoteDashboardBuildable: ReleaseNoteDashboardBuildable
+    private var releaseNoteDashboardRouting: Routing?
 
     // TODO: Constructor inject child builder protocols to allow building children.
     init(interactor: AppDetailsInteractable, 
          viewController: AppDetailsViewControllable,
          topInfoDashboardBuilable: TopInfoDashboardBuildable,
          ratingInfoDashboardBuilable: RatingInfoDashboardBuildable,
-         screenshotsDashboardBuildable: ScreenshotsDashboardBuildable
+         screenshotsDashboardBuildable: ScreenshotsDashboardBuildable,
+         releaseNoteDashboardBuildable: ReleaseNoteDashboardBuildable
     ) {
         self.topInfoDashboardBuildable = topInfoDashboardBuilable
         self.ratingInfoDashboardBuildable = ratingInfoDashboardBuilable
         self.screenshotsDashboardBuildable = screenshotsDashboardBuildable
+        self.releaseNoteDashboardBuildable = releaseNoteDashboardBuildable
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
@@ -72,6 +77,18 @@ final class AppDetailsRouter: ViewableRouter<AppDetailsInteractable, AppDetailsV
         viewController.addDashboard(router.viewControllable)
         
         self.screenshotsDashboardRouting = router
+        attachChild(router)
+    }
+    
+    // MARK: - ReleaseNoteDashboard
+    func attachReleaseNoteDashboard() {
+        guard releaseNoteDashboardRouting == nil else { return }
+        
+        let router = releaseNoteDashboardBuildable.build(withListener: interactor)
+        
+        viewController.addDashboard(router.viewControllable)
+        
+        self.releaseNoteDashboardRouting = router
         attachChild(router)
     }
 }
