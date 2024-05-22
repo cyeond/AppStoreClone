@@ -10,7 +10,7 @@ import RxSwift
 
 enum APIError: Error {
     case urlError
-    case responseError
+    case responseError(String)
     case decodingError
 }
 
@@ -25,7 +25,7 @@ struct API {
             
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 if let error = error {
-                    observer(.failure(APIError.responseError))
+                    observer(.failure(APIError.responseError(error.localizedDescription)))
                     return
                 }
                 if let data = data, let result = try? JSONDecoder().decode(APISearchResult.self, from: data) {
@@ -53,7 +53,7 @@ struct API {
             
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 if let error = error {
-                    observer(.failure(APIError.responseError))
+                    observer(.failure(APIError.responseError(error.localizedDescription)))
                     return
                 }
                 if let data = data, let result = try? JSONDecoder().decode(APISearchResult.self, from: data), let info = result.results.first {

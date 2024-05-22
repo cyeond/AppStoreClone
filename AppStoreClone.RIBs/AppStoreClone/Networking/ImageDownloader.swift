@@ -25,7 +25,7 @@ struct ImageDownloader {
             } else {
                 task = URLSession.shared.dataTask(with: url) { data, response, error in
                     if let error = error {
-                        observer(.failure(APIError.responseError))
+                        observer(.failure(APIError.responseError(error.localizedDescription)))
                         return
                     }
                     

@@ -60,6 +60,10 @@
 		78E6317D2BFD7B4C0053B38D /* MemoryCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6317C2BFD7B4C0053B38D /* MemoryCacheManager.swift */; };
 		78E6317F2BFD7B580053B38D /* DiskCacheUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6317E2BFD7B580053B38D /* DiskCacheUtil.swift */; };
 		78E631812BFD7B680053B38D /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E631802BFD7B680053B38D /* ImageDownloader.swift */; };
+		78E631872BFD7FF00053B38D /* ScreenshotsDashboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E631832BFD7FF00053B38D /* ScreenshotsDashboardRouter.swift */; };
+		78E631882BFD7FF00053B38D /* ScreenshotsDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E631842BFD7FF00053B38D /* ScreenshotsDashboardViewController.swift */; };
+		78E631892BFD7FF00053B38D /* ScreenshotsDashboardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E631852BFD7FF00053B38D /* ScreenshotsDashboardBuilder.swift */; };
+		78E6318A2BFD7FF00053B38D /* ScreenshotsDashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E631862BFD7FF00053B38D /* ScreenshotsDashboardInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,6 +121,10 @@
 		78E6317C2BFD7B4C0053B38D /* MemoryCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCacheManager.swift; sourceTree = "<group>"; };
 		78E6317E2BFD7B580053B38D /* DiskCacheUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCacheUtil.swift; sourceTree = "<group>"; };
 		78E631802BFD7B680053B38D /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		78E631832BFD7FF00053B38D /* ScreenshotsDashboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotsDashboardRouter.swift; sourceTree = "<group>"; };
+		78E631842BFD7FF00053B38D /* ScreenshotsDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotsDashboardViewController.swift; sourceTree = "<group>"; };
+		78E631852BFD7FF00053B38D /* ScreenshotsDashboardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotsDashboardBuilder.swift; sourceTree = "<group>"; };
+		78E631862BFD7FF00053B38D /* ScreenshotsDashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotsDashboardInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +331,7 @@
 			children = (
 				78A853042BF8552F001D64A7 /* TopInfoDashboard */,
 				783611872BFB3B280045B6EC /* RatingInfoDashboard */,
+				78E631822BFD7FD80053B38D /* ScreenshotsDashboard */,
 				78CF31E92BF747B30046753D /* AppDetailsRouter.swift */,
 				78CF31EA2BF747B30046753D /* AppDetailsViewController.swift */,
 				78CF31EB2BF747B30046753D /* AppDetailsBuilder.swift */,
@@ -341,6 +350,17 @@
 				78CF31E62BF736AA0046753D /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		78E631822BFD7FD80053B38D /* ScreenshotsDashboard */ = {
+			isa = PBXGroup;
+			children = (
+				78E631832BFD7FF00053B38D /* ScreenshotsDashboardRouter.swift */,
+				78E631842BFD7FF00053B38D /* ScreenshotsDashboardViewController.swift */,
+				78E631852BFD7FF00053B38D /* ScreenshotsDashboardBuilder.swift */,
+				78E631862BFD7FF00053B38D /* ScreenshotsDashboardInteractor.swift */,
+			);
+			path = ScreenshotsDashboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,12 +440,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				78CF31DC2BF721D20046753D /* AppPreviewInfo.swift in Sources */,
+				78E631892BFD7FF00053B38D /* ScreenshotsDashboardBuilder.swift in Sources */,
 				78CF31E22BF7260C0046753D /* ShowAllAppsRouter.swift in Sources */,
 				7857115E2BF2FF8E00008AFD /* RIBs+Extension.swift in Sources */,
 				7857114A2BF2FAAA00008AFD /* AppRootBuilder.swift in Sources */,
 				78CF31E42BF7260C0046753D /* ShowAllAppsBuilder.swift in Sources */,
 				78CF31F02BF747B30046753D /* AppDetailsInteractor.swift in Sources */,
 				783611842BFB28510045B6EC /* APISearchResult.swift in Sources */,
+				78E631872BFD7FF00053B38D /* ScreenshotsDashboardRouter.swift in Sources */,
 				785711262BF2F49C00008AFD /* AppDelegate.swift in Sources */,
 				7857114B2BF2FAAA00008AFD /* AppRootInteractor.swift in Sources */,
 				785711632BF33C9800008AFD /* AppPreviewBasicView.swift in Sources */,
@@ -441,6 +463,7 @@
 				7857115B2BF2FAC200008AFD /* SearchHomeInteractor.swift in Sources */,
 				782BA96A2BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift in Sources */,
 				78CF31E72BF736AA0046753D /* UIViewController+Extension.swift in Sources */,
+				78E631882BFD7FF00053B38D /* ScreenshotsDashboardViewController.swift in Sources */,
 				785711522BF2FAB800008AFD /* AppsHomeBuilder.swift in Sources */,
 				785711432BF2F85400008AFD /* AppComponent.swift in Sources */,
 				7836118E2BFB3B3F0045B6EC /* RatingInfoDashboardBuilder.swift in Sources */,
@@ -449,6 +472,7 @@
 				783611912BFB42070045B6EC /* RatingInfoCell.swift in Sources */,
 				78A8530B2BF855A4001D64A7 /* TopInfoDashboardBuilder.swift in Sources */,
 				785711672BF33E3B00008AFD /* UIImage+Extension.swift in Sources */,
+				78E6318A2BFD7FF00053B38D /* ScreenshotsDashboardInteractor.swift in Sources */,
 				78A853092BF855A4001D64A7 /* TopInfoDashboardRouter.swift in Sources */,
 				785711532BF2FAB800008AFD /* AppsHomeInteractor.swift in Sources */,
 				78CF31D52BF7210B0046753D /* CollectionViewSectionModel.swift in Sources */,

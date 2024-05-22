@@ -11,6 +11,7 @@ import RxSwift
 protocol AppDetailsRouting: ViewableRouting {
     func attachTopInfoDashboard()
     func attachRatingInfoDashboard()
+    func attachScreenshotsDashboard()
 }
 
 protocol AppDetailsPresentable: Presentable {
@@ -40,6 +41,7 @@ final class AppDetailsInteractor: PresentableInteractor<AppDetailsPresentable>, 
         
         router?.attachTopInfoDashboard()
         router?.attachRatingInfoDashboard()
+        router?.attachScreenshotsDashboard()
     }
 
     override func willResignActive() {

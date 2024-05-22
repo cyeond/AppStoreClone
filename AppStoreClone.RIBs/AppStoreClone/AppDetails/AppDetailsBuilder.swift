@@ -13,7 +13,7 @@ protocol AppDetailsDependency: Dependency {
     // created by this RIB.
 }
 
-final class AppDetailsComponent: Component<AppDetailsDependency>, TopInfoDashboardDependency, RatingInfoDashboardDependency {
+final class AppDetailsComponent: Component<AppDetailsDependency>, TopInfoDashboardDependency, RatingInfoDashboardDependency, ScreenshotsDashboardDependency {
     let appPreviewInfo: AppPreviewInfo
     let appInfoObservable: Observable<AppInfo>
     
@@ -43,12 +43,14 @@ final class AppDetailsBuilder: Builder<AppDetailsDependency>, AppDetailsBuildabl
         
         let topInfoDashboardBuilder = TopInfoDashboardBuilder(dependency: component)
         let ratingInfoDashboardBuilder = RatingInfoDashboardBuilder(dependency: component)
+        let screenshotsDashboardBuilder = ScreenshotsDashboardBuilder(dependency: component)
         
         return AppDetailsRouter(
             interactor: interactor,
             viewController: viewController,
             topInfoDashboardBuilable: topInfoDashboardBuilder,
-            ratingInfoDashboardBuilable: ratingInfoDashboardBuilder
+            ratingInfoDashboardBuilable: ratingInfoDashboardBuilder,
+            screenshotsDashboardBuildable: screenshotsDashboardBuilder
         )
     }
 }

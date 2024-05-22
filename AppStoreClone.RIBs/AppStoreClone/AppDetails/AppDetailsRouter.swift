@@ -7,7 +7,7 @@
 
 import RIBs
 
-protocol AppDetailsInteractable: Interactable, TopInfoDashboardListener, RatingInfoDashboardListener {
+protocol AppDetailsInteractable: Interactable, TopInfoDashboardListener, RatingInfoDashboardListener, ScreenshotsDashboardListener {
     var router: AppDetailsRouting? { get set }
     var listener: AppDetailsListener? { get set }
 }
@@ -22,15 +22,20 @@ final class AppDetailsRouter: ViewableRouter<AppDetailsInteractable, AppDetailsV
     
     private let ratingInfoDashboardBuildable: RatingInfoDashboardBuildable
     private var ratingInfoDashboardRouting: Routing?
+    
+    private let screenshotsDashboardBuildable: ScreenshotsDashboardBuildable
+    private var screenshotsDashboardRouting: Routing?
 
     // TODO: Constructor inject child builder protocols to allow building children.
     init(interactor: AppDetailsInteractable, 
          viewController: AppDetailsViewControllable,
          topInfoDashboardBuilable: TopInfoDashboardBuildable,
-         ratingInfoDashboardBuilable: RatingInfoDashboardBuildable
+         ratingInfoDashboardBuilable: RatingInfoDashboardBuildable,
+         screenshotsDashboardBuildable: ScreenshotsDashboardBuildable
     ) {
         self.topInfoDashboardBuildable = topInfoDashboardBuilable
         self.ratingInfoDashboardBuildable = ratingInfoDashboardBuilable
+        self.screenshotsDashboardBuildable = screenshotsDashboardBuildable
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
@@ -55,6 +60,18 @@ final class AppDetailsRouter: ViewableRouter<AppDetailsInteractable, AppDetailsV
         viewController.addDashboard(router.viewControllable)
 
         self.ratingInfoDashboardRouting = router
+        attachChild(router)
+    }
+    
+    // MARK: - ScreenshotsDashboard
+    func attachScreenshotsDashboard() {
+        guard screenshotsDashboardRouting == nil else { return }
+        
+        let router = screenshotsDashboardBuildable.build(withListener: interactor)
+        
+        viewController.addDashboard(router.viewControllable)
+        
+        self.screenshotsDashboardRouting = router
         attachChild(router)
     }
 }
