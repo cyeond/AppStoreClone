@@ -17,7 +17,8 @@ struct ImageDownloader {
             return Observable.empty().asSingle()
         }
         
-        let id = uriString
+        let components = uriString.components(separatedBy: "/")
+        let id = components[components.count-2]
         
         return Single<UIImage>.create { observer -> Disposable in
             var task: URLSessionDataTask?
