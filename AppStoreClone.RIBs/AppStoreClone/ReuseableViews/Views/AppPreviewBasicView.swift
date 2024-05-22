@@ -64,9 +64,9 @@ final class AppPreviewBasicView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.roundCorners(15.0)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .systemGray5
         button.setTitle("받기", for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 14.0)
         button.addTarget(self, action: #selector(actionButtonDidTap), for: .touchUpInside)
         return button

@@ -11,6 +11,7 @@ import RxSwift
 enum APIError: Error {
     case urlError
     case responseError
+    case decodingError
 }
 
 struct API {
@@ -29,6 +30,8 @@ struct API {
                 }
                 if let data = data, let result = try? JSONDecoder().decode(APISearchResult.self, from: data) {
                     observer(.success(result))
+                } else {
+                    observer(.failure(APIError.decodingError))
                 }
             }
             
@@ -55,6 +58,8 @@ struct API {
                 }
                 if let data = data, let result = try? JSONDecoder().decode(APISearchResult.self, from: data), let info = result.results.first {
                     observer(.success(info))
+                } else {
+                    observer(.failure(APIError.decodingError))
                 }
             }
             
