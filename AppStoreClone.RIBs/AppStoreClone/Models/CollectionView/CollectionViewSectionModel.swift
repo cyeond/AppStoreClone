@@ -18,6 +18,8 @@ struct CollectionViewSectionModel {
             switch itemType {
             case .ratingInfo:
                 width = RatingInfoCell.width
+            case .screenshot(_):
+                width = ScreenshotCell.width
             default:
                 break
             }
@@ -35,6 +37,8 @@ struct CollectionViewSectionModel {
                 height = AppPreviewBasicView.height
             case .ratingInfo:
                 height = RatingInfoCell.height
+            case .screenshot(_):
+                height = ScreenshotCell.height
             }
         }
         

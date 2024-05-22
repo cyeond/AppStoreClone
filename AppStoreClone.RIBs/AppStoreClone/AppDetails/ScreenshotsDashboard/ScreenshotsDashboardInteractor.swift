@@ -14,28 +14,47 @@ protocol ScreenshotsDashboardRouting: ViewableRouting {
 
 protocol ScreenshotsDashboardPresentable: Presentable {
     var listener: ScreenshotsDashboardPresentableListener? { get set }
-    // TODO: Declare methods the interactor can invoke the presenter to present data.
+    
+    func update(with sectionModel: CollectionViewSectionModel)
 }
 
 protocol ScreenshotsDashboardListener: AnyObject {
     // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
 }
 
-final class ScreenshotsDashboardInteractor: PresentableInteractor<ScreenshotsDashboardPresentable>, ScreenshotsDashboardInteractable, ScreenshotsDashboardPresentableListener {
+protocol ScreenshotsDashboardInteractorDependency {
+    var appInfoObservable: Observable<AppInfo> { get }
+}
 
+final class ScreenshotsDashboardInteractor: PresentableInteractor<ScreenshotsDashboardPresentable>, ScreenshotsDashboardInteractable, ScreenshotsDashboardPresentableListener {
     weak var router: ScreenshotsDashboardRouting?
     weak var listener: ScreenshotsDashboardListener?
+    
+    private let dependency: ScreenshotsDashboardInteractorDependency
+    private let disposeBag = DisposeBag()
 
     // TODO: Add additional dependencies to constructor. Do not perform any logic
     // in constructor.
-    override init(presenter: ScreenshotsDashboardPresentable) {
+    init(presenter: ScreenshotsDashboardPresentable, dependency: ScreenshotsDashboardInteractorDependency) {
+        self.dependency = dependency
         super.init(presenter: presenter)
         presenter.listener = self
     }
 
     override func didBecomeActive() {
         super.didBecomeActive()
-        // TODO: Implement business logic here.
+        
+        dependency.appInfoObservable
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] info in
+                let sectionModel = CollectionViewSectionModel(
+                    section: CollectionViewSection(type: .horizontalOne),
+                    items: info.screenshotUrls.map { CollectionViewItem(type: .screenshot($0))}
+                )
+                
+                self?.presenter.update(with: sectionModel)
+            })
+            .disposed(by: disposeBag)
     }
 
     override func willResignActive() {

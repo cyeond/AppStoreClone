@@ -9,19 +9,24 @@ import UIKit
 import RxSwift
 
 struct ImageDownloader {
-    static func downloadImage(uriString: String, isbn: String) -> Single<UIImage> {
+    static let imageDownloaderQueue = DispatchQueue.global(qos: .background)
+    static let imageDownloaderScheduler = ConcurrentDispatchQueueScheduler(queue: imageDownloaderQueue)
+    
+    static func downloadImage(uriString: String) -> Single<UIImage> {
         guard let url = URL(string: uriString) else {
             return Observable.empty().asSingle()
         }
         
+        let id = uriString
+        
         return Single<UIImage>.create { observer -> Disposable in
             var task: URLSessionDataTask?
             
-            if let memoryCachedImage = MemoryCacheManager.shared.getImageFromMemory(key: isbn) {
+            if let memoryCachedImage = MemoryCacheManager.shared.getImageFromMemory(key: id) {
                 observer(.success(memoryCachedImage))
-            } else if let diskCachedImage = DiskCacheUtil.getImageFromDisk(key: isbn) {
+            } else if let diskCachedImage = DiskCacheUtil.getImageFromDisk(key: id) {
                 observer(.success(diskCachedImage))
-                MemoryCacheManager.shared.setImageIntoMemory(key: isbn, image: diskCachedImage)
+                MemoryCacheManager.shared.setImageIntoMemory(key: id, image: diskCachedImage)
             } else {
                 task = URLSession.shared.dataTask(with: url) { data, response, error in
                     if let error = error {
@@ -31,8 +36,8 @@ struct ImageDownloader {
                     
                     if let data = data, let uiImage = UIImage(data: data) {
                         observer(.success(uiImage))
-                        MemoryCacheManager.shared.setImageIntoMemory(key: isbn, image: uiImage)
-                        DiskCacheUtil.setImageIntoDisk(key: isbn, image: uiImage)
+                        MemoryCacheManager.shared.setImageIntoMemory(key: id, image: uiImage)
+                        DiskCacheUtil.setImageIntoDisk(key: id, image: uiImage)
                     } else {
                         observer(.failure(APIError.decodingError))
                     }

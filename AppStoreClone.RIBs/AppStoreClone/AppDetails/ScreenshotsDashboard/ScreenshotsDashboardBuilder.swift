@@ -6,15 +6,14 @@
 //
 
 import RIBs
+import RxSwift
 
 protocol ScreenshotsDashboardDependency: Dependency {
-    // TODO: Declare the set of dependencies required by this RIB, but cannot be
-    // created by this RIB.
+    var appInfoObservable: Observable<AppInfo> { get }
 }
 
-final class ScreenshotsDashboardComponent: Component<ScreenshotsDashboardDependency> {
-
-    // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+final class ScreenshotsDashboardComponent: Component<ScreenshotsDashboardDependency>, ScreenshotsDashboardInteractorDependency {
+    var appInfoObservable: Observable<AppInfo> { dependency.appInfoObservable }
 }
 
 // MARK: - Builder
@@ -32,7 +31,7 @@ final class ScreenshotsDashboardBuilder: Builder<ScreenshotsDashboardDependency>
     func build(withListener listener: ScreenshotsDashboardListener) -> ScreenshotsDashboardRouting {
         let component = ScreenshotsDashboardComponent(dependency: dependency)
         let viewController = ScreenshotsDashboardViewController()
-        let interactor = ScreenshotsDashboardInteractor(presenter: viewController)
+        let interactor = ScreenshotsDashboardInteractor(presenter: viewController, dependency: component)
         interactor.listener = listener
         return ScreenshotsDashboardRouter(interactor: interactor, viewController: viewController)
     }

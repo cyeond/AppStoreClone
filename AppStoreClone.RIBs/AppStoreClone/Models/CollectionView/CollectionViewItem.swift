@@ -10,6 +10,7 @@ import Foundation
 enum CollectionViewItemType: Hashable {
     case appPreviewBasic(AppPreviewInfo)
     case ratingInfo(RatingInfoType)
+    case screenshot(String)
 }
 
 struct CollectionViewItem: Hashable {

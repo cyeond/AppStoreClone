@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MemoryCacheManager {
+final class MemoryCacheManager {
     static let shared: MemoryCacheManager = .init()
     
     private init() { }

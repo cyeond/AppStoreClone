@@ -64,6 +64,8 @@
 		78E631882BFD7FF00053B38D /* ScreenshotsDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E631842BFD7FF00053B38D /* ScreenshotsDashboardViewController.swift */; };
 		78E631892BFD7FF00053B38D /* ScreenshotsDashboardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E631852BFD7FF00053B38D /* ScreenshotsDashboardBuilder.swift */; };
 		78E6318A2BFD7FF00053B38D /* ScreenshotsDashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E631862BFD7FF00053B38D /* ScreenshotsDashboardInteractor.swift */; };
+		78E6318C2BFD86450053B38D /* ScreenshotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6318B2BFD86450053B38D /* ScreenshotCell.swift */; };
+		78E6318E2BFD8CC20053B38D /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6318D2BFD8CC20053B38D /* TitleHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +127,8 @@
 		78E631842BFD7FF00053B38D /* ScreenshotsDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotsDashboardViewController.swift; sourceTree = "<group>"; };
 		78E631852BFD7FF00053B38D /* ScreenshotsDashboardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotsDashboardBuilder.swift; sourceTree = "<group>"; };
 		78E631862BFD7FF00053B38D /* ScreenshotsDashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotsDashboardInteractor.swift; sourceTree = "<group>"; };
+		78E6318B2BFD86450053B38D /* ScreenshotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotCell.swift; sourceTree = "<group>"; };
+		78E6318D2BFD8CC20053B38D /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +286,7 @@
 			children = (
 				782BA9672BF5A244008F7EE2 /* AppPreviewBasicCell.swift */,
 				783611902BFB42070045B6EC /* RatingInfoCell.swift */,
+				78E6318B2BFD86450053B38D /* ScreenshotCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 		78CF31D02BF6EC3A0046753D /* HeaderViews */ = {
 			isa = PBXGroup;
 			children = (
+				78E6318D2BFD8CC20053B38D /* TitleHeaderView.swift */,
 				782BA9692BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift */,
 			);
 			path = HeaderViews;
@@ -467,7 +473,9 @@
 				785711522BF2FAB800008AFD /* AppsHomeBuilder.swift in Sources */,
 				785711432BF2F85400008AFD /* AppComponent.swift in Sources */,
 				7836118E2BFB3B3F0045B6EC /* RatingInfoDashboardBuilder.swift in Sources */,
+				78E6318C2BFD86450053B38D /* ScreenshotCell.swift in Sources */,
 				785711492BF2FAAA00008AFD /* RootTabBarController.swift in Sources */,
+				78E6318E2BFD8CC20053B38D /* TitleHeaderView.swift in Sources */,
 				783611822BFB26770045B6EC /* AppInfo.swift in Sources */,
 				783611912BFB42070045B6EC /* RatingInfoCell.swift in Sources */,
 				78A8530B2BF855A4001D64A7 /* TopInfoDashboardBuilder.swift in Sources */,
