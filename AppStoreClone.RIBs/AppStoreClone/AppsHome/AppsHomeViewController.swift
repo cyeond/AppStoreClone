@@ -28,7 +28,7 @@ final class AppsHomeViewController: UIViewController, AppsHomePresentable, AppsH
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .background
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
         collectionView.register(AppPreviewBasicCell.self, forCellWithReuseIdentifier: AppPreviewBasicCell.identifier)
@@ -62,7 +62,7 @@ final class AppsHomeViewController: UIViewController, AppsHomePresentable, AppsH
         title = "앱"
         tabBarItem = UITabBarItem(title: "앱", image: UIImage(systemName: "square.stack.3d.up.fill"), selectedImage: UIImage(systemName: "square.stack.3d.up.fill"))
         
-        view.backgroundColor = .white
+        view.backgroundColor = .background
         view.addSubview(collectionView)
         
         NSLayoutConstraint.activate([

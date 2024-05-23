@@ -22,7 +22,7 @@ final class ReleaseNoteDashboardViewController: UIViewController, ReleaseNoteDas
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 20.0, weight: .semibold)
-        label.textColor = .black
+        label.textColor = .text
         label.textAlignment = .left
         return label
     }()
@@ -58,7 +58,7 @@ final class ReleaseNoteDashboardViewController: UIViewController, ReleaseNoteDas
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 15.0)
-        label.textColor = .black
+        label.textColor = .text
         label.textAlignment = .left
         label.numberOfLines = 0
         return label

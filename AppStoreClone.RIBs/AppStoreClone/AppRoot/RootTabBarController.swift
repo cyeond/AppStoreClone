@@ -23,7 +23,7 @@ final class RootTabBarController: UITabBarController, AppRootPresentable, AppRoo
         
         tabBar.isTranslucent = false
         tabBar.tintColor = .systemBlue
-        tabBar.backgroundColor = .white
+        tabBar.backgroundColor = .background
     }
     
     func setViewControllers(_ viewControllers: [ViewControllable]) {

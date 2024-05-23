@@ -41,6 +41,6 @@ final class SearchHomeViewController: UIViewController, SearchHomePresentable, S
         title = "검색"
         tabBarItem = UITabBarItem(title: "검색", image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass"))
         
-        view.backgroundColor = .white
+        view.backgroundColor = .background
     }
 }

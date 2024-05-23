@@ -15,7 +15,7 @@ final class TitleHeaderView: UICollectionReusableView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 20.0, weight: .semibold)
-        label.textColor = .black
+        label.textColor = .text
         return label
     }()
     

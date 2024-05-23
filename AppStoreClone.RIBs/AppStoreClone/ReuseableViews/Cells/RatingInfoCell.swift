@@ -39,7 +39,7 @@ final class RatingInfoCell: UICollectionViewCell {
     private let contentLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .darkGray
+        label.textColor = .systemGray
         label.font = .systemFont(ofSize: 20.0, weight: .bold)
         return label
     }()
@@ -56,7 +56,7 @@ final class RatingInfoCell: UICollectionViewCell {
         let imageView = UIImageView(image: UIImage(systemName: "person.crop.rectangle.fill"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
-        imageView.tintColor = .darkGray
+        imageView.tintColor = .systemGray
         return imageView
     }()
     

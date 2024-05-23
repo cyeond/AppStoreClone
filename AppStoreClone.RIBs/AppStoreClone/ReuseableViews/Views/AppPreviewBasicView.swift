@@ -13,7 +13,7 @@ final class AppPreviewBasicView: UIView {
     private var tapHandler: (() -> Void)?
     
     private let imageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(color: .black))
+        let imageView = UIImageView(image: UIImage(color: .text))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -35,7 +35,7 @@ final class AppPreviewBasicView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 18.0)
-        label.textColor = .black
+        label.textColor = .text
         label.textAlignment = .left
         label.numberOfLines = 2
         return label

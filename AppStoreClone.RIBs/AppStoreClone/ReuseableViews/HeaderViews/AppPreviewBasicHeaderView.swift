@@ -33,7 +33,7 @@ final class AppPreviewBasicHeaderView: UICollectionReusableView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
         label.numberOfLines = 1
-        label.textColor = .black
+        label.textColor = .text
         label.font = .systemFont(ofSize: 20.0, weight: .bold)
         return label
     }()

@@ -52,7 +52,7 @@ final class AppDetailsViewController: UIViewController, AppDetailsPresentable, A
     private func setupViews() {
         setupNavigationItem(with: .back, target: self, action: #selector(didTapBack))
         
-        view.backgroundColor = .white
+        view.backgroundColor = .background
         view.addSubview(scrollView)
         
         scrollView.addSubview(stackView)
