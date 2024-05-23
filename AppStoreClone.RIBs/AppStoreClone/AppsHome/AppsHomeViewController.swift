@@ -93,7 +93,7 @@ extension AppsHomeViewController {
             switch item.type {
             case .appPreviewBasic(let info):
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppPreviewBasicCell.identifier, for: indexPath) as? AppPreviewBasicCell else { return UICollectionViewCell() }
-                cell.update(with: AppPreviewBasicViewModel(title: info.title, subtitle: info.subtitle, tapHandler: {
+                cell.update(with: AppPreviewBasicViewModel(previewInfo: info, tapHandler: {
                     self?.listener?.appPreviewActionButtonDidTap(with: info)
                 }))
                 return cell

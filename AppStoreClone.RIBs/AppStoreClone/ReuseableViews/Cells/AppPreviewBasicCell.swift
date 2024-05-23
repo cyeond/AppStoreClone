@@ -6,9 +6,17 @@
 //
 
 import UIKit
+import RxSwift
+
+struct AppPreviewBasicViewModel {
+    let previewInfo: AppPreviewInfo
+    let tapHandler: (() -> Void)
+}
 
 final class AppPreviewBasicCell: UICollectionViewCell {
     static let identifier = "AppPreviewBasicCell"
+    
+    private var disposeBag = DisposeBag()
     
     private let previewView: AppPreviewBasicView = {
         let view = AppPreviewBasicView()
@@ -28,6 +36,13 @@ final class AppPreviewBasicCell: UICollectionViewCell {
         setupViews()
     }
     
+    override func prepareForReuse() {
+        disposeBag = DisposeBag()
+        previewView.updateImage(image: nil)
+        
+        super.prepareForReuse()
+    }
+    
     private func setupViews() {
         addSubview(previewView)
         
@@ -40,6 +55,14 @@ final class AppPreviewBasicCell: UICollectionViewCell {
     }
     
     func update(with viewModel: AppPreviewBasicViewModel) {
-        previewView.update(with: viewModel)
+        previewView.updateInfo(title: viewModel.previewInfo.title, subtitle: viewModel.previewInfo.subtitle, tapHandler: viewModel.tapHandler)
+        
+        ImageDownloader.downloadImage(uriString: viewModel.previewInfo.iconUri)
+            .subscribe(on: ImageDownloader.imageDownloaderScheduler)
+            .observe(on: MainScheduler.instance)
+            .subscribe(with: self) { weakSelf, image in
+                weakSelf.previewView.updateImage(image: image)
+            }
+            .disposed(by: disposeBag)
     }
 }

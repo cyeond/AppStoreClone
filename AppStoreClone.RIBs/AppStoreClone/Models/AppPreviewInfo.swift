@@ -9,4 +9,5 @@ struct AppPreviewInfo: Hashable {
     let id: String
     let title: String
     let subtitle: String
+    let iconUri: String
 }

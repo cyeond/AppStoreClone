@@ -7,27 +7,18 @@
 
 import UIKit
 
-struct AppPreviewBasicViewModel {
-    let title: String
-    let subtitle: String
-    let tapHandler: (() -> Void)
-}
-
 final class AppPreviewBasicView: UIView {
     static let height: CGFloat = 80.0
     
     private var tapHandler: (() -> Void)?
     
     private let imageView: UIImageView = {
-        let randomRed:CGFloat = CGFloat(drand48())
-        let randomGreen:CGFloat = CGFloat(drand48())
-        let randomBlue:CGFloat = CGFloat(drand48())
-        let color = UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
-        let imageView = UIImageView(image: UIImage(color: color))
+        let imageView = UIImageView(image: UIImage(color: .black))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.roundCorners(4)
+        imageView.roundCorners(12.0)
+        imageView.setBorder()
         return imageView
     }()
     
@@ -116,9 +107,13 @@ final class AppPreviewBasicView: UIView {
         tapHandler?()
     }
     
-    func update(with viewModel: AppPreviewBasicViewModel) {
-        titleLabel.text = viewModel.title
-        subtitleLabel.text = viewModel.subtitle
-        self.tapHandler = viewModel.tapHandler
+    func updateInfo(title: String, subtitle: String, tapHandler: @escaping (() -> Void)) {
+        titleLabel.text = title
+        subtitleLabel.text = subtitle
+        self.tapHandler = tapHandler
+    }
+    
+    func updateImage(image: UIImage?) {
+        imageView.image = image
     }
 }

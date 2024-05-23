@@ -23,16 +23,15 @@ final class TopInfoDashboardViewController: UIViewController, TopInfoDashboardPr
     private var actionButtonTapHandler: (() -> Void)?
     private var shareButtonTapHandler: (() -> Void)?
     
+    private let disposeBag = DisposeBag()
+    
     private let imageView: UIImageView = {
-        let randomRed:CGFloat = CGFloat(drand48())
-        let randomGreen:CGFloat = CGFloat(drand48())
-        let randomBlue:CGFloat = CGFloat(drand48())
-        let color = UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
-        let imageView = UIImageView(image: UIImage(color: color))
+        let imageView = UIImageView(image: UIImage(color: .black))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.roundCorners()
+        imageView.setBorder()
         return imageView
     }()
     
@@ -159,5 +158,13 @@ final class TopInfoDashboardViewController: UIViewController, TopInfoDashboardPr
     func update(with info: AppPreviewInfo) {
         titleLabel.text = info.title
         subtitleLabel.text = info.subtitle
+        
+        ImageDownloader.downloadImage(uriString: info.iconUri)
+            .subscribe(on: ImageDownloader.imageDownloaderScheduler)
+            .observe(on: MainScheduler.instance)
+            .subscribe(with: self) { weakSelf, image in
+                weakSelf.imageView.image = image
+            }
+            .disposed(by: disposeBag)
     }
 }
