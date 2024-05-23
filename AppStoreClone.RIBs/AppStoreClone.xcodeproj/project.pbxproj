@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		780CDC3A2BFF12EE001A314A /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780CDC392BFF12EE001A314A /* Int+Extension.swift */; };
 		782BA9682BF5A244008F7EE2 /* AppPreviewBasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA9672BF5A244008F7EE2 /* AppPreviewBasicCell.swift */; };
 		782BA96A2BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA9692BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift */; };
 		7836117F2BFB26300045B6EC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7836117E2BFB26300045B6EC /* API.swift */; };
@@ -75,6 +76,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		780CDC392BFF12EE001A314A /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		782BA9672BF5A244008F7EE2 /* AppPreviewBasicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreviewBasicCell.swift; sourceTree = "<group>"; };
 		782BA9692BF5C2FB008F7EE2 /* AppPreviewBasicHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreviewBasicHeaderView.swift; sourceTree = "<group>"; };
 		7836117E2BFB26300045B6EC /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				78CF31D12BF6F6F40046753D /* Array+Extension.swift */,
 				78CF31E62BF736AA0046753D /* UIViewController+Extension.swift */,
 				78E6319A2BFDB5E20053B38D /* String+Extension.swift */,
+				780CDC392BFF12EE001A314A /* Int+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				78CF31DC2BF721D20046753D /* AppPreviewInfo.swift in Sources */,
 				78E631892BFD7FF00053B38D /* ScreenshotsDashboardBuilder.swift in Sources */,
 				78CF31E22BF7260C0046753D /* ShowAllAppsRouter.swift in Sources */,
+				780CDC3A2BFF12EE001A314A /* Int+Extension.swift in Sources */,
 				78E631962BFDAA580053B38D /* ReleaseNoteDashboardBuilder.swift in Sources */,
 				7857115E2BF2FF8E00008AFD /* RIBs+Extension.swift in Sources */,
 				7857114A2BF2FAAA00008AFD /* AppRootBuilder.swift in Sources */,

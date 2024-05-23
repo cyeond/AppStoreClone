@@ -88,7 +88,7 @@ final class RatingInfoCell: UICollectionViewCell {
         
         switch type {
         case .userRating(let rating, let ratingCount):
-            titleLabel.text = "\(ratingCount)개의 평가"
+            titleLabel.text = ratingCount.toUnitConvertedString() + "개의 평가"
             contentLabel.text = String(format: "%.2f", rating)
             subContentLabel.text = "★★★★★"
         case .contentRating(let rating):
