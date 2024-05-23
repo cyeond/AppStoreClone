@@ -103,7 +103,7 @@ extension ShowAllAppsViewController {
     
     func update(with sectionModel: CollectionViewSectionModel) {
         switch sectionModel.section.type {
-        case .groupThree(title: let title, subtitle: _):
+        case .groupedThree(title: let title, subtitle: _):
             self.title = title
         default:
             return

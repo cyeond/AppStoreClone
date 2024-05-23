@@ -55,7 +55,7 @@ final class AppPreviewBasicCell: UICollectionViewCell {
     }
     
     func update(with viewModel: AppPreviewBasicViewModel) {
-        previewView.updateInfo(title: viewModel.previewInfo.title, subtitle: viewModel.previewInfo.subtitle, tapHandler: viewModel.tapHandler)
+        previewView.updateInfo(title: viewModel.previewInfo.title, subtitle: viewModel.previewInfo.developerName, tapHandler: viewModel.tapHandler)
         
         ImageDownloader.downloadImage(uriString: viewModel.previewInfo.iconUri)
             .subscribe(on: ImageDownloader.imageDownloaderScheduler)

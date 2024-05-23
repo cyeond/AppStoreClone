@@ -49,7 +49,7 @@ struct CollectionViewSectionModel {
         var height: CGFloat = 0
         
         switch self.section.type {
-        case .groupThree(title: _, subtitle: _):
+        case .groupedThree(title: _, subtitle: _):
             height = AppPreviewBasicHeaderView.height
         default:
             break
@@ -60,7 +60,7 @@ struct CollectionViewSectionModel {
     
     func layoutSection() -> NSCollectionLayoutSection {
         switch self.section.type {
-        case .groupThree(title: _, subtitle: _):
+        case .groupedThree(title: _, subtitle: _):
             let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .absolute(self.headerHeight))
             let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
             

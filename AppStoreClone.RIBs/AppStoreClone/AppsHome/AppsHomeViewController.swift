@@ -106,7 +106,7 @@ extension AppsHomeViewController {
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AppPreviewBasicHeaderView.identifier, for: indexPath) as? AppPreviewBasicHeaderView
             if let type = self?.viewModel[safe: indexPath.section]?.section.type {
                 switch type {
-                case .groupThree(title: let title, subtitle: let subtitle):
+                case .groupedThree(title: let title, subtitle: let subtitle):
                     header?.update(with: AppPreviewBasicHeaderViewModel(title: title, subtitle: subtitle, tapHandler: {
                         if let sectionModel = self?.viewModel[safe: indexPath.section] {
                             self?.listener?.seeAllButtonDidTap(with: sectionModel)

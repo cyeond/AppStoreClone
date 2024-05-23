@@ -43,10 +43,10 @@ struct API {
         }
     }
     
-    static func lookup(_ id: String) -> Single<AppInfo> {
-        guard let encodedId = id.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: Constants.lookupAPIPrefix + "&id=" + encodedId) else { return Single<AppInfo>.error(APIError.urlError) }
+    static func lookup(_ id: String) -> Single<APISearchResult> {
+        guard let encodedId = id.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: Constants.lookupAPIPrefix + "&id=" + encodedId) else { return Single<APISearchResult>.error(APIError.urlError) }
         
-        return Single<AppInfo>.create { observer in
+        return Single<APISearchResult>.create { observer in
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
             request.timeoutInterval = TimeInterval(10)
@@ -56,8 +56,8 @@ struct API {
                     observer(.failure(APIError.responseError(error.localizedDescription)))
                     return
                 }
-                if let data = data, let result = try? JSONDecoder().decode(APISearchResult.self, from: data), let info = result.results.first {
-                    observer(.success(info))
+                if let data = data, let result = try? JSONDecoder().decode(APISearchResult.self, from: data) {
+                    observer(.success(result))
                 } else {
                     observer(.failure(APIError.decodingError))
                 }

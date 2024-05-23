@@ -19,7 +19,7 @@ final class AppDetailsComponent: Component<AppDetailsDependency>, TopInfoDashboa
     
     init(dependency: AppDetailsDependency, appPreviewInfo: AppPreviewInfo) {
         self.appPreviewInfo = appPreviewInfo
-        self.appInfoObservable = API.lookup(appPreviewInfo.id).subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).asObservable().share(replay: 1)
+        self.appInfoObservable = API.lookup(appPreviewInfo.id).compactMap { $0.results[safe: 0] }.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).asObservable().share(replay: 1)
         super.init(dependency: dependency)
     }
 }

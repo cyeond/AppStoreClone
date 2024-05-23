@@ -8,7 +8,7 @@
 import Foundation
 
 enum CollectionViewSectionType: Hashable {
-    case groupThree(title: String, subtitle: String)
+    case groupedThree(title: String, subtitle: String)
     case verticalOne
     case horizontalOne
 }

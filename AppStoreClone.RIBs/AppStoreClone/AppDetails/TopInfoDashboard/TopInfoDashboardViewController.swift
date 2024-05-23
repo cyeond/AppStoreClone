@@ -157,7 +157,7 @@ final class TopInfoDashboardViewController: UIViewController, TopInfoDashboardPr
     
     func update(with info: AppPreviewInfo) {
         titleLabel.text = info.title
-        subtitleLabel.text = info.subtitle
+        subtitleLabel.text = info.developerName
         
         ImageDownloader.downloadImage(uriString: info.iconUri)
             .subscribe(on: ImageDownloader.imageDownloaderScheduler)
