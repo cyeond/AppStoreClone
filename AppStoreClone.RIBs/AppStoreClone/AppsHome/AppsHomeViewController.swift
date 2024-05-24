@@ -33,6 +33,7 @@ final class AppsHomeViewController: UIViewController, AppsHomePresentable, AppsH
         collectionView.showsVerticalScrollIndicator = false
         collectionView.register(AppPreviewBasicCell.self, forCellWithReuseIdentifier: AppPreviewBasicCell.identifier)
         collectionView.register(AppPreviewBasicHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: AppPreviewBasicHeaderView.identifier)
+        collectionView.contentInset = .init(top: 10.0, left: 0, bottom: 10.0, right: 0)
         collectionView.setCollectionViewLayout(createCollectionViewLayout(), animated: true)
         return collectionView
     }()

@@ -16,7 +16,7 @@ struct AppInfo: Decodable {
     enum CodingKeys: String, CodingKey {
         case id = "trackId"
         case title = "trackName"
-        case iconUrl = "artworkUrl100"
+        case iconUrl = "artworkUrl512"
         case developerName = "artistName"
         case releaseNote = "releaseNotes"
         case releaseDate = "currentVersionReleaseDate"
