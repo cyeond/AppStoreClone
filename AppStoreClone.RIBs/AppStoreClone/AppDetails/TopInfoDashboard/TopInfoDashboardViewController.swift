@@ -10,19 +10,15 @@ import RxSwift
 import UIKit
 
 protocol TopInfoDashboardPresentableListener: AnyObject {
-    // TODO: Declare properties and methods that the view controller can invoke to perform
-    // business logic, such as signIn(). This protocol is implemented by the corresponding
-    // interactor class.
+    func downloadButtonDidTap()
+    func shareButtonDidTap()
 }
 
 final class TopInfoDashboardViewController: UIViewController, TopInfoDashboardPresentable, TopInfoDashboardViewControllable {
     static let height: CGFloat = 120.0
     
     weak var listener: TopInfoDashboardPresentableListener?
-    
-    private var actionButtonTapHandler: (() -> Void)?
-    private var shareButtonTapHandler: (() -> Void)?
-    
+   
     private let disposeBag = DisposeBag()
     
     private let imageView: UIImageView = {
@@ -147,12 +143,12 @@ final class TopInfoDashboardViewController: UIViewController, TopInfoDashboardPr
     
     @objc
     private func actionButtonDidTap() {
-        actionButtonTapHandler?()
+        listener?.downloadButtonDidTap()
     }
     
     @objc
     private func shareButtonDidTap() {
-        shareButtonTapHandler?()
+        listener?.shareButtonDidTap()
     }
     
     func update(with info: AppPreviewInfo) {

@@ -8,7 +8,7 @@
 import Foundation
 
 struct AppInfo: Decodable {
-    let title, developerName, description, iconUrl, primaryGenreName, trackContentRating, releaseNote, version, releaseDate: String
+    let title, developerName, description, iconUrl, primaryGenreName, trackContentRating, releaseNote, version, releaseDate, appstoreUrl: String
     let id, userRatingCount: Int
     let averageUserRating: Double
     let screenshotUrls, languageCodes: [String]
@@ -20,6 +20,7 @@ struct AppInfo: Decodable {
         case developerName = "artistName"
         case releaseNote = "releaseNotes"
         case releaseDate = "currentVersionReleaseDate"
+        case appstoreUrl = "trackViewUrl"
         case languageCodes = "languageCodesISO2A"
         case version, description, primaryGenreName, trackContentRating, userRatingCount, averageUserRating, screenshotUrls
     }
