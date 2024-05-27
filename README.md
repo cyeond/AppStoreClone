@@ -17,8 +17,8 @@ This is an App Store clone project with Apps and Search tabs implemented.
 
 ### Preview
 <p align="leading">
-  <img width="25%" src="https://github.com/cyeond/AppStoreClone/assets/139483587/a0a0fc51-3874-4a43-8a4c-20aceb874211">
-  <img width="25%" src="https://github.com/cyeond/AppStoreClone/assets/139483587/3ab7c854-0e7c-40e9-a29c-6b48a9e26bc5">
+  <img width="25%" src="https://github.com/cyeond/AppStoreClone/assets/139483587/d36dee95-3f0b-455f-af0e-9fb803dda69b">
+  <img width="25%" src="https://github.com/cyeond/AppStoreClone/assets/139483587/bb2f03fd-cf60-4346-93cf-9ebe08858130">
 </p>
 <br>
 
