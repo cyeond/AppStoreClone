@@ -12,6 +12,7 @@ import UIKit
 protocol SearchHomePresentableListener: AnyObject {
     func searchButtonDidTap(_ text: String)
     func cancelButtonDidTap()
+    func appPreviewCellDidTap(with info: AppPreviewInfo)
 }
 
 final class SearchHomeViewController: UIViewController, SearchHomePresentable, SearchHomeViewControllable {
@@ -26,6 +27,7 @@ final class SearchHomeViewController: UIViewController, SearchHomePresentable, S
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
         collectionView.backgroundColor = .background
+        collectionView.delegate = self
         collectionView.register(AppPreviewBasicCell.self, forCellWithReuseIdentifier: AppPreviewBasicCell.identifier)
         collectionView.setCollectionViewLayout(createCollectionViewLayout(), animated: true)
         return collectionView
@@ -124,5 +126,19 @@ extension SearchHomeViewController {
         snapshot.appendSections([model.section])
         snapshot.appendItems(model.items, toSection: model.section)
         collectionViewDataSource?.apply(snapshot)
+    }
+}
+
+// MARK: - CollectionView Delegate
+extension SearchHomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let info = collectionViewSectionModel?.items[safe: indexPath.row] {
+            switch info.type {
+            case .appPreviewBasic(let info):
+                listener?.appPreviewCellDidTap(with: info)
+            default:
+                break
+            }
+        }
     }
 }

@@ -9,7 +9,8 @@ import RIBs
 import RxSwift
 
 protocol SearchHomeRouting: ViewableRouting {
-    // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
+    func attachAppDetails(with info: AppPreviewInfo)
+    func detachAppDetails()
 }
 
 protocol SearchHomePresentable: Presentable {
@@ -68,5 +69,14 @@ final class SearchHomeInteractor: PresentableInteractor<SearchHomePresentable>, 
     func cancelButtonDidTap() {
         currentText = ""
         currentResults.onNext([])
+    }
+    
+    func appPreviewCellDidTap(with info: AppPreviewInfo) {
+        router?.attachAppDetails(with: info)
+    }
+    
+    // MARK: - From AppDetails
+    func appDetailsDidTapClose() {
+        router?.detachAppDetails()
     }
 }

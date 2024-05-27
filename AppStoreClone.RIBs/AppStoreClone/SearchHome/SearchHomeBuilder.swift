@@ -12,8 +12,7 @@ protocol SearchHomeDependency: Dependency {
     // created by this RIB.
 }
 
-final class SearchHomeComponent: Component<SearchHomeDependency> {
-
+final class SearchHomeComponent: Component<SearchHomeDependency>, AppDetailsDependency {
     // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
 }
 
@@ -30,10 +29,13 @@ final class SearchHomeBuilder: Builder<SearchHomeDependency>, SearchHomeBuildabl
     }
 
     func build(withListener listener: SearchHomeListener) -> SearchHomeRouting {
-        _ = SearchHomeComponent(dependency: dependency)
+        let component = SearchHomeComponent(dependency: dependency)
         let viewController = SearchHomeViewController()
         let interactor = SearchHomeInteractor(presenter: viewController)
         interactor.listener = listener
-        return SearchHomeRouter(interactor: interactor, viewController: viewController)
+        
+        let appDetailsBuilder = AppDetailsBuilder(dependency: component)
+        
+        return SearchHomeRouter(interactor: interactor, viewController: viewController, appDetailsBuildable: appDetailsBuilder)
     }
 }
