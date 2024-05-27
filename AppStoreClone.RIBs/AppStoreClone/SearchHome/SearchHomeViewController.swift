@@ -10,9 +10,7 @@ import RxSwift
 import UIKit
 
 protocol SearchHomePresentableListener: AnyObject {
-    // TODO: Declare properties and methods that the view controller can invoke to perform
-    // business logic, such as signIn(). This protocol is implemented by the corresponding
-    // interactor class.
+    func searchButtonDidTap(_ text: String)
 }
 
 final class SearchHomeViewController: UIViewController, SearchHomePresentable, SearchHomeViewControllable {
@@ -37,10 +35,29 @@ final class SearchHomeViewController: UIViewController, SearchHomePresentable, S
         navigationItem.largeTitleDisplayMode = .automatic
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let searchController = UISearchController()
+        searchController.obscuresBackgroundDuringPresentation = true
+        searchController.searchBar.placeholder = "게임, 앱, 스토리 등"
+        searchController.searchBar.delegate = self
+        
+        navigationItem.searchController = searchController
+    }
+    
     private func setupViews() {
         title = "검색"
         tabBarItem = UITabBarItem(title: "검색", image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass"))
         
         view.backgroundColor = .background
+    }
+}
+
+extension SearchHomeViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text, text.count > 0 else { return }
+        
+        listener?.searchButtonDidTap(text)
     }
 }

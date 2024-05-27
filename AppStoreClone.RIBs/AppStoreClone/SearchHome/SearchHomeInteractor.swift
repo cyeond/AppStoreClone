@@ -22,9 +22,12 @@ protocol SearchHomeListener: AnyObject {
 }
 
 final class SearchHomeInteractor: PresentableInteractor<SearchHomePresentable>, SearchHomeInteractable, SearchHomePresentableListener {
-
     weak var router: SearchHomeRouting?
     weak var listener: SearchHomeListener?
+    
+    private var currentText = ""
+    private var currentResults = BehaviorSubject<[AppInfo]>(value: [])
+    private let disposeBag = DisposeBag()
 
     // TODO: Add additional dependencies to constructor. Do not perform any logic
     // in constructor.
@@ -41,5 +44,16 @@ final class SearchHomeInteractor: PresentableInteractor<SearchHomePresentable>, 
     override func willResignActive() {
         super.willResignActive()
         // TODO: Pause any business logic.
+    }
+    
+    func searchButtonDidTap(_ text: String) {
+        API.lookup(text)
+            .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
+            .observe(on: MainScheduler.instance)
+            .subscribe(with: self, onSuccess: { weakSelf, result in
+                weakSelf.currentText = text
+                weakSelf.currentResults.onNext(result.results)
+            })
+            .disposed(by: disposeBag)
     }
 }
