@@ -14,7 +14,8 @@ protocol SearchHomeRouting: ViewableRouting {
 
 protocol SearchHomePresentable: Presentable {
     var listener: SearchHomePresentableListener? { get set }
-    // TODO: Declare methods the interactor can invoke the presenter to present data.
+    
+    func update(with model: CollectionViewSectionModel)
 }
 
 protocol SearchHomeListener: AnyObject {
@@ -38,7 +39,14 @@ final class SearchHomeInteractor: PresentableInteractor<SearchHomePresentable>, 
 
     override func didBecomeActive() {
         super.didBecomeActive()
-        // TODO: Implement business logic here.
+        
+        currentResults
+            .subscribe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] infos in
+                let model = CollectionViewSectionModel(section: CollectionViewSection(type: .verticalOne), items: infos.map { CollectionViewItem(type: .appPreviewBasic(AppPreviewInfo(id: String($0.id), title: $0.title, developerName: $0.developerName, iconUri: $0.iconUrl))) })
+                self?.presenter.update(with: model)
+            })
+            .disposed(by: disposeBag)
     }
 
     override func willResignActive() {
@@ -47,7 +55,7 @@ final class SearchHomeInteractor: PresentableInteractor<SearchHomePresentable>, 
     }
     
     func searchButtonDidTap(_ text: String) {
-        API.lookup(text)
+        API.search(text)
             .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
             .observe(on: MainScheduler.instance)
             .subscribe(with: self, onSuccess: { weakSelf, result in
@@ -55,5 +63,10 @@ final class SearchHomeInteractor: PresentableInteractor<SearchHomePresentable>, 
                 weakSelf.currentResults.onNext(result.results)
             })
             .disposed(by: disposeBag)
+    }
+    
+    func cancelButtonDidTap() {
+        currentText = ""
+        currentResults.onNext([])
     }
 }
