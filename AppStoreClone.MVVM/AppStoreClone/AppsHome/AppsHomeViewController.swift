@@ -8,25 +8,16 @@
 import RxSwift
 import UIKit
 
-protocol AppsHomePresentableListener: AnyObject {
-    // TODO: Declare properties and methods that the view controller can invoke to perform
-    // business logic, such as signIn(). This protocol is implemented by the corresponding
-    // interactor class.
-    func seeAllButtonDidTap(with sectionModel: CollectionViewSectionModel)
-    func appPreviewActionButtonDidTap(with info: AppPreviewInfo)
-    func appPreviewCellDidTap(with info: AppPreviewInfo)
-}
-
 final class AppsHomeViewController: UIViewController {
-    weak var listener: AppsHomePresentableListener?
-    
     private var collectionViewDataSource: UICollectionViewDiffableDataSource<CollectionViewSection, CollectionViewItem>?
-    private var viewModel: [CollectionViewSectionModel] = []
+    private var sectionModel: [CollectionViewSectionModel] = []
+    
+    private let viewModel = AppsHomeViewModel()
+    private let disposeBag = DisposeBag()
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.delegate = self
         collectionView.backgroundColor = .background
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
@@ -37,40 +28,70 @@ final class AppsHomeViewController: UIViewController {
         return collectionView
     }()
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
+    private let activityIndicator: UIActivityIndicatorView = {
+        let activity = UIActivityIndicatorView(style: .large)
+        activity.translatesAutoresizingMaskIntoConstraints = false
+        activity.hidesWhenStopped = true
+        activity.stopAnimating()
+        return activity
+    }()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         setupViews()
         setupCollectionViewDataSource()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        setupViews()
-        setupCollectionViewDataSource()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .automatic
+        bindViewModel()
     }
     
     private func setupViews() {
         title = "앱"
         tabBarItem = UITabBarItem(title: "앱", image: UIImage(systemName: "square.stack.3d.up.fill"), selectedImage: UIImage(systemName: "square.stack.3d.up.fill"))
         
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
+        
         view.backgroundColor = .background
         view.addSubview(collectionView)
+        view.addSubview(activityIndicator)
         
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
+    }
+    
+    private func bindViewModel() {
+        let loadTrigger = Observable.just(())
+        let appPreviewCellDidTap = collectionView.rx.itemSelected.asObservable()
+        
+        let input = AppsHomeViewModel.Input(
+            loadTrigger: loadTrigger,
+            appPreviewCellDidTap: appPreviewCellDidTap
+        )
+        
+        let output = viewModel.transform(input: input)
+        
+        output.items
+            .drive(with: self) { weakSelf, items in
+                weakSelf.update(with: items)
+            }
+            .disposed(by: disposeBag)
+        
+        output.isLoading
+            .drive(activityIndicator.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
+        output.error
+            .drive(onNext: { error in
+                
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -81,7 +102,7 @@ extension AppsHomeViewController {
         config.interSectionSpacing = 20.0
         
         return UICollectionViewCompositionalLayout(sectionProvider: { [weak self] sectionIndex, environment in
-            return self?.viewModel[safe: sectionIndex]?.layoutSection()
+            return self?.sectionModel[safe: sectionIndex]?.layoutSection()
         }, configuration: config)
     }
 }
@@ -94,7 +115,7 @@ extension AppsHomeViewController {
             case .appPreviewBasic(let info):
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppPreviewBasicCell.identifier, for: indexPath) as? AppPreviewBasicCell else { return UICollectionViewCell() }
                 cell.update(with: AppPreviewBasicViewModel(previewInfo: info, tapHandler: {
-                    self?.listener?.appPreviewActionButtonDidTap(with: info)
+//                    appPreviewActionButtonDidTap
                 }))
                 return cell
             default:
@@ -104,12 +125,12 @@ extension AppsHomeViewController {
         
         collectionViewDataSource?.supplementaryViewProvider = { [weak self] collectionView, kind, indexPath -> UICollectionReusableView? in
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AppPreviewBasicHeaderView.identifier, for: indexPath) as? AppPreviewBasicHeaderView
-            if let type = self?.viewModel[safe: indexPath.section]?.section.type {
+            if let type = self?.sectionModel[safe: indexPath.section]?.section.type {
                 switch type {
                 case .groupedThree(title: let title, subtitle: let subtitle):
                     header?.update(with: AppPreviewBasicHeaderViewModel(title: title, subtitle: subtitle, tapHandler: {
-                        if let sectionModel = self?.viewModel[safe: indexPath.section] {
-                            self?.listener?.seeAllButtonDidTap(with: sectionModel)
+                        if let sectionModel = self?.sectionModel[safe: indexPath.section] {
+//                            seeAllButtonDidTap
                         }
                     }))
                 default:
@@ -120,31 +141,16 @@ extension AppsHomeViewController {
         }
     }
     
-    func update(with viewModel: [CollectionViewSectionModel]) {
-        self.viewModel = viewModel
-        
+    private func update(with sectionModel: [CollectionViewSectionModel]) {
+        self.sectionModel = sectionModel
         var snapshot = NSDiffableDataSourceSnapshot<CollectionViewSection, CollectionViewItem>()
         
-        viewModel.forEach { model in
+        sectionModel.forEach { model in
             snapshot.appendSections([model.section])
             snapshot.appendItems(model.items, toSection: model.section)
         }
         
         collectionViewDataSource?.apply(snapshot)
-    }
-}
-
-// MARK: - CollectionView Delegate
-extension AppsHomeViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let info = viewModel[safe: indexPath.section]?.items[safe: indexPath.row] {
-            switch info.type {
-            case .appPreviewBasic(let info):
-                listener?.appPreviewCellDidTap(with: info)
-            default:
-                return
-            }
-        }
     }
 }
 

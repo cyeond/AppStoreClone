@@ -29,28 +29,18 @@ final class AppDetailsViewController: UIViewController {
         stackView.alignment = .fill
         return stackView
     }()
-
-    init() {
-        super.init(nibName: nil, bundle: nil)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         setupViews()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        setupViews()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     private func setupViews() {
         view.backgroundColor = .background
         view.addSubview(scrollView)
+        
+        navigationController?.navigationBar.prefersLargeTitles = false
         
         scrollView.addSubview(stackView)
         

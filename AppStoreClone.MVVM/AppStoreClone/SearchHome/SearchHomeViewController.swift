@@ -32,41 +32,24 @@ final class SearchHomeViewController: UIViewController {
         return collectionView
     }()
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        
-        setupViews()
-        setupCollectionViewDataSource()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        setupViews()
-        setupCollectionViewDataSource()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .automatic
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let searchController = UISearchController()
-//        searchController.obscuresBackgroundDuringPresentation = true
-        searchController.searchBar.placeholder = "게임, 앱, 스토리 등"
-        searchController.searchBar.delegate = self
-        
-        navigationItem.searchController = searchController
+        setupViews()
+        setupCollectionViewDataSource()
     }
     
     private func setupViews() {
         title = "검색"
         tabBarItem = UITabBarItem(title: "검색", image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass"))
+        
+        let searchController = UISearchController()
+        searchController.searchBar.placeholder = "게임, 앱, 스토리 등"
+        searchController.searchBar.delegate = self
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
+        navigationItem.searchController = searchController
         
         view.backgroundColor = .background
         view.addSubview(collectionView)
