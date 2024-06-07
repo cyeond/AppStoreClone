@@ -40,6 +40,7 @@
 		78C721DF2C12D88600D00711 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 78C721DE2C12D88600D00711 /* RxSwift */; };
 		78C721E32C12D8E700D00711 /* SearchHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C721E22C12D8E700D00711 /* SearchHomeViewController.swift */; };
 		78C721E52C12D92A00D00711 /* AppDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C721E42C12D92A00D00711 /* AppDetailsViewController.swift */; };
+		78C721E72C12DCF800D00711 /* AppsHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C721E62C12DCF800D00711 /* AppsHomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		78B54E842C12D69100726318 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		78C721E22C12D8E700D00711 /* SearchHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHomeViewController.swift; sourceTree = "<group>"; };
 		78C721E42C12D92A00D00711 /* AppDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDetailsViewController.swift; sourceTree = "<group>"; };
+		78C721E62C12DCF800D00711 /* AppsHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				78B54E272C12D37200726318 /* AppsHomeViewController.swift */,
+				78C721E62C12DCF800D00711 /* AppsHomeViewModel.swift */,
 			);
 			path = AppsHome;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				78B54E0F2C12CCCF00726318 /* AppDelegate.swift in Sources */,
 				78B54E652C12D5AA00726318 /* AppPreviewBasicCell.swift in Sources */,
 				78B54E5B2C12D51500726318 /* AppPreviewInfo.swift in Sources */,
+				78C721E72C12DCF800D00711 /* AppsHomeViewModel.swift in Sources */,
 				78B54E862C12D69100726318 /* API.swift in Sources */,
 				78B54E6E2C12D5C000726318 /* TitleHeaderView.swift in Sources */,
 				78B54E7A2C12D64800726318 /* String+Extension.swift in Sources */,
