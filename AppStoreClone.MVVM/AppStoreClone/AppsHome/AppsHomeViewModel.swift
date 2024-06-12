@@ -5,7 +5,7 @@
 //  Created by YD on 6/7/24.
 //
 
-import Foundation
+import UIKit
 import RxSwift
 import RxCocoa
 
@@ -13,16 +13,19 @@ final class AppsHomeViewModel {
     struct Input {
         let loadTrigger: Observable<Void>
         let appPreviewCellDidTap: Observable<IndexPath>
+        let seeAllButtonDidTap: Observable<Int>
     }
     
     struct Output {
         let items: Driver<[CollectionViewSectionModel]>
         let isLoading: Driver<Bool>
-        let error: Driver<Error>
+        let pushViewController: Signal<UIViewController>
+        let error: Signal<Error>
     }
     
     private let itemsRelay = BehaviorRelay<[CollectionViewSectionModel]>(value: [])
     private let isLoadingRelay = BehaviorRelay<Bool>(value: false)
+    private let pushViewControllerRelay = PublishRelay<UIViewController>()
     private let errorRelay = PublishRelay<Error>()
     
     private let disposeBag = DisposeBag()
@@ -46,10 +49,21 @@ final class AppsHomeViewModel {
             })
             .disposed(by: disposeBag)
         
+        input.seeAllButtonDidTap
+            .subscribe(onNext: { [weak self] sectionIndex in
+                if let sectionModel = self?.itemsRelay.value[safe: sectionIndex] {
+                    let vc = ShowAllAppsViewController()
+                    vc.viewModel = ShowAllAppsViewModel(sectionModel: sectionModel)
+                    self?.pushViewControllerRelay.accept(vc)
+                }
+            })
+            .disposed(by: disposeBag)
+        
         return Output(
             items: itemsRelay.asDriver(),
             isLoading: isLoadingRelay.asDriver(),
-            error: errorRelay.asDriver(onErrorDriveWith: Driver.empty())
+            pushViewController: pushViewControllerRelay.asSignal(),
+            error: errorRelay.asSignal()
         )
     }
 }

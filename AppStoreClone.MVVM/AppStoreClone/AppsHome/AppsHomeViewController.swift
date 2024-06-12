@@ -12,6 +12,7 @@ final class AppsHomeViewController: UIViewController {
     private var collectionViewDataSource: UICollectionViewDiffableDataSource<CollectionViewSection, CollectionViewItem>?
     private var sectionModel: [CollectionViewSectionModel] = []
     
+    private let seeAllButtonDidTap = PublishSubject<Int>()
     private let viewModel = AppsHomeViewModel()
     private let disposeBag = DisposeBag()
     
@@ -72,7 +73,8 @@ final class AppsHomeViewController: UIViewController {
         
         let input = AppsHomeViewModel.Input(
             loadTrigger: loadTrigger,
-            appPreviewCellDidTap: appPreviewCellDidTap
+            appPreviewCellDidTap: appPreviewCellDidTap,
+            seeAllButtonDidTap: seeAllButtonDidTap.asObservable()
         )
         
         let output = viewModel.transform(input: input)
@@ -87,8 +89,14 @@ final class AppsHomeViewController: UIViewController {
             .drive(activityIndicator.rx.isAnimating)
             .disposed(by: disposeBag)
         
+        output.pushViewController
+            .emit(with: self) { weakSelf, vc in
+                weakSelf.navigationController?.pushViewController(vc, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
         output.error
-            .drive(onNext: { error in
+            .emit(onNext: { error in
                 
             })
             .disposed(by: disposeBag)
@@ -129,9 +137,7 @@ extension AppsHomeViewController {
                 switch type {
                 case .groupedThree(title: let title, subtitle: let subtitle):
                     header?.update(with: AppPreviewBasicHeaderViewModel(title: title, subtitle: subtitle, tapHandler: {
-                        if let sectionModel = self?.sectionModel[safe: indexPath.section] {
-//                            seeAllButtonDidTap
-                        }
+                        self?.seeAllButtonDidTap.onNext(indexPath.section)
                     }))
                 default:
                     return nil
