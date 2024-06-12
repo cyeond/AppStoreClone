@@ -15,11 +15,11 @@ protocol AppDetailsDependency: Dependency {
 
 final class AppDetailsComponent: Component<AppDetailsDependency>, TopInfoDashboardDependency, RatingInfoDashboardDependency, ScreenshotsDashboardDependency, ReleaseNoteDashboardDependency {
     let appPreviewInfo: AppPreviewInfo
-    let appInfoObservable: Observable<AppInfo>
+    let appDetailsRepository: AppDetailsRepository
     
     init(dependency: AppDetailsDependency, appPreviewInfo: AppPreviewInfo) {
         self.appPreviewInfo = appPreviewInfo
-        self.appInfoObservable = API.lookup(appPreviewInfo.id).compactMap { $0.results[safe: 0] }.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background)).asObservable().share(replay: 1)
+        self.appDetailsRepository = AppDetailsRepositoryImp(appId: appPreviewInfo.id)
         super.init(dependency: dependency)
     }
 }

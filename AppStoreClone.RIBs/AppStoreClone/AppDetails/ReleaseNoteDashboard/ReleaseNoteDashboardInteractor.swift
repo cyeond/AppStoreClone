@@ -23,7 +23,7 @@ protocol ReleaseNoteDashboardListener: AnyObject {
 }
 
 protocol ReleaseNoteDashboardInteractorDependency {
-    var appInfoObservable: Observable<AppInfo> { get }
+    var appDetailsRepository: AppDetailsRepository { get }
 }
 
 final class ReleaseNoteDashboardInteractor: PresentableInteractor<ReleaseNoteDashboardPresentable>, ReleaseNoteDashboardInteractable, ReleaseNoteDashboardPresentableListener {
@@ -44,7 +44,7 @@ final class ReleaseNoteDashboardInteractor: PresentableInteractor<ReleaseNoteDas
     override func didBecomeActive() {
         super.didBecomeActive()
         
-        dependency.appInfoObservable
+        dependency.appDetailsRepository.appInfoObservable
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] info in
                 self?.presenter.update(with: info)

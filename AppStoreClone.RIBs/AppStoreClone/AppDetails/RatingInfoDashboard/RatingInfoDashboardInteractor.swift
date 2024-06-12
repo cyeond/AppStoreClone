@@ -23,7 +23,7 @@ protocol RatingInfoDashboardListener: AnyObject {
 }
 
 protocol RatingInfoDashboardInteractorDependency {
-    var appInfoObservable: Observable<AppInfo> { get }
+    var appDetailsRepository: AppDetailsRepository { get }
 }
 
 final class RatingInfoDashboardInteractor: PresentableInteractor<RatingInfoDashboardPresentable>, RatingInfoDashboardInteractable, RatingInfoDashboardPresentableListener {
@@ -45,7 +45,7 @@ final class RatingInfoDashboardInteractor: PresentableInteractor<RatingInfoDashb
     override func didBecomeActive() {
         super.didBecomeActive()
         
-        dependency.appInfoObservable
+        dependency.appDetailsRepository.appInfoObservable
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] info in
                 let sectionModel = CollectionViewSectionModel(

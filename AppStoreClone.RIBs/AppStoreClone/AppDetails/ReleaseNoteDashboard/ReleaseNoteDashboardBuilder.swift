@@ -9,11 +9,11 @@ import RIBs
 import RxSwift
 
 protocol ReleaseNoteDashboardDependency: Dependency {
-    var appInfoObservable: Observable<AppInfo> { get }
+    var appDetailsRepository: AppDetailsRepository { get }
 }
 
 final class ReleaseNoteDashboardComponent: Component<ReleaseNoteDashboardDependency>,ReleaseNoteDashboardInteractorDependency {
-    var appInfoObservable: Observable<AppInfo> { dependency.appInfoObservable }
+    var appDetailsRepository: AppDetailsRepository { dependency.appDetailsRepository }
 }
 
 // MARK: - Builder

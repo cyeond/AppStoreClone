@@ -19,6 +19,7 @@
 		7836118E2BFB3B3F0045B6EC /* RatingInfoDashboardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7836118A2BFB3B3F0045B6EC /* RatingInfoDashboardBuilder.swift */; };
 		7836118F2BFB3B3F0045B6EC /* RatingInfoDashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7836118B2BFB3B3F0045B6EC /* RatingInfoDashboardInteractor.swift */; };
 		783611912BFB42070045B6EC /* RatingInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783611902BFB42070045B6EC /* RatingInfoCell.swift */; };
+		7843F53B2C196E2B00E24870 /* AppDetailsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7843F53A2C196E2B00E24870 /* AppDetailsRepository.swift */; };
 		785711262BF2F49C00008AFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711252BF2F49C00008AFD /* AppDelegate.swift */; };
 		7857112F2BF2F49D00008AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7857112E2BF2F49D00008AFD /* Assets.xcassets */; };
 		785711322BF2F49D00008AFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785711302BF2F49D00008AFD /* LaunchScreen.storyboard */; };
@@ -88,6 +89,7 @@
 		7836118A2BFB3B3F0045B6EC /* RatingInfoDashboardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingInfoDashboardBuilder.swift; sourceTree = "<group>"; };
 		7836118B2BFB3B3F0045B6EC /* RatingInfoDashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingInfoDashboardInteractor.swift; sourceTree = "<group>"; };
 		783611902BFB42070045B6EC /* RatingInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingInfoCell.swift; sourceTree = "<group>"; };
+		7843F53A2C196E2B00E24870 /* AppDetailsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailsRepository.swift; sourceTree = "<group>"; };
 		785711222BF2F49C00008AFD /* AppStoreClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		785711252BF2F49C00008AFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7857112E2BF2F49D00008AFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				78CF31EA2BF747B30046753D /* AppDetailsViewController.swift */,
 				78CF31EB2BF747B30046753D /* AppDetailsBuilder.swift */,
 				78CF31EC2BF747B30046753D /* AppDetailsInteractor.swift */,
+				7843F53A2C196E2B00E24870 /* AppDetailsRepository.swift */,
 			);
 			path = AppDetails;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				78E6318A2BFD7FF00053B38D /* ScreenshotsDashboardInteractor.swift in Sources */,
 				78A853092BF855A4001D64A7 /* TopInfoDashboardRouter.swift in Sources */,
 				785711532BF2FAB800008AFD /* AppsHomeInteractor.swift in Sources */,
+				7843F53B2C196E2B00E24870 /* AppDetailsRepository.swift in Sources */,
 				78CF31D52BF7210B0046753D /* CollectionViewSectionModel.swift in Sources */,
 				78CF31D82BF721610046753D /* CollectionViewSection.swift in Sources */,
 				7857115A2BF2FAC200008AFD /* SearchHomeBuilder.swift in Sources */,

@@ -9,11 +9,11 @@ import RIBs
 import RxSwift
 
 protocol RatingInfoDashboardDependency: Dependency {
-    var appInfoObservable: Observable<AppInfo> { get }
+    var appDetailsRepository: AppDetailsRepository { get }
 }
 
 final class RatingInfoDashboardComponent: Component<RatingInfoDashboardDependency>, RatingInfoDashboardInteractorDependency {
-    var appInfoObservable: Observable<AppInfo> { dependency.appInfoObservable }
+    var appDetailsRepository: AppDetailsRepository { dependency.appDetailsRepository }
 }
 
 // MARK: - Builder

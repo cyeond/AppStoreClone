@@ -9,11 +9,11 @@ import RIBs
 import RxSwift
 
 protocol ScreenshotsDashboardDependency: Dependency {
-    var appInfoObservable: Observable<AppInfo> { get }
+    var appDetailsRepository: AppDetailsRepository { get }
 }
 
 final class ScreenshotsDashboardComponent: Component<ScreenshotsDashboardDependency>, ScreenshotsDashboardInteractorDependency {
-    var appInfoObservable: Observable<AppInfo> { dependency.appInfoObservable }
+    var appDetailsRepository: AppDetailsRepository { dependency.appDetailsRepository }
 }
 
 // MARK: - Builder

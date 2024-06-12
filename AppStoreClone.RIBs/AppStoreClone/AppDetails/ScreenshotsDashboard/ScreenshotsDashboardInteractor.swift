@@ -23,7 +23,7 @@ protocol ScreenshotsDashboardListener: AnyObject {
 }
 
 protocol ScreenshotsDashboardInteractorDependency {
-    var appInfoObservable: Observable<AppInfo> { get }
+    var appDetailsRepository: AppDetailsRepository { get }
 }
 
 final class ScreenshotsDashboardInteractor: PresentableInteractor<ScreenshotsDashboardPresentable>, ScreenshotsDashboardInteractable, ScreenshotsDashboardPresentableListener {
@@ -44,7 +44,7 @@ final class ScreenshotsDashboardInteractor: PresentableInteractor<ScreenshotsDas
     override func didBecomeActive() {
         super.didBecomeActive()
         
-        dependency.appInfoObservable
+        dependency.appDetailsRepository.appInfoObservable
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] info in
                 let sectionModel = CollectionViewSectionModel(
