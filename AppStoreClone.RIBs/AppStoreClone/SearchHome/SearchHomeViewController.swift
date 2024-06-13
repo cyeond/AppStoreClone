@@ -8,6 +8,9 @@
 import RIBs
 import RxSwift
 import UIKit
+import ReuseableViews
+import Entities
+import ResourcesLibrary
 
 protocol SearchHomePresentableListener: AnyObject {
     func searchButtonDidTap(_ text: String)
@@ -26,11 +29,19 @@ final class SearchHomeViewController: UIViewController, SearchHomePresentable, S
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.backgroundColor = .background
+        collectionView.backgroundColor = ColorProvider.background
         collectionView.delegate = self
         collectionView.register(AppPreviewBasicCell.self, forCellWithReuseIdentifier: AppPreviewBasicCell.identifier)
         collectionView.setCollectionViewLayout(createCollectionViewLayout(), animated: true)
         return collectionView
+    }()
+    
+    private let activityIndicator: UIActivityIndicatorView = {
+        let activity = UIActivityIndicatorView(style: .large)
+        activity.translatesAutoresizingMaskIntoConstraints = false
+        activity.hidesWhenStopped = true
+        activity.stopAnimating()
+        return activity
     }()
     
     init() {
@@ -69,14 +80,18 @@ final class SearchHomeViewController: UIViewController, SearchHomePresentable, S
         title = "검색"
         tabBarItem = UITabBarItem(title: "검색", image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass"))
         
-        view.backgroundColor = .background
+        view.backgroundColor = ColorProvider.background
         view.addSubview(collectionView)
+        view.addSubview(activityIndicator)
         
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
 }
@@ -140,5 +155,17 @@ extension SearchHomeViewController: UICollectionViewDelegate {
                 break
             }
         }
+    }
+}
+
+
+// MARK: - Activity Indicator
+extension SearchHomeViewController {
+    func startLoading() {
+        activityIndicator.startAnimating()
+    }
+    
+    func stopLoading() {
+        activityIndicator.stopAnimating()
     }
 }

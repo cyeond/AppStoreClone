@@ -8,6 +8,9 @@
 import RIBs
 import RxSwift
 import UIKit
+import Entities
+import ReuseableViews
+import ResourcesLibrary
 
 protocol AppsHomePresentableListener: AnyObject {
     // TODO: Declare properties and methods that the view controller can invoke to perform
@@ -28,7 +31,7 @@ final class AppsHomeViewController: UIViewController, AppsHomePresentable, AppsH
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
-        collectionView.backgroundColor = .background
+        collectionView.backgroundColor = ColorProvider.background
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
         collectionView.register(AppPreviewBasicCell.self, forCellWithReuseIdentifier: AppPreviewBasicCell.identifier)
@@ -63,7 +66,7 @@ final class AppsHomeViewController: UIViewController, AppsHomePresentable, AppsH
         title = "앱"
         tabBarItem = UITabBarItem(title: "앱", image: UIImage(systemName: "square.stack.3d.up.fill"), selectedImage: UIImage(systemName: "square.stack.3d.up.fill"))
         
-        view.backgroundColor = .background
+        view.backgroundColor = ColorProvider.background
         view.addSubview(collectionView)
         
         NSLayoutConstraint.activate([

@@ -7,6 +7,9 @@
 
 import RIBs
 import RxSwift
+import Entities
+import ReuseableViews
+import Network
 
 protocol SearchHomeRouting: ViewableRouting {
     func attachAppDetails(with info: AppPreviewInfo)
@@ -17,6 +20,8 @@ protocol SearchHomePresentable: Presentable {
     var listener: SearchHomePresentableListener? { get set }
     
     func update(with model: CollectionViewSectionModel)
+    func startLoading()
+    func stopLoading()
 }
 
 protocol SearchHomeListener: AnyObject {
@@ -56,12 +61,20 @@ final class SearchHomeInteractor: PresentableInteractor<SearchHomePresentable>, 
     }
     
     func searchButtonDidTap(_ text: String) {
+        presenter.startLoading()
+        currentResults.onNext([])
+        
         API.search(text)
             .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
             .observe(on: MainScheduler.instance)
+            .retry(3)
             .subscribe(with: self, onSuccess: { weakSelf, result in
                 weakSelf.currentText = text
                 weakSelf.currentResults.onNext(result.results)
+            }, onFailure: { weakSelf, error in
+                print(error)
+            }, onDisposed: { weakSelf in
+                weakSelf.presenter.stopLoading()
             })
             .disposed(by: disposeBag)
     }

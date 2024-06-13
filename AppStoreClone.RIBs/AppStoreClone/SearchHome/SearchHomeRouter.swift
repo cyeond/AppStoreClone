@@ -6,6 +6,8 @@
 //
 
 import RIBs
+import AppDetails
+import Entities
 
 protocol SearchHomeInteractable: Interactable, AppDetailsListener {
     var router: SearchHomeRouting? { get set }

@@ -8,6 +8,7 @@
 import RIBs
 import RxSwift
 import UIKit
+import ResourcesLibrary
 
 protocol AppRootPresentableListener: AnyObject {
     // TODO: Declare properties and methods that the view controller can invoke to perform
@@ -23,7 +24,7 @@ final class RootTabBarController: UITabBarController, AppRootPresentable, AppRoo
         
         tabBar.isTranslucent = false
         tabBar.tintColor = .systemBlue
-        tabBar.backgroundColor = .background
+        tabBar.backgroundColor = ColorProvider.background
     }
     
     func setViewControllers(_ viewControllers: [ViewControllable]) {

@@ -6,6 +6,7 @@
 //
 
 import RIBs
+import ReuseableViews
 
 protocol ShowAllAppsDependency: Dependency {
     // TODO: Declare the set of dependencies required by this RIB, but cannot be

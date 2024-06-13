@@ -8,6 +8,9 @@
 import RIBs
 import RxSwift
 import UIKit
+import Entities
+import ReuseableViews
+import ResourcesLibrary
 
 protocol ShowAllAppsPresentableListener: AnyObject {
     func didTapBack()
@@ -27,7 +30,7 @@ final class ShowAllAppsViewController: UIViewController, ShowAllAppsPresentable,
         collectionView.delegate = self
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.backgroundColor = .background
+        collectionView.backgroundColor = ColorProvider.background
         collectionView.register(AppPreviewBasicCell.self, forCellWithReuseIdentifier: AppPreviewBasicCell.identifier)
         collectionView.setCollectionViewLayout(createCollectionViewLayout(), animated: true)
         return collectionView
@@ -54,7 +57,7 @@ final class ShowAllAppsViewController: UIViewController, ShowAllAppsPresentable,
     }
     
     private func setupViews() {
-        view.backgroundColor = .background
+        view.backgroundColor = ColorProvider.background
         view.addSubview(collectionView)
         
         setupNavigationItem(with: .back, target: self, action: #selector(didTapBack))

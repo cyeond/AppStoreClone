@@ -6,6 +6,7 @@
 //
 
 import RIBs
+import Extensions
 
 protocol AppRootInteractable: Interactable, AppsHomeListener, SearchHomeListener {
     var router: AppRootRouting? { get set }

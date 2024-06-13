@@ -6,6 +6,9 @@
 //
 
 import RIBs
+import AppDetails
+import ReuseableViews
+import Entities
 
 protocol AppsHomeInteractable: Interactable, ShowAllAppsListener, AppDetailsListener {
     var router: AppsHomeRouting? { get set }
