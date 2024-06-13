@@ -11,6 +11,7 @@ import AppDetails
 import AppDetailsImp
 import ShowAllApps
 import ShowAllAppsImp
+import SearchHome
 import RIBs
 
 final class AppRootComponent: Component<AppRootDependency>, AppsHomeDependency, SearchHomeDependency, ShowAllAppsDependency, AppDetailsDependency {

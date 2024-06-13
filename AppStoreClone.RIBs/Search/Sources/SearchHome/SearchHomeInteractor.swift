@@ -24,7 +24,7 @@ protocol SearchHomePresentable: Presentable {
     func stopLoading()
 }
 
-protocol SearchHomeListener: AnyObject {
+public protocol SearchHomeListener: AnyObject {
     // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
 }
 
@@ -71,8 +71,7 @@ final class SearchHomeInteractor: PresentableInteractor<SearchHomePresentable>, 
             .subscribe(with: self, onSuccess: { weakSelf, result in
                 weakSelf.currentText = text
                 weakSelf.currentResults.onNext(result.results)
-            }, onFailure: { weakSelf, error in
-                print(error)
+            }, onFailure: { _, _ in
             }, onDisposed: { weakSelf in
                 weakSelf.presenter.stopLoading()
             })

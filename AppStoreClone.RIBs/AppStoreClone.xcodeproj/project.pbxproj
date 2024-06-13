@@ -17,10 +17,6 @@
 		785711492BF2FAAA00008AFD /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711452BF2FAAA00008AFD /* RootTabBarController.swift */; };
 		7857114A2BF2FAAA00008AFD /* AppRootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711462BF2FAAA00008AFD /* AppRootBuilder.swift */; };
 		7857114B2BF2FAAA00008AFD /* AppRootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711472BF2FAAA00008AFD /* AppRootInteractor.swift */; };
-		785711582BF2FAC200008AFD /* SearchHomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711542BF2FAC200008AFD /* SearchHomeRouter.swift */; };
-		785711592BF2FAC200008AFD /* SearchHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711552BF2FAC200008AFD /* SearchHomeViewController.swift */; };
-		7857115A2BF2FAC200008AFD /* SearchHomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711562BF2FAC200008AFD /* SearchHomeBuilder.swift */; };
-		7857115B2BF2FAC200008AFD /* SearchHomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785711572BF2FAC200008AFD /* SearchHomeInteractor.swift */; };
 		78714A7C2C1A7F75001064E7 /* AppDetailsImp in Frameworks */ = {isa = PBXBuildFile; productRef = 78714A7B2C1A7F75001064E7 /* AppDetailsImp */; };
 		78714A7E2C1A822C001064E7 /* ResourcesLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 78714A7D2C1A822C001064E7 /* ResourcesLibrary */; };
 		78714A802C1A8231001064E7 /* AppDetails in Frameworks */ = {isa = PBXBuildFile; productRef = 78714A7F2C1A8231001064E7 /* AppDetails */; };
@@ -30,6 +26,7 @@
 		78714A892C1AAC8B001064E7 /* ShowAllApps in Frameworks */ = {isa = PBXBuildFile; productRef = 78714A882C1AAC8B001064E7 /* ShowAllApps */; };
 		78714A8B2C1AB1B1001064E7 /* AppRootComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78714A8A2C1AB1B1001064E7 /* AppRootComponent.swift */; };
 		78714A8D2C1AB23F001064E7 /* ShowAllAppsImp in Frameworks */ = {isa = PBXBuildFile; productRef = 78714A8C2C1AB23F001064E7 /* ShowAllAppsImp */; };
+		78714A902C1ABBE6001064E7 /* SearchHome in Frameworks */ = {isa = PBXBuildFile; productRef = 78714A8F2C1ABBE6001064E7 /* SearchHome */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,12 +41,9 @@
 		785711452BF2FAAA00008AFD /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
 		785711462BF2FAAA00008AFD /* AppRootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootBuilder.swift; sourceTree = "<group>"; };
 		785711472BF2FAAA00008AFD /* AppRootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootInteractor.swift; sourceTree = "<group>"; };
-		785711542BF2FAC200008AFD /* SearchHomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHomeRouter.swift; sourceTree = "<group>"; };
-		785711552BF2FAC200008AFD /* SearchHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHomeViewController.swift; sourceTree = "<group>"; };
-		785711562BF2FAC200008AFD /* SearchHomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHomeBuilder.swift; sourceTree = "<group>"; };
-		785711572BF2FAC200008AFD /* SearchHomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHomeInteractor.swift; sourceTree = "<group>"; };
 		78714A852C1AAB11001064E7 /* AppsHome */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AppsHome; sourceTree = "<group>"; };
 		78714A8A2C1AB1B1001064E7 /* AppRootComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootComponent.swift; sourceTree = "<group>"; };
+		78714A8E2C1ABAA3001064E7 /* Search */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Search; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +56,7 @@
 				782E076A2C197BC1001B1886 /* Network in Frameworks */,
 				78714A842C1A824B001064E7 /* Extensions in Frameworks */,
 				78714A7C2C1A7F75001064E7 /* AppDetailsImp in Frameworks */,
+				78714A902C1ABBE6001064E7 /* SearchHome in Frameworks */,
 				78714A802C1A8231001064E7 /* AppDetails in Frameworks */,
 				78714A892C1AAC8B001064E7 /* ShowAllApps in Frameworks */,
 				7843F5442C19771E00E24870 /* Entities in Frameworks */,
@@ -84,6 +79,7 @@
 		785711192BF2F49C00008AFD = {
 			isa = PBXGroup;
 			children = (
+				78714A8E2C1ABAA3001064E7 /* Search */,
 				7843F5402C19755400E24870 /* Platform */,
 				78714A852C1AAB11001064E7 /* AppsHome */,
 				7843F53C2C1972CE00E24870 /* AppDetails */,
@@ -106,7 +102,6 @@
 			children = (
 				785711392BF2F60E00008AFD /* AppDelegate */,
 				7857113D2BF2F6CE00008AFD /* AppRoot */,
-				7857113E2BF2F6D300008AFD /* SearchHome */,
 				785711302BF2F49D00008AFD /* LaunchScreen.storyboard */,
 				785711332BF2F49D00008AFD /* Info.plist */,
 			);
@@ -132,17 +127,6 @@
 				78714A8A2C1AB1B1001064E7 /* AppRootComponent.swift */,
 			);
 			path = AppRoot;
-			sourceTree = "<group>";
-		};
-		7857113E2BF2F6D300008AFD /* SearchHome */ = {
-			isa = PBXGroup;
-			children = (
-				785711542BF2FAC200008AFD /* SearchHomeRouter.swift */,
-				785711552BF2FAC200008AFD /* SearchHomeViewController.swift */,
-				785711562BF2FAC200008AFD /* SearchHomeBuilder.swift */,
-				785711572BF2FAC200008AFD /* SearchHomeInteractor.swift */,
-			);
-			path = SearchHome;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +157,7 @@
 				78714A862C1AAC8B001064E7 /* AppsHome */,
 				78714A882C1AAC8B001064E7 /* ShowAllApps */,
 				78714A8C2C1AB23F001064E7 /* ShowAllAppsImp */,
+				78714A8F2C1ABBE6001064E7 /* SearchHome */,
 			);
 			productName = RIBsPractice;
 			productReference = 785711222BF2F49C00008AFD /* AppStoreClone.app */;
@@ -233,14 +218,10 @@
 				7857114A2BF2FAAA00008AFD /* AppRootBuilder.swift in Sources */,
 				785711262BF2F49C00008AFD /* AppDelegate.swift in Sources */,
 				7857114B2BF2FAAA00008AFD /* AppRootInteractor.swift in Sources */,
-				785711582BF2FAC200008AFD /* SearchHomeRouter.swift in Sources */,
-				7857115B2BF2FAC200008AFD /* SearchHomeInteractor.swift in Sources */,
 				785711432BF2F85400008AFD /* AppComponent.swift in Sources */,
 				78714A8B2C1AB1B1001064E7 /* AppRootComponent.swift in Sources */,
 				785711492BF2FAAA00008AFD /* RootTabBarController.swift in Sources */,
-				7857115A2BF2FAC200008AFD /* SearchHomeBuilder.swift in Sources */,
 				785711482BF2FAAA00008AFD /* AppRootRouter.swift in Sources */,
-				785711592BF2FAC200008AFD /* SearchHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +499,10 @@
 		78714A8C2C1AB23F001064E7 /* ShowAllAppsImp */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ShowAllAppsImp;
+		};
+		78714A8F2C1ABBE6001064E7 /* SearchHome */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SearchHome;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

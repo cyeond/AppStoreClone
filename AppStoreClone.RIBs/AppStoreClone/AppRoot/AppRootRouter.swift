@@ -8,6 +8,7 @@
 import RIBs
 import Extensions
 import AppsHome
+import SearchHome
 
 protocol AppRootInteractable: Interactable, AppsHomeListener, SearchHomeListener {
     var router: AppRootRouting? { get set }
@@ -23,7 +24,7 @@ final class AppRootRouter: LaunchRouter<AppRootInteractable, AppRootViewControll
     private var appsHomeRouting: ViewableRouting?
     
     private let searchHome: SearchHomeBuildable
-    private var searchHomeRouting: SearchHomeRouting?
+    private var searchHomeRouting: ViewableRouting?
     
     init(interactor: AppRootInteractable,
          viewController: AppRootViewControllable,
