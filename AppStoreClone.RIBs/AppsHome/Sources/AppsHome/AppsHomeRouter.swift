@@ -9,6 +9,7 @@ import RIBs
 import AppDetails
 import ReuseableViews
 import Entities
+import ShowAllApps
 
 protocol AppsHomeInteractable: Interactable, ShowAllAppsListener, AppDetailsListener {
     var router: AppsHomeRouting? { get set }

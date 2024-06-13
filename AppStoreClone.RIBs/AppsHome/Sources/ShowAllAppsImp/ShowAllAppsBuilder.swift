@@ -7,8 +7,9 @@
 
 import RIBs
 import ReuseableViews
+import ShowAllApps
 
-protocol ShowAllAppsDependency: Dependency {
+public protocol ShowAllAppsDependency: Dependency {
     // TODO: Declare the set of dependencies required by this RIB, but cannot be
     // created by this RIB.
 }
@@ -19,17 +20,12 @@ final class ShowAllAppsComponent: Component<ShowAllAppsDependency> {
 }
 
 // MARK: - Builder
-
-protocol ShowAllAppsBuildable: Buildable {
-    func build(withListener listener: ShowAllAppsListener, sectionModel: CollectionViewSectionModel) -> ShowAllAppsRouting
-}
-
-final class ShowAllAppsBuilder: Builder<ShowAllAppsDependency>, ShowAllAppsBuildable {
-    override init(dependency: ShowAllAppsDependency) {
+public final class ShowAllAppsBuilder: Builder<ShowAllAppsDependency>, ShowAllAppsBuildable {
+    public override init(dependency: ShowAllAppsDependency) {
         super.init(dependency: dependency)
     }
 
-    func build(withListener listener: ShowAllAppsListener, sectionModel: CollectionViewSectionModel) -> ShowAllAppsRouting {
+    public func build(withListener listener: ShowAllAppsListener, sectionModel: CollectionViewSectionModel) -> ViewableRouting {
         _ = ShowAllAppsComponent(dependency: dependency)
         let viewController = ShowAllAppsViewController()
         let interactor = ShowAllAppsInteractor(presenter: viewController, sectionModel: sectionModel)

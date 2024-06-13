@@ -9,6 +9,7 @@ import RIBs
 import RxSwift
 import Entities
 import ReuseableViews
+import ShowAllApps
 
 protocol ShowAllAppsRouting: ViewableRouting {
     // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
@@ -18,12 +19,6 @@ protocol ShowAllAppsPresentable: Presentable {
     var listener: ShowAllAppsPresentableListener? { get set }
     
     func update(with sectionModel: CollectionViewSectionModel)
-}
-
-protocol ShowAllAppsListener: AnyObject {
-    func showAllAppsDidTapClose()
-    func showAllAppsDidTapAppPreviewActionButton(with info: AppPreviewInfo)
-    func showAllAppsDidTapAppPreviewCell(with info: AppPreviewInfo)
 }
 
 final class ShowAllAppsInteractor: PresentableInteractor<ShowAllAppsPresentable>, ShowAllAppsInteractable, ShowAllAppsPresentableListener {

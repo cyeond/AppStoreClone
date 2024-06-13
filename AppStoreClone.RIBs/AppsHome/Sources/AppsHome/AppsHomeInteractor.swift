@@ -25,7 +25,7 @@ protocol AppsHomePresentable: Presentable {
     func update(with viewModel: [CollectionViewSectionModel])
 }
 
-protocol AppsHomeListener: AnyObject {
+public protocol AppsHomeListener: AnyObject {
     // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
 }
 

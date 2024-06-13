@@ -6,6 +6,7 @@
 //
 
 import RIBs
+import ShowAllApps
 
 protocol ShowAllAppsInteractable: Interactable {
     var router: ShowAllAppsRouting? { get set }

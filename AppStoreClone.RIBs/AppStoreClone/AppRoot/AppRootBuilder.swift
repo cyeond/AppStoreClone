@@ -6,15 +6,11 @@
 //
 
 import RIBs
+import AppsHome
 
 protocol AppRootDependency: Dependency {
     // TODO: Declare the set of dependencies required by this RIB, but cannot be
     // created by this RIB.
-}
-
-final class AppRootComponent: Component<AppRootDependency>, AppsHomeDependency, SearchHomeDependency {
-
-    // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
 }
 
 // MARK: - Builder
