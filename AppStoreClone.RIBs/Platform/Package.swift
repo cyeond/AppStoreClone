@@ -24,8 +24,7 @@ let package = Package(
             targets: ["ResourcesLibrary"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/uber/RIBs", .upToNextMajor(from: Version(stringLiteral: "0.9.2"))),
-        .package(url: "https://github.com/ReactiveX/RxSwift", .upToNextMajor(from: Version(stringLiteral: "6.7.1")))
+        .package(url: "https://github.com/uber/RIBs", .upToNextMajor(from: Version(stringLiteral: "0.9.2")))
     ],
     targets: [
         .target(
@@ -37,7 +36,6 @@ let package = Package(
         .target(
             name: "Network",
             dependencies: [
-                "RxSwift",
                 "Entities"
             ]
         ),
@@ -51,7 +49,6 @@ let package = Package(
         .target(
             name: "ReuseableViews",
             dependencies: [
-                "RxSwift",
                 "Entities",
                 "Network",
                 "ResourcesLibrary"
