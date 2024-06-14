@@ -29,5 +29,12 @@ let package = Package(
                 .product(name: "ResourcesLibrary", package: "Platform"),
             ]
         ),
+        .testTarget(
+            name: "SearchHomeTests",
+            dependencies: [
+                "SearchHome",
+                .product(name: "RIBsTestSupport", package: "Platform"),
+            ]
+        )
     ]
 )
