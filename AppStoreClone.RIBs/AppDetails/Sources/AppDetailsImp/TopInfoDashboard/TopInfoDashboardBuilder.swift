@@ -7,16 +7,18 @@
 
 import RIBs
 import Entities
+import Extensions
 
 protocol TopInfoDashboardDependency: Dependency {
     // TODO: Declare the set of dependencies required by this RIB, but cannot be
     // created by this RIB.
     var appPreviewInfo: AppPreviewInfo { get }
+    var uiApplication: UIApplicationProtocol { get }
 }
 
 final class TopInfoDashboardComponent: Component<TopInfoDashboardDependency>, TopInfoDashboardInteractorDependency {
     var appPreviewInfo: AppPreviewInfo { dependency.appPreviewInfo }
-    // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+    var uiApplication: UIApplicationProtocol { dependency.uiApplication }
 }
 
 // MARK: - Builder

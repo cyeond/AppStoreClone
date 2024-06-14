@@ -10,6 +10,7 @@ import RIBs
 import RxSwift
 import Entities
 import Network
+import Extensions
 
 protocol TopInfoDashboardRouting: ViewableRouting {
     // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
@@ -27,6 +28,7 @@ protocol TopInfoDashboardListener: AnyObject {
 
 protocol TopInfoDashboardInteractorDependency {
     var appPreviewInfo: AppPreviewInfo { get }
+    var uiApplication: UIApplicationProtocol { get }
 }
 
 final class TopInfoDashboardInteractor: PresentableInteractor<TopInfoDashboardPresentable>, TopInfoDashboardInteractable, TopInfoDashboardPresentableListener {
@@ -57,18 +59,18 @@ final class TopInfoDashboardInteractor: PresentableInteractor<TopInfoDashboardPr
     }
     
     func downloadButtonDidTap() {
-        if let url = appstoreUrl, UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        if let url = appstoreUrl, dependency.uiApplication.canOpenURL(url) {
+            dependency.uiApplication.open(url, options: [:], completionHandler: nil)
         } else {
             API.lookup(dependency.appPreviewInfo.id)
                 .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
                 .observe(on: MainScheduler.instance)
                 .subscribe(with: self, onSuccess: { weakSelf, info in
-                    guard let urlString = info.results.first?.appstoreUrl, let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) else { return }
+                    guard let urlString = info.results.first?.appstoreUrl, let url = URL(string: urlString), weakSelf.dependency.uiApplication.canOpenURL(url) else { return }
                     
                     weakSelf.appstoreUrl = url
                     
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    weakSelf.dependency.uiApplication.open(url, options: [:], completionHandler: nil)
                 })
                 .disposed(by: disposeBag)
         }

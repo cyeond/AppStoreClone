@@ -5,10 +5,12 @@
 //  Created by YD on 5/17/24.
 //
 
+import UIKit
 import RIBs
 import RxSwift
 import Entities
 import AppDetails
+import Extensions
 
 public protocol AppDetailsDependency: Dependency {
     // TODO: Declare the set of dependencies required by this RIB, but cannot be
@@ -18,6 +20,7 @@ public protocol AppDetailsDependency: Dependency {
 final class AppDetailsComponent: Component<AppDetailsDependency>, TopInfoDashboardDependency, RatingInfoDashboardDependency, ScreenshotsDashboardDependency, ReleaseNoteDashboardDependency {
     let appPreviewInfo: AppPreviewInfo
     let appDetailsRepository: AppDetailsRepository
+    var uiApplication: UIApplicationProtocol { UIApplication.shared }
     
     init(dependency: AppDetailsDependency, appPreviewInfo: AppPreviewInfo) {
         self.appPreviewInfo = appPreviewInfo
