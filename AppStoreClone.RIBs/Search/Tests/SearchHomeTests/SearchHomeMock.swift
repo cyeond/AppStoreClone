@@ -17,20 +17,26 @@ final class SearchHomePresentableMock: SearchHomePresentable {
     var listener: SearchHomePresentableListener?
     
     var updateCallCount = 0
+    var updateCalled = PublishSubject<Void>()
     var updateModel: CollectionViewSectionModel?
     func update(with model: CollectionViewSectionModel) {
         updateCallCount += 1
         updateModel = model
+        updateCalled.onNext(())
     }
     
     var startLoadingCallCount = 0
+    var startLoadingCalled = PublishSubject<Void>()
     func startLoading() {
         startLoadingCallCount += 1
+        startLoadingCalled.onNext(())
     }
     
     var stopLoadingCallCount = 0
+    var stopLoadingCalled = PublishSubject<Void>()
     func stopLoading() {
         stopLoadingCallCount += 1
+        stopLoadingCalled.onNext(())
     }
 }
 

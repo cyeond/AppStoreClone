@@ -9,6 +9,8 @@
 import XCTest
 import Entities
 import RIBsTestSupport
+import RxBlocking
+import RxSwift
 
 final class SearchHomeInteractorTests: XCTestCase {
     
@@ -31,6 +33,14 @@ final class SearchHomeInteractorTests: XCTestCase {
         interactor.router = self.router
         
         self.sut = interactor
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+        
+        self.presenter = nil
+        self.router = nil
+        self.sut = nil
     }
     
     // MARK: - Tests
@@ -59,5 +69,58 @@ final class SearchHomeInteractorTests: XCTestCase {
         
         // then
         XCTAssertEqual(router.detachAppDetailsCallCount, 1)
+    }
+    
+    func testSearchButtonDidTap() {
+        // given
+        let text = "Test"
+        
+        // when
+        sut.activate()
+        sut.searchButtonDidTap(text)
+        
+        // then
+        XCTAssertEqual(presenter.startLoadingCallCount, 1)
+        XCTAssertEqual(presenter.updateCallCount, 2)
+        
+        do {
+            _ = try Observable.zip(
+                presenter.updateCalled,
+                presenter.stopLoadingCalled
+            )
+            .toBlocking(timeout: 5.0)
+            .first()
+            
+            XCTAssertEqual(presenter.stopLoadingCallCount, 1)
+            XCTAssertEqual(presenter.updateCallCount, 3)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
+    func testCancelButtonDidTap() {
+        // when
+        sut.activate()
+        sut.searchButtonDidTap("Test")
+        
+        // then
+        do {
+            _ = try presenter.updateCalled
+                .toBlocking(timeout: 5.0)
+                .first()
+            
+            XCTAssertEqual(presenter.updateCallCount, 3)
+            
+            sut.cancelButtonDidTap()
+            
+            XCTAssertEqual(presenter.updateCallCount, 4)
+            XCTAssertEqual(presenter.updateModel?.items.count, 0)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
+    func testWillResignActive() {
+        sut.willResignActive()
     }
 }
