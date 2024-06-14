@@ -20,6 +20,9 @@ let package = Package(
             name: "Extensions",
             targets: ["Extensions"]),
         .library(
+            name: "RIBsTestSupport",
+            targets: ["RIBsTestSupport"]),
+        .library(
             name: "ResourcesLibrary",
             targets: ["ResourcesLibrary"]),
     ],
@@ -49,9 +52,14 @@ let package = Package(
         .target(
             name: "ReuseableViews",
             dependencies: [
-                "Entities",
                 "Network",
                 "ResourcesLibrary"
+            ]
+        ),
+        .target(
+            name: "RIBsTestSupport",
+            dependencies: [
+                "RIBs"
             ]
         ),
         .target(

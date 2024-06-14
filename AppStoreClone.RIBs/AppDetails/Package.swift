@@ -37,5 +37,12 @@ let package = Package(
                 .product(name: "ResourcesLibrary", package: "Platform"),
             ]
         ),
+        .testTarget(
+            name: "AppDetailsImpTests",
+            dependencies: [
+                "AppDetailsImp",
+                .product(name: "RIBsTestSupport", package: "Platform"),
+            ]
+        )
     ]
 )
