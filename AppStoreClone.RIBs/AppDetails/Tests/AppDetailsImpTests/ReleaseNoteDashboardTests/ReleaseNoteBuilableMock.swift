@@ -7,6 +7,8 @@
 
 import Foundation
 import RIBsTestSupport
+import Entities
+import RxSwift
 @testable import AppDetailsImp
 
 final class ReleaseNoteBuildableMock: ReleaseNoteDashboardBuildable {
@@ -26,4 +28,21 @@ final class ReleaseNoteBuildableMock: ReleaseNoteDashboardBuildable {
 
 final class ReleaseNoteRoutingMock: ViewableRoutingMock, ReleaseNoteDashboardRouting {
     
+}
+
+final class ReleaseNoteDashboardPresentableMock: ReleaseNoteDashboardPresentable {
+    var listener: ReleaseNoteDashboardPresentableListener?
+    
+    var updateCallCount = 0
+    var updateCalledSubject = PublishSubject<Void>()
+    var updatedAppInfo: AppInfo?
+    func update(with info: AppInfo) {
+        updateCallCount += 1
+        updateCalledSubject.onNext(())
+        updatedAppInfo = info
+    }
+}
+
+final class ReleaseNoteInteractorDependencyMock: ReleaseNoteDashboardInteractorDependency {
+    var appDetailsRepository: AppDetailsRepository = AppDetailsRepositoryImp(appId: "839333328")
 }
