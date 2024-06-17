@@ -12,6 +12,7 @@ import RIBsTestSupport
 import RxSwift
 import RxRelay
 import UIKit
+import Entities
 @testable import AppDetailsImp
 
 final class AppDetailsPresentableMock: AppDetailsPresentable {
