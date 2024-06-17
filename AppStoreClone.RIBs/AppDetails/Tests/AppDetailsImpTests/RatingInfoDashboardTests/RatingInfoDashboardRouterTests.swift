@@ -12,11 +12,17 @@ final class RatingInfoDashboardRouterTests: XCTestCase {
 
     private var sut: RatingInfoDashboardRouter!
 
-    // TODO: declare other objects and mocks you need as private vars
-
     override func setUp() {
         super.setUp()
+        
+        self.sut = RatingInfoDashboardRouter(
+            interactor: RatingInfoDashboardInteractableMock(),
+            viewController: RatinginfoDashboardViewControllableMock()
+        )
     }
 
     // MARK: - Tests
+    func testDidLoad() {
+        sut.didLoad()
+    }
 }

@@ -5,10 +5,11 @@
 //  Created by YD on 6/14/24.
 //
 
-import Foundation
+import UIKit
 import RIBsTestSupport
 import Entities
 import RxSwift
+import RxRelay
 @testable import AppDetailsImp
 
 final class ReleaseNoteBuildableMock: ReleaseNoteDashboardBuildable {
@@ -45,4 +46,22 @@ final class ReleaseNoteDashboardPresentableMock: ReleaseNoteDashboardPresentable
 
 final class ReleaseNoteInteractorDependencyMock: ReleaseNoteDashboardInteractorDependency {
     var appDetailsRepository: AppDetailsRepository = AppDetailsRepositoryImp(appId: "839333328")
+}
+
+final class ReleaseNoteDashboardInteractableMock: ReleaseNoteDashboardInteractable {
+    var router: ReleaseNoteDashboardRouting?
+    var listener: ReleaseNoteDashboardListener?
+    var isActive: Bool { isActiveRelay.value }
+    var isActiveStream: Observable<Bool> { isActiveRelay.asObservable() }
+    private let isActiveRelay = BehaviorRelay<Bool>(value: false)
+    
+    func activate() {
+    }
+    
+    func deactivate() {
+    }
+}
+
+final class ReleaseNoteDashboardViewControllableMock: ReleaseNoteDashboardViewControllable {
+    var uiviewController: UIViewController = UIViewController()
 }

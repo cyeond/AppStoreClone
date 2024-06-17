@@ -5,10 +5,11 @@
 //  Created by YD on 6/14/24.
 //
 
-import Foundation
+import UIKit
 import RIBsTestSupport
 import ReuseableViews
 import RxSwift
+import RxRelay
 @testable import AppDetailsImp
 
 final class RatingInfoBuildableMock: RatingInfoDashboardBuildable {
@@ -44,4 +45,22 @@ final class RatingInfoPresentableMock: RatingInfoDashboardPresentable {
 
 final class RatingInfoInteractorDependencyMock: RatingInfoDashboardInteractorDependency {
     var appDetailsRepository: AppDetailsRepository = AppDetailsRepositoryImp(appId: "839333328")
+}
+
+final class RatingInfoDashboardInteractableMock: RatingInfoDashboardInteractable {
+    var router: RatingInfoDashboardRouting?
+    var listener: RatingInfoDashboardListener?
+    var isActive: Bool { isActiveRelay.value }
+    var isActiveStream: Observable<Bool> { isActiveRelay.asObservable() }
+    private let isActiveRelay = BehaviorRelay<Bool>(value: false)
+    
+    func activate() {
+    }
+    
+    func deactivate() {
+    }
+}
+
+final class RatinginfoDashboardViewControllableMock: RatingInfoDashboardViewControllable {
+    var uiviewController: UIViewController = UIViewController()
 }

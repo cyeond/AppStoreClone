@@ -17,8 +17,14 @@ final class ReleaseNoteDashboardRouterTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        // TODO: instantiate objects and mocks
+        self.sut = ReleaseNoteDashboardRouter(
+            interactor: ReleaseNoteDashboardInteractableMock(),
+            viewController: ReleaseNoteDashboardViewControllableMock()
+        )
     }
 
     // MARK: - Tests
+    func testDidLoad() {
+        sut.didLoad()
+    }
 }

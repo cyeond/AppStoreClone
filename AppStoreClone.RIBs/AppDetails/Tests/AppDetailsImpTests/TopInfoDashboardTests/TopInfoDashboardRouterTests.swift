@@ -17,8 +17,14 @@ final class TopInfoDashboardRouterTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        // TODO: instantiate objects and mocks
+        self.sut = TopInfoDashboardRouter(
+            interactor: TopInfoDashboardInteractableMock(),
+            viewController: TopinfoDashboardViewControllableMock()
+        )
     }
 
     // MARK: - Tests
+    func testDidLoad() {
+        sut.didLoad()
+    }
 }

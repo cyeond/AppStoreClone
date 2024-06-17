@@ -9,6 +9,7 @@ import UIKit
 import RIBsTestSupport
 import Entities
 import RxSwift
+import RxRelay
 import Extensions
 @testable import AppDetailsImp
 
@@ -70,4 +71,22 @@ final class UIApplicationMock: UIApplicationProtocol {
         openCallCount += 1
         openCalledSubject.onNext(())
     }
+}
+
+final class TopInfoDashboardInteractableMock: TopInfoDashboardInteractable {
+    var router: TopInfoDashboardRouting?
+    var listener: TopInfoDashboardListener?
+    var isActive: Bool { isActiveRelay.value }
+    var isActiveStream: Observable<Bool> { isActiveRelay.asObservable() }
+    private let isActiveRelay = BehaviorRelay<Bool>(value: false)
+    
+    func activate() {
+    }
+    
+    func deactivate() {
+    }
+}
+
+final class TopinfoDashboardViewControllableMock: TopInfoDashboardViewControllable {
+    var uiviewController: UIViewController = UIViewController()
 }

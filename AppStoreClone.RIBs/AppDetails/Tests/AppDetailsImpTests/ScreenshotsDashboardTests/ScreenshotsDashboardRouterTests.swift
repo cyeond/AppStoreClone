@@ -17,8 +17,14 @@ final class ScreenshotsDashboardRouterTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        // TODO: instantiate objects and mocks
+        self.sut = ScreenshotsDashboardRouter(
+            interactor: ScreenshotsDashboardInteractableMock(),
+            viewController: ScreenshotsDashboardViewControllableMock()
+        )
     }
 
     // MARK: - Tests
+    func testDidLoad() {
+        sut.didLoad()
+    }
 }
