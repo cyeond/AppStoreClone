@@ -13,6 +13,9 @@ let package = Package(
         .library(
             name: "AppDetailsImp",
             targets: ["AppDetailsImp"]),
+        .library(
+            name: "AppDetailsTestSupport",
+            targets: ["AppDetailsTestSupport"]),
     ],
     dependencies: [
         .package(url: "https://github.com/uber/RIBs", .upToNextMajor(from: Version(stringLiteral: "0.9.2"))),
@@ -30,18 +33,24 @@ let package = Package(
         .target(
             name: "AppDetailsImp",
             dependencies: [
-                "RIBs",
                 "AppDetails",
-                .product(name: "Entities", package: "Platform"),
                 .product(name: "Network", package: "Platform"),
                 .product(name: "ReuseableViews", package: "Platform"),
                 .product(name: "ResourcesLibrary", package: "Platform"),
+            ]
+        ),
+        .target(
+            name: "AppDetailsTestSupport",
+            dependencies: [
+                "AppDetailsImp",
+                .product(name: "RIBsTestSupport", package: "Platform")
             ]
         ),
         .testTarget(
             name: "AppDetailsImpTests",
             dependencies: [
                 "AppDetailsImp",
+                "AppDetailsTestSupport",
                 .product(name: "RIBsTestSupport", package: "Platform"),
                 .product(name: "RxBlocking", package: "RxSwift")
             ]

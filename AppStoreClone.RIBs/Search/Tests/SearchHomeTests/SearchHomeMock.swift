@@ -6,8 +6,9 @@
 //
 
 @testable import SearchHome
-import Foundation
+import UIKit
 import RxSwift
+import RxRelay
 import RIBs
 import RIBsTestSupport
 import ReuseableViews
@@ -54,3 +55,26 @@ final class SearchHomeRoutingMock: ViewableRoutingMock, SearchHomeRouting {
     }
 }
 
+
+final class SearchHomeInteractableMock: SearchHomeInteractable {
+    var router: SearchHomeRouting?
+    var listener: SearchHomeListener?
+    var isActive: Bool { isActiveRelay.value }
+    var isActiveStream: Observable<Bool> { isActiveRelay.asObservable() }
+    private let isActiveRelay = BehaviorRelay<Bool>(value: false)
+    
+    func activate() {
+    }
+    
+    func deactivate() {
+    }
+    
+    var appDetailsDidTapCloseCallCount = 0
+    func appDetailsDidTapClose() {
+        appDetailsDidTapCloseCallCount += 1
+    }
+}
+
+final class SearchHomeViewControllableMock: SearchHomeViewControllable {
+    var uiviewController: UIViewController = UIViewController()
+}

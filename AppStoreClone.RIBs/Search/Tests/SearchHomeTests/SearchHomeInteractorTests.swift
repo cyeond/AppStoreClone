@@ -36,11 +36,11 @@ final class SearchHomeInteractorTests: XCTestCase {
     }
     
     override func tearDown() {
-        super.tearDown()
-        
         self.presenter = nil
         self.router = nil
         self.sut = nil
+        
+        super.tearDown()
     }
     
     // MARK: - Tests

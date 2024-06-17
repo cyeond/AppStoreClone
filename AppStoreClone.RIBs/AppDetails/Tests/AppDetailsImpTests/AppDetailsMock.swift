@@ -26,28 +26,6 @@ final class AppDetailsListenerMock: AppDetailsListener {
     }
 }
 
-final class AppDetailsRoutingMock: ViewableRoutingMock, AppDetailsRouting {
-    var attachTopInfoDashboardCallCount = 0
-    func attachTopInfoDashboard() {
-        attachTopInfoDashboardCallCount += 1
-    }
-    
-    var attachRatingInfoDashboardCallCount = 0
-    func attachRatingInfoDashboard() {
-        attachRatingInfoDashboardCallCount += 1
-    }
-    
-    var attachReleaseNoteDashboardCallCount = 0
-    func attachReleaseNoteDashboard() {
-        attachReleaseNoteDashboardCallCount += 1
-    }
-    
-    var attachScreenshotsDashboardCallCount = 0
-    func attachScreenshotsDashboard() {
-        attachScreenshotsDashboardCallCount += 1
-    }
-}
-
 final class AppDetailsInteractableMock: AppDetailsInteractable {
     var router: AppDetailsRouting?
     var listener: AppDetailsListener?

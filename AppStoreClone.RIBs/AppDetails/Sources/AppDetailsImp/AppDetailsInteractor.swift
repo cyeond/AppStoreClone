@@ -9,7 +9,7 @@ import RIBs
 import RxSwift
 import AppDetails
 
-protocol AppDetailsRouting: ViewableRouting {
+public protocol AppDetailsRouting: ViewableRouting {
     func attachTopInfoDashboard()
     func attachRatingInfoDashboard()
     func attachReleaseNoteDashboard()

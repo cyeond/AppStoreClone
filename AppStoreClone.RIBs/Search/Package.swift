@@ -35,7 +35,8 @@ let package = Package(
             dependencies: [
                 "SearchHome",
                 .product(name: "RIBsTestSupport", package: "Platform"),
-                .product(name: "RxBlocking", package: "RxSwift")
+                .product(name: "RxBlocking", package: "RxSwift"),
+                .product(name: "AppDetailsTestSupport", package: "AppDetails")
             ]
         )
     ]

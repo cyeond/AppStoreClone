@@ -8,6 +8,7 @@
 @testable import AppDetailsImp
 import XCTest
 import RIBsTestSupport
+import AppDetailsTestSupport
 
 final class AppDetailsInteractorTests: XCTestCase {
 
