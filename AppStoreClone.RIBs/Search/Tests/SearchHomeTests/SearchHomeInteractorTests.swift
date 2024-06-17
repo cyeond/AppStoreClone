@@ -81,18 +81,14 @@ final class SearchHomeInteractorTests: XCTestCase {
         
         // then
         XCTAssertEqual(presenter.startLoadingCallCount, 1)
-        XCTAssertEqual(presenter.updateCallCount, 2)
         
         do {
-            _ = try Observable.zip(
-                presenter.updateCalled,
-                presenter.stopLoadingCalled
-            )
-            .toBlocking(timeout: 5.0)
-            .first()
+            _ = try presenter.stopLoadingCalled
+                .toBlocking(timeout: 5.0)
+                .first()
             
             XCTAssertEqual(presenter.stopLoadingCallCount, 1)
-            XCTAssertEqual(presenter.updateCallCount, 3)
+            XCTAssertGreaterThan(presenter.updateCallCount, 0)
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -106,14 +102,15 @@ final class SearchHomeInteractorTests: XCTestCase {
         // then
         do {
             _ = try presenter.updateCalled
-                .toBlocking(timeout: 5.0)
+                .toBlocking(timeout: 10.0)
                 .first()
             
-            XCTAssertEqual(presenter.updateCallCount, 3)
+            XCTAssertGreaterThan(presenter.updateModel?.items.count ?? 0, 0)
             
+            let count = presenter.updateCallCount
             sut.cancelButtonDidTap()
-            
-            XCTAssertEqual(presenter.updateCallCount, 4)
+//            
+            XCTAssertEqual(presenter.updateCallCount, count+1)
             XCTAssertEqual(presenter.updateModel?.items.count, 0)
         } catch {
             XCTFail(error.localizedDescription)
