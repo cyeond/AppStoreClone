@@ -7,6 +7,8 @@
 
 import Foundation
 import RIBsTestSupport
+import ReuseableViews
+import RxSwift
 @testable import AppDetailsImp
 
 final class ScreenshotsBuildableMock: ScreenshotsDashboardBuildable {
@@ -26,4 +28,19 @@ final class ScreenshotsBuildableMock: ScreenshotsDashboardBuildable {
 
 final class ScreenshotsRoutingMock: ViewableRoutingMock, ScreenshotsDashboardRouting {
     
+}
+
+final class ScreenshotsDashboardPresentableMock: ScreenshotsDashboardPresentable {
+    var listener: ScreenshotsDashboardPresentableListener?
+    
+    var updateCallCount = 0
+    var updateCalledSubject = PublishSubject<Void>()
+    func update(with sectionModel: CollectionViewSectionModel) {
+        updateCallCount += 1
+        updateCalledSubject.onNext(())
+    }
+}
+
+final class ScreenshotsDashboardInteractorDependencyMock: ScreenshotsDashboardInteractorDependency {
+    var appDetailsRepository: AppDetailsRepository = AppDetailsRepositoryImp(appId: "839333328")
 }
