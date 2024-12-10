@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7842A3CD2D086AFD00A936A9 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7842A3CC2D086AFD00A936A9 /* APIRouter.swift */; };
+		7842A3CF2D086D6100A936A9 /* APIRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7842A3CE2D086D6100A936A9 /* APIRouterProtocol.swift */; };
 		78B54E0F2C12CCCF00726318 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B54E0E2C12CCCF00726318 /* AppDelegate.swift */; };
 		78B54E182C12CCD000726318 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78B54E172C12CCD000726318 /* Assets.xcassets */; };
 		78B54E1B2C12CCD000726318 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B54E192C12CCD000726318 /* LaunchScreen.storyboard */; };
@@ -46,6 +48,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7842A3CC2D086AFD00A936A9 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		7842A3CE2D086D6100A936A9 /* APIRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouterProtocol.swift; sourceTree = "<group>"; };
 		78B54E0B2C12CCCF00726318 /* AppStoreClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B54E0E2C12CCCF00726318 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78B54E172C12CCD000726318 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -238,6 +242,8 @@
 			children = (
 				78B54E832C12D69100726318 /* ImageDownloader.swift */,
 				78B54E842C12D69100726318 /* API.swift */,
+				7842A3CC2D086AFD00A936A9 /* APIRouter.swift */,
+				7842A3CE2D086D6100A936A9 /* APIRouterProtocol.swift */,
 			);
 			name = Networking;
 			path = AppStoreClone/Networking;
@@ -362,6 +368,7 @@
 				78B54E652C12D5AA00726318 /* AppPreviewBasicCell.swift in Sources */,
 				78B54E5B2C12D51500726318 /* AppPreviewInfo.swift in Sources */,
 				78C721E72C12DCF800D00711 /* AppsHomeViewModel.swift in Sources */,
+				7842A3CD2D086AFD00A936A9 /* APIRouter.swift in Sources */,
 				78B54E862C12D69100726318 /* API.swift in Sources */,
 				78B54E6E2C12D5C000726318 /* TitleHeaderView.swift in Sources */,
 				78B54E7A2C12D64800726318 /* String+Extension.swift in Sources */,
@@ -384,6 +391,7 @@
 				78B54E582C12D51500726318 /* CollectionViewSection.swift in Sources */,
 				78B54E6F2C12D5C000726318 /* AppPreviewBasicHeaderView.swift in Sources */,
 				78C721EC2C130E9B00D00711 /* ShowAllAppsViewModel.swift in Sources */,
+				7842A3CF2D086D6100A936A9 /* APIRouterProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
